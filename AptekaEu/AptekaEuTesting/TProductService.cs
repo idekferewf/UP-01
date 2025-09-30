@@ -1,14 +1,14 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 
 namespace AptekaEuTesting
 {
     [TestClass]
-    public class UnitTest1
+    public class TProductService
     {
         [TestMethod]
-        public void TestMethod1()
+        public void TAddProduct()
         {
+            /// ...
         }
     }
 }
