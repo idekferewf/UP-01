@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AptekaEuLib
+﻿namespace AptekaEuLib
 {
     public class ProductService
     {
@@ -22,9 +16,14 @@ namespace AptekaEuLib
                 return "Наименование товара не может быть пустым.";
             }
 
-            if (product.PurchasePrice <= 0 || product.SalePrice <= 0)
+            if (product.PurchasePrice <= 0)
             {
-                return "Цена не может быть отрицательной.";
+                return "Цена закупки не может быть отрицательной.";
+            }
+
+            if (product.SalePrice <= 0)
+            {
+                return "Цена продажи не может быть отрицательной.";
             }
 
             productsRepository_.AddProduct(product);
