@@ -79,5 +79,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AptekaEuLib\AptekaEuLib.csproj">
+      <Project>{077c6d84-5fc6-4069-b32f-1492b7270434}</Project>
+      <Name>AptekaEuLib</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
