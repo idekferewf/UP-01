@@ -22,7 +22,7 @@ namespace AptekaEuLib
                 return "Наименование товара не может быть пустым.";
             }
 
-            if (product.PurchasePrice <= 0  || product.SalePrice <= 0)
+            if (product.PurchasePrice <= 0 || product.SalePrice <= 0)
             {
                 return "Цена не может быть отрицательной.";
             }
