@@ -2,6 +2,6 @@
 {
     public interface IProductsRepository
     {
-        void AddProduct(Product product);
+        bool AddProduct(Product product);
     }
 }
