@@ -28,20 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.productsGridView = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.productsGridView)).BeginInit();
             this.SuspendLayout();
+            // 
+            // productsGridView
+            // 
+            this.productsGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.productsGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.productsGridView.Location = new System.Drawing.Point(0, 0);
+            this.productsGridView.Name = "productsGridView";
+            this.productsGridView.Size = new System.Drawing.Size(800, 450);
+            this.productsGridView.TabIndex = 0;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.productsGridView);
             this.Name = "MainForm";
             this.Text = "Главная – AptekaEu";
+            ((System.ComponentModel.ISupportInitialize)(this.productsGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private System.Windows.Forms.DataGridView productsGridView;
     }
 }
 
