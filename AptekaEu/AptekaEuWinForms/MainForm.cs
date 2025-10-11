@@ -66,7 +66,14 @@ namespace AptekaEuWinForms
                     ActualQuantity = 200
                 }
             };
+            
             productsGridView.DataSource = products_;
+            productsGridView.Columns["Name"].MinimumWidth = 160;
+            productsGridView.Columns["CategoryId"].MinimumWidth = 90;
+            productsGridView.Columns["PurchasePrice"].MinimumWidth = 110;
+            productsGridView.Columns["SalePrice"].MinimumWidth = 110;
+            productsGridView.Columns["ActualQuantity"].MinimumWidth = 120;
+            productsGridView.Columns["ActualQuantity"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
     }
 }

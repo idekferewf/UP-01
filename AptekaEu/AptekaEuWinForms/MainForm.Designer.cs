@@ -34,10 +34,14 @@
             // 
             // productsGridView
             // 
+            this.productsGridView.AllowUserToAddRows = false;
+            this.productsGridView.AllowUserToDeleteRows = false;
+            this.productsGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.productsGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.productsGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.productsGridView.Location = new System.Drawing.Point(0, 0);
             this.productsGridView.Name = "productsGridView";
+            this.productsGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.productsGridView.Size = new System.Drawing.Size(800, 450);
             this.productsGridView.TabIndex = 0;
             // 
