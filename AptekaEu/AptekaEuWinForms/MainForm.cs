@@ -72,7 +72,10 @@ namespace AptekaEuWinForms
 
         private void addProductButton_Click(object sender, EventArgs e)
         {
-
+            AddProductForm addProductForm = new AddProductForm();
+            if (addProductForm.ShowDialog() == DialogResult.OK)
+            {
+            }
         }
     }
 }
