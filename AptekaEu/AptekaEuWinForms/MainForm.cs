@@ -75,5 +75,10 @@ namespace AptekaEuWinForms
             productsGridView.Columns["ActualQuantity"].MinimumWidth = 120;
             productsGridView.Columns["ActualQuantity"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
+
+        private void addProductButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
