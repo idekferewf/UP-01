@@ -8,10 +8,13 @@ namespace AptekaEuWinForms
     public partial class MainForm: Form
     {
         private BindingList<Product> products_;
+        private ProductService productService_;
 
         public MainForm()
         {
             InitializeComponent();
+
+            productService_ = new ProductService(new ProductsRepository());
             FillProducts();
         }
 
@@ -75,6 +78,16 @@ namespace AptekaEuWinForms
             AddProductForm addProductForm = new AddProductForm();
             if (addProductForm.ShowDialog() == DialogResult.OK)
             {
+                string error = productService_.AddProduct(addProductForm.product);
+                if (error != string.Empty)
+                {
+                    MessageBox.Show(error, "Ошибка при добавлении", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    products_.Add(addProductForm.product);
+                    MessageBox.Show("Товар успешно добавлен!", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
         }
     }
