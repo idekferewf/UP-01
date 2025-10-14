@@ -22,11 +22,6 @@ namespace AptekaEuWinForms
         public void FillProducts()
         {
             products_ = new BindingList<Product>(productService_.GetAllProducts());
-            if (products_.Count == 0)
-            {
-                MessageBox.Show("Товары отсуствуют или при попытке получения произошла ошибка.", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
 
             productsGridView.DataSource = products_;
             productsGridView.Columns["Name"].MinimumWidth = 160;
