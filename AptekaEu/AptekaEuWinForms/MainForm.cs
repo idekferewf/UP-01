@@ -14,7 +14,7 @@ namespace AptekaEuWinForms
         {
             InitializeComponent();
 
-            productService_ = new ProductService(new ProductsRepository());
+            productService_ = new ProductService(new MySQLProductsReader());
             FillProducts();
         }
 
