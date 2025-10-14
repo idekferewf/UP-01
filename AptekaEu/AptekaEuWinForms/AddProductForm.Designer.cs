@@ -32,21 +32,21 @@
             this.nameLabel = new System.Windows.Forms.Label();
             this.nameTextBox = new System.Windows.Forms.TextBox();
             this.addProductTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.actualQuantiryNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.salePriceNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.purchasePriceNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.categoryIdLabel = new System.Windows.Forms.Label();
             this.purchasePriceLabel = new System.Windows.Forms.Label();
             this.salePriceLabel = new System.Windows.Forms.Label();
             this.actualQuantityLabel = new System.Windows.Forms.Label();
             this.categoryIdNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.purchasePriceNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.salePriceNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.actualQuantiryNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.addButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
+            this.addButton = new System.Windows.Forms.Button();
             this.addProductTableLayoutPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.categoryIdNumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.purchasePriceNumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.salePriceNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.actualQuantiryNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.salePriceNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.purchasePriceNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.categoryIdNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // titleLabel
@@ -114,6 +114,57 @@
             this.addProductTableLayoutPanel.Size = new System.Drawing.Size(334, 220);
             this.addProductTableLayoutPanel.TabIndex = 3;
             // 
+            // actualQuantiryNumericUpDown
+            // 
+            this.actualQuantiryNumericUpDown.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.actualQuantiryNumericUpDown.Location = new System.Drawing.Point(170, 125);
+            this.actualQuantiryNumericUpDown.Maximum = new decimal(new int[] {
+            -727379969,
+            232,
+            0,
+            0});
+            this.actualQuantiryNumericUpDown.Name = "actualQuantiryNumericUpDown";
+            this.actualQuantiryNumericUpDown.Size = new System.Drawing.Size(130, 20);
+            this.actualQuantiryNumericUpDown.TabIndex = 10;
+            // 
+            // salePriceNumericUpDown
+            // 
+            this.salePriceNumericUpDown.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.salePriceNumericUpDown.DecimalPlaces = 2;
+            this.salePriceNumericUpDown.Increment = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.salePriceNumericUpDown.Location = new System.Drawing.Point(170, 95);
+            this.salePriceNumericUpDown.Maximum = new decimal(new int[] {
+            -727379969,
+            232,
+            0,
+            0});
+            this.salePriceNumericUpDown.Name = "salePriceNumericUpDown";
+            this.salePriceNumericUpDown.Size = new System.Drawing.Size(130, 20);
+            this.salePriceNumericUpDown.TabIndex = 9;
+            // 
+            // purchasePriceNumericUpDown
+            // 
+            this.purchasePriceNumericUpDown.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.purchasePriceNumericUpDown.DecimalPlaces = 2;
+            this.purchasePriceNumericUpDown.Increment = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.purchasePriceNumericUpDown.Location = new System.Drawing.Point(170, 65);
+            this.purchasePriceNumericUpDown.Maximum = new decimal(new int[] {
+            -727379969,
+            232,
+            0,
+            0});
+            this.purchasePriceNumericUpDown.Name = "purchasePriceNumericUpDown";
+            this.purchasePriceNumericUpDown.Size = new System.Drawing.Size(130, 20);
+            this.purchasePriceNumericUpDown.TabIndex = 8;
+            // 
             // categoryIdLabel
             // 
             this.categoryIdLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
@@ -171,66 +222,6 @@
             this.categoryIdNumericUpDown.Size = new System.Drawing.Size(130, 20);
             this.categoryIdNumericUpDown.TabIndex = 7;
             // 
-            // purchasePriceNumericUpDown
-            // 
-            this.purchasePriceNumericUpDown.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.purchasePriceNumericUpDown.Increment = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            this.purchasePriceNumericUpDown.Location = new System.Drawing.Point(170, 65);
-            this.purchasePriceNumericUpDown.Maximum = new decimal(new int[] {
-            -727379969,
-            232,
-            0,
-            0});
-            this.purchasePriceNumericUpDown.Name = "purchasePriceNumericUpDown";
-            this.purchasePriceNumericUpDown.Size = new System.Drawing.Size(130, 20);
-            this.purchasePriceNumericUpDown.TabIndex = 8;
-            // 
-            // salePriceNumericUpDown
-            // 
-            this.salePriceNumericUpDown.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.salePriceNumericUpDown.Increment = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            this.salePriceNumericUpDown.Location = new System.Drawing.Point(170, 95);
-            this.salePriceNumericUpDown.Maximum = new decimal(new int[] {
-            -727379969,
-            232,
-            0,
-            0});
-            this.salePriceNumericUpDown.Name = "salePriceNumericUpDown";
-            this.salePriceNumericUpDown.Size = new System.Drawing.Size(130, 20);
-            this.salePriceNumericUpDown.TabIndex = 9;
-            // 
-            // actualQuantiryNumericUpDown
-            // 
-            this.actualQuantiryNumericUpDown.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.actualQuantiryNumericUpDown.Location = new System.Drawing.Point(170, 125);
-            this.actualQuantiryNumericUpDown.Maximum = new decimal(new int[] {
-            -727379969,
-            232,
-            0,
-            0});
-            this.actualQuantiryNumericUpDown.Name = "actualQuantiryNumericUpDown";
-            this.actualQuantiryNumericUpDown.Size = new System.Drawing.Size(130, 20);
-            this.actualQuantiryNumericUpDown.TabIndex = 10;
-            // 
-            // addButton
-            // 
-            this.addButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.addButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.addButton.Location = new System.Drawing.Point(64, 170);
-            this.addButton.Name = "addButton";
-            this.addButton.Size = new System.Drawing.Size(100, 30);
-            this.addButton.TabIndex = 4;
-            this.addButton.Text = "Добавить";
-            this.addButton.UseVisualStyleBackColor = true;
-            // 
             // cancelButton
             // 
             this.cancelButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -242,6 +233,19 @@
             this.cancelButton.Text = "Отменить";
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
+            // 
+            // addButton
+            // 
+            this.addButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.addButton.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.addButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.addButton.Location = new System.Drawing.Point(64, 170);
+            this.addButton.Name = "addButton";
+            this.addButton.Size = new System.Drawing.Size(100, 30);
+            this.addButton.TabIndex = 4;
+            this.addButton.Text = "Добавить";
+            this.addButton.UseVisualStyleBackColor = true;
+            this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
             // AddProductForm
             // 
@@ -256,10 +260,10 @@
             this.Text = "Добавление товара – AptekaEu";
             this.addProductTableLayoutPanel.ResumeLayout(false);
             this.addProductTableLayoutPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.categoryIdNumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.purchasePriceNumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.salePriceNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.actualQuantiryNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.salePriceNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.purchasePriceNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.categoryIdNumericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
