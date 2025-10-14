@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 
 namespace AptekaEuLib
@@ -13,6 +9,32 @@ namespace AptekaEuLib
 
         public bool AddProduct(Product product)
         {
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(myConnectionString))
+                {
+                    conn.Open();
+                    string query = "INSERT INTO products (name, category_id, purchase_price, sale_price, actual_quantity) " +
+                                   "VALUES (@name, @category_id, @purchase_price, @sale_price, @actual_quantity);";
+
+                    MySqlCommand command = new MySqlCommand(query, conn);
+                    command.Parameters.AddWithValue("@name", product.Name);
+                    command.Parameters.AddWithValue("@category_id", product.CategoryId);
+                    command.Parameters.AddWithValue("@purchase_price", product.PurchasePrice);
+                    command.Parameters.AddWithValue("@sale_price", product.SalePrice);
+                    command.Parameters.AddWithValue("@actual_quantity", product.ActualQuantity);
+
+                    command.ExecuteNonQuery();
+                }
+            }
+            catch (MySqlException)
+            {
+                return false;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
             return true;
         }
     }
