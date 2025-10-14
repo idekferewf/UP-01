@@ -50,8 +50,7 @@ namespace AptekaEuLib
                     {
                         while (reader.Read())
                         {
-                            Product product = new Product();
-                            product.Id = reader.GetInt32("id");
+                            Product product = new Product(reader.GetInt32("id"));
                             product.Name = reader.GetString("name");
                             product.CategoryId = reader.GetInt32("category_id");
                             product.PurchasePrice = reader.GetDouble("purchase_price");

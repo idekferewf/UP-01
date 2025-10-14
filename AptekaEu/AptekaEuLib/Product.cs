@@ -4,8 +4,7 @@ namespace AptekaEuLib
 {
     public class Product
     {
-        [Browsable(false)]
-        public int Id { get; set; }
+        private int? id_;
 
         [DisplayName("Название товара")]
         public string Name { get; set; }
@@ -21,5 +20,10 @@ namespace AptekaEuLib
 
         [DisplayName("Актуальное количество")]
         public int ActualQuantity { get; set; }
+
+        public Product(int? id = null)
+        {
+            id_ = id;
+        }
     }
 }
