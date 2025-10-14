@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using MySql.Data.MySqlClient;
 using System.Windows.Forms;
+using System.Configuration;
 
 namespace AptekaEuLib
 {
     public class MySQLProductsReader : IProductsRepository
     {
-        private string myConnectionString = "server=127.0.0.1;uid=root;pwd=vertrigo;database=aptekaeu;";
+        private string myConnectionString = ConfigurationManager.AppSettings["DbConnectionString"];
 
         public bool AddProduct(Product product)
         {
