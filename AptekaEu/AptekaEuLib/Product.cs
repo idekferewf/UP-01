@@ -5,7 +5,7 @@ namespace AptekaEuLib
     public class Product
     {
         [Browsable(false)]
-        public int Id { get; }
+        public int Id { get; set; }
 
         [DisplayName("Название товара")]
         public string Name { get; set; }

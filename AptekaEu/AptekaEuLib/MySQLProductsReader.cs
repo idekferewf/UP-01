@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using MySql.Data.MySqlClient;
 
 namespace AptekaEuLib
@@ -32,6 +33,37 @@ namespace AptekaEuLib
                 return false;
             }
             return true;
+        }
+
+        public List<Product> ReadProducts()
+        {
+            List<Product> result = new List<Product>();
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(myConnectionString))
+                {
+                    conn.Open();
+                    string query = "SELECT * FROM products;";
+                    MySqlCommand command = new MySqlCommand(query, conn);
+
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Product product = new Product();
+                            product.Id = reader.GetInt32("id");
+                            product.Name = reader.GetString("name");
+                            product.CategoryId = reader.GetInt32("category_id");
+                            product.PurchasePrice = reader.GetDouble("purchase_price");
+                            product.SalePrice = reader.GetDouble("sale_price");
+                            product.ActualQuantity = reader.GetInt32("actual_quantity");
+                            result.Add(product);
+                        }
+                    }
+                }
+            }
+            catch (Exception) { }
+            return result;
         }
     }
 }
