@@ -1,6 +1,5 @@
 ﻿using AptekaEuLib;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
 
@@ -8,7 +7,7 @@ namespace AptekaEuWinForms
 {
     public partial class MainForm: Form
     {
-        private List<Product> products_;
+        private BindingList<Product> products_;
         private ProductService productService_;
 
         public MainForm()
@@ -22,7 +21,7 @@ namespace AptekaEuWinForms
 
         public void FillProducts()
         {
-            products_ = productService_.GetAllProducts();
+            products_ = new BindingList<Product>(productService_.GetAllProducts());
             if (products_.Count == 0)
             {
                 MessageBox.Show("Товары отсуствуют или при попытке получения произошла ошибка.", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
