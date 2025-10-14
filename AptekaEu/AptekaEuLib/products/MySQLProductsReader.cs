@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using MySql.Data.MySqlClient;
+using System.Windows.Forms;
 
 namespace AptekaEuLib
 {
@@ -61,7 +62,9 @@ namespace AptekaEuLib
                     }
                 }
             }
-            catch (Exception) { }
+            catch (Exception ex) {
+                MessageBox.Show($"Произошла ошибка при загрузке товаров: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             return result;
         }
     }
