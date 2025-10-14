@@ -27,10 +27,6 @@ namespace AptekaEuLib
                     command.ExecuteNonQuery();
                 }
             }
-            catch (MySqlException)
-            {
-                return false;
-            }
             catch (Exception)
             {
                 return false;

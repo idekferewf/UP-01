@@ -31,7 +31,11 @@
                 return "Цена продажи не может быть отрицательной.";
             }
 
-            productsRepository_.AddProduct(product);
+            bool is_added = productsRepository_.AddProduct(product);
+            if (!is_added)
+            {
+                return "Не удалось добавить товар в базу данных.";
+            }
 
             return string.Empty;
         }
