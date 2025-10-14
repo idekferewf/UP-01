@@ -1,4 +1,6 @@
-﻿namespace AptekaEuLib
+﻿using System.Collections.Generic;
+
+namespace AptekaEuLib
 {
     public class ProductService
     {
@@ -38,6 +40,11 @@
             }
 
             return string.Empty;
+        }
+
+        public List<Product> GetAllProducts()
+        {
+            return productsRepository_.ReadProducts();
         }
     }
 }

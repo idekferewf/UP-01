@@ -97,7 +97,6 @@
     <Compile Include="IProductsRepository.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="ProductService.cs" />
-    <Compile Include="ProductsRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
