@@ -93,10 +93,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MySQLProductsReader.cs" />
-    <Compile Include="IProductsRepository.cs" />
-    <Compile Include="Product.cs" />
-    <Compile Include="ProductService.cs" />
+    <Compile Include="products\MySQLProductsReader.cs" />
+    <Compile Include="products\IProductsRepository.cs" />
+    <Compile Include="products\Product.cs" />
+    <Compile Include="products\ProductService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
