@@ -14,9 +14,9 @@ namespace AptekaEuWinForms
         {
             nameTextBox.Text = "";
             categoryIdNumericUpDown.Value = 0;
-            purchasePriceNumericUpDown.Text = "";
-            salePriceNumericUpDown.Text = "";
-            actualQuantiryNumericUpDown.Text = "";
+            purchasePriceNumericUpDown.Value = 0;
+            salePriceNumericUpDown.Value = 0;
+            actualQuantiryNumericUpDown.Value = 0;
             Close();
         }
     }
