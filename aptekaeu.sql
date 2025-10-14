@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: localhost
--- Время создания: Окт 14 2025 г., 06:31
+-- Время создания: Окт 14 2025 г., 08:14
 -- Версия сервера: 5.7.25
 -- Версия PHP: 7.1.26
 
@@ -179,13 +179,15 @@ ALTER TABLE `categories`
 -- Индексы таблицы `inventory`
 --
 ALTER TABLE `inventory`
-  ADD PRIMARY KEY (`inventory_date`);
+  ADD PRIMARY KEY (`inventory_date`),
+  ADD KEY `product_id` (`product_id`);
 
 --
 -- Индексы таблицы `products`
 --
 ALTER TABLE `products`
-  ADD PRIMARY KEY (`id`,`category_id`);
+  ADD PRIMARY KEY (`id`,`category_id`),
+  ADD KEY `category_id` (`category_id`);
 
 --
 -- Индексы таблицы `sales`
@@ -222,7 +224,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT для таблицы `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID товара', AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID товара', AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT для таблицы `sales`
@@ -235,6 +237,35 @@ ALTER TABLE `sales`
 --
 ALTER TABLE `supplies`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID поставки';
+
+--
+-- Ограничения внешнего ключа сохраненных таблиц
+--
+
+--
+-- Ограничения внешнего ключа таблицы `inventory`
+--
+ALTER TABLE `inventory`
+  ADD CONSTRAINT `inventory_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`);
+
+--
+-- Ограничения внешнего ключа таблицы `products`
+--
+ALTER TABLE `products`
+  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`);
+
+--
+-- Ограничения внешнего ключа таблицы `sales`
+--
+ALTER TABLE `sales`
+  ADD CONSTRAINT `sales_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`);
+
+--
+-- Ограничения внешнего ключа таблицы `supplies`
+--
+ALTER TABLE `supplies`
+  ADD CONSTRAINT `supplies_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`),
+  ADD CONSTRAINT `supplies_ibfk_2` FOREIGN KEY (`supplier_tin`) REFERENCES `suppliers` (`tin`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
