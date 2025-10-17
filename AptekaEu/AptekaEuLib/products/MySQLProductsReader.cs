@@ -22,7 +22,7 @@ namespace AptekaEuLib
 
                     MySqlCommand command = new MySqlCommand(query, conn);
                     command.Parameters.AddWithValue("@name", product.Name);
-                    command.Parameters.AddWithValue("@category_id", product.CategoryId);
+                    command.Parameters.AddWithValue("@category_id", product.GetCategoryId());
                     command.Parameters.AddWithValue("@purchase_price", product.PurchasePrice);
                     command.Parameters.AddWithValue("@sale_price", product.SalePrice);
                     command.Parameters.AddWithValue("@actual_quantity", product.ActualQuantity);
@@ -45,16 +45,17 @@ namespace AptekaEuLib
                 using (MySqlConnection conn = new MySqlConnection(myConnectionString))
                 {
                     conn.Open();
-                    string query = "SELECT * FROM products;";
+                    string query = @"SELECT p.id, p.category_id, p.name, c.name as category_name, p.purchase_price, p.sale_price, p.actual_quantity 
+                                     FROM products p INNER JOIN categories c ON p.category_id = c.id";
                     MySqlCommand command = new MySqlCommand(query, conn);
 
                     using (MySqlDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            Product product = new Product(reader.GetInt32("id"));
+                            Product product = new Product(reader.GetInt32("id"), reader.GetInt32("category_id"));
                             product.Name = reader.GetString("name");
-                            product.CategoryId = reader.GetInt32("category_id");
+                            product.CategoryName = reader.GetString("category_name");
                             product.PurchasePrice = reader.GetDouble("purchase_price");
                             product.SalePrice = reader.GetDouble("sale_price");
                             product.ActualQuantity = reader.GetInt32("actual_quantity");
