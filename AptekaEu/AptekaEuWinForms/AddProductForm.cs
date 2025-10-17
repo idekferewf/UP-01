@@ -20,10 +20,9 @@ namespace AptekaEuWinForms
 
         private void addButton_Click(object sender, EventArgs e)
         {
-            Product productToAdd = new Product
+            Product productToAdd = new Product(null, (int)categoryIdNumericUpDown.Value)
             {
                 Name = nameTextBox.Text,
-                CategoryId = (int)categoryIdNumericUpDown.Value,
                 PurchasePrice = (double)purchasePriceNumericUpDown.Value,
                 SalePrice = (double)salePriceNumericUpDown.Value,
                 ActualQuantity = (int)actualQuantiryNumericUpDown.Value,
