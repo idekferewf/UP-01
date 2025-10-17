@@ -28,11 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.productsGridView = new System.Windows.Forms.DataGridView();
-            this.addProductButton = new System.Windows.Forms.Button();
-            this.productsPanel = new System.Windows.Forms.Panel();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.addProductButton = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.productsGridView)).BeginInit();
-            this.productsPanel.SuspendLayout();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // productsGridView
@@ -43,54 +44,55 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.productsGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.productsGridView.Location = new System.Drawing.Point(0, 0);
+            this.productsGridView.Location = new System.Drawing.Point(0, 28);
             this.productsGridView.Name = "productsGridView";
             this.productsGridView.ReadOnly = true;
             this.productsGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.productsGridView.Size = new System.Drawing.Size(800, 380);
+            this.productsGridView.Size = new System.Drawing.Size(800, 422);
             this.productsGridView.TabIndex = 0;
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addProductButton});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(800, 25);
+            this.toolStrip1.TabIndex = 4;
+            this.toolStrip1.Text = "toolStrip1";
             // 
             // addProductButton
             // 
-            this.addProductButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.addProductButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.addProductButton.Location = new System.Drawing.Point(633, 8);
+            this.addProductButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.addProductButton.Image = ((System.Drawing.Image)(resources.GetObject("addProductButton.Image")));
+            this.addProductButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.addProductButton.Name = "addProductButton";
-            this.addProductButton.Size = new System.Drawing.Size(159, 54);
-            this.addProductButton.TabIndex = 1;
+            this.addProductButton.Size = new System.Drawing.Size(97, 22);
             this.addProductButton.Text = "Добавить товар";
-            this.addProductButton.UseVisualStyleBackColor = true;
-            this.addProductButton.Click += new System.EventHandler(this.addProductButton_Click);
-            // 
-            // productsPanel
-            // 
-            this.productsPanel.Controls.Add(this.addProductButton);
-            this.productsPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.productsPanel.Location = new System.Drawing.Point(0, 380);
-            this.productsPanel.Name = "productsPanel";
-            this.productsPanel.Size = new System.Drawing.Size(800, 70);
-            this.productsPanel.TabIndex = 3;
+            this.addProductButton.Click += new System.EventHandler(this.addProductBtn_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.productsPanel);
+            this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.productsGridView);
             this.Name = "MainForm";
             this.Text = "Главная – AptekaEu";
             ((System.ComponentModel.ISupportInitialize)(this.productsGridView)).EndInit();
-            this.productsPanel.ResumeLayout(false);
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.DataGridView productsGridView;
-        private System.Windows.Forms.Button addProductButton;
-        private System.Windows.Forms.Panel productsPanel;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripButton addProductButton;
     }
 }
 
