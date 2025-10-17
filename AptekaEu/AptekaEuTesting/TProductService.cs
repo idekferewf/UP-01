@@ -17,10 +17,9 @@ namespace AptekaEuTesting
         {
             var mockRepo = new Mock<IProductsRepository>();
 
-            var product = new Product()
+            var product = new Product(null, categoryId)
             {
                 Name = name,
-                CategoryId = categoryId,
                 PurchasePrice = purchasePrice,
                 SalePrice = salePrice,
                 ActualQuantity = actualQuantity
