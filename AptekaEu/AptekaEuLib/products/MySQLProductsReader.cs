@@ -23,7 +23,7 @@ namespace AptekaEuLib
 
                     MySqlCommand command = new MySqlCommand(query, conn);
                     command.Parameters.AddWithValue("@name", product.Name);
-                    command.Parameters.AddWithValue("@category_id", product.GetCategoryId());
+                    command.Parameters.AddWithValue("@category_id", product.Category.Id);
                     command.Parameters.AddWithValue("@purchase_price", product.PurchasePrice);
                     command.Parameters.AddWithValue("@sale_price", product.SalePrice);
                     command.Parameters.AddWithValue("@actual_quantity", product.ActualQuantity);
@@ -54,9 +54,14 @@ namespace AptekaEuLib
                     {
                         while (reader.Read())
                         {
-                            Product product = new Product(reader.GetInt32("id"), reader.GetInt32("category_id"));
+                            Product product = new Product(reader.GetInt32("id"));
                             product.Name = reader.GetString("name");
-                            product.CategoryName = reader.GetString("category_name");
+
+                            Category category = new Category();
+                            category.Id = reader.GetInt32("category_id");
+                            category.Name = reader.GetString("category_name");
+                            product.Category = category;
+
                             product.PurchasePrice = reader.GetDouble("purchase_price");
                             product.SalePrice = reader.GetDouble("sale_price");
                             product.ActualQuantity = reader.GetInt32("actual_quantity");

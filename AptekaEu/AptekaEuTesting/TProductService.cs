@@ -1,4 +1,5 @@
 ﻿using AptekaEuLib;
+using AptekaEuLib.products;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 
@@ -17,9 +18,15 @@ namespace AptekaEuTesting
         {
             var mockRepo = new Mock<IProductsRepository>();
 
-            var product = new Product(null, categoryId)
+            var category = new Category()
+            {
+                Id = categoryId
+            };
+
+            var product = new Product(null)
             {
                 Name = name,
+                Category = category,
                 PurchasePrice = purchasePrice,
                 SalePrice = salePrice,
                 ActualQuantity = actualQuantity

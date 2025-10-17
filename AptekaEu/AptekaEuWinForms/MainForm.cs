@@ -27,7 +27,7 @@ namespace AptekaEuWinForms
 
             productsGridView.DataSource = products_;
             productsGridView.Columns["Name"].MinimumWidth = 160;
-            productsGridView.Columns["CategoryName"].MinimumWidth = 180;
+            productsGridView.Columns["Category"].MinimumWidth = 180;
             productsGridView.Columns["PurchasePrice"].MinimumWidth = 110;
             productsGridView.Columns["SalePrice"].MinimumWidth = 110;
             productsGridView.Columns["ActualQuantity"].MinimumWidth = 120;

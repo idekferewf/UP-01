@@ -19,7 +19,7 @@ namespace AptekaEuLib
                 return "Наименование товара не может быть пустым.";
             }
 
-            if (product.GetCategoryId() <= 0)
+            if (product.Category.Id <= 0)
             {
                 return "Категория не найдена.";
             }
