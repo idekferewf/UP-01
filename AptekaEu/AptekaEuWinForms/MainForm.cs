@@ -1,5 +1,7 @@
 ﻿using AptekaEuLib;
+using AptekaEuLib.products;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
 
@@ -34,7 +36,8 @@ namespace AptekaEuWinForms
 
         private void addProductBtn_Click(object sender, EventArgs e)
         {
-            AddProductForm addProductForm = new AddProductForm();
+            List<Category> categories = productService_.GetAllCategories();
+            AddProductForm addProductForm = new AddProductForm(categories);
             if (addProductForm.ShowDialog() == DialogResult.OK)
             {
                 string error = productService_.AddProduct(addProductForm.product);

@@ -1,5 +1,7 @@
 ﻿using AptekaEuLib;
+using AptekaEuLib.products;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace AptekaEuWinForms
@@ -8,9 +10,17 @@ namespace AptekaEuWinForms
     {
         public Product product { get; set; }
 
-        public AddProductForm()
+        public AddProductForm(List<Category> categories)
         {
             InitializeComponent();
+            FillCategories(categories);
+        }
+
+        private void FillCategories(List<Category> categories)
+        {
+            categoriesComboBox.DisplayMember = "Name";
+            categoriesComboBox.ValueMember = "Id";
+            categoriesComboBox.DataSource = categories;
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
@@ -20,7 +30,7 @@ namespace AptekaEuWinForms
 
         private void addButton_Click(object sender, EventArgs e)
         {
-            Product productToAdd = new Product(null, (int)categoryIdNumericUpDown.Value)
+            Product productToAdd = new Product(null, (int)categoriesComboBox.SelectedValue)
             {
                 Name = nameTextBox.Text,
                 PurchasePrice = (double)purchasePriceNumericUpDown.Value,

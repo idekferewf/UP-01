@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using AptekaEuLib.products;
+using System.Collections.Generic;
 
 namespace AptekaEuLib
 {
@@ -45,6 +46,11 @@ namespace AptekaEuLib
         public List<Product> GetAllProducts()
         {
             return productsRepository_.ReadProducts();
+        }
+
+        public List<Category> GetAllCategories()
+        {
+            return productsRepository_.ReadCategories();
         }
     }
 }

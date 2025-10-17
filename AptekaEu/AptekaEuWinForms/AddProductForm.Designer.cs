@@ -39,14 +39,13 @@
             this.purchasePriceLabel = new System.Windows.Forms.Label();
             this.salePriceLabel = new System.Windows.Forms.Label();
             this.actualQuantityLabel = new System.Windows.Forms.Label();
-            this.categoryIdNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.cancelButton = new System.Windows.Forms.Button();
             this.addButton = new System.Windows.Forms.Button();
+            this.categoriesComboBox = new System.Windows.Forms.ComboBox();
             this.addProductTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.actualQuantiryNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.salePriceNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.purchasePriceNumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.categoryIdNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // titleLabel
@@ -99,9 +98,9 @@
             this.addProductTableLayoutPanel.Controls.Add(this.purchasePriceLabel, 0, 2);
             this.addProductTableLayoutPanel.Controls.Add(this.salePriceLabel, 0, 3);
             this.addProductTableLayoutPanel.Controls.Add(this.actualQuantityLabel, 0, 4);
-            this.addProductTableLayoutPanel.Controls.Add(this.categoryIdNumericUpDown, 1, 1);
             this.addProductTableLayoutPanel.Controls.Add(this.cancelButton, 1, 5);
             this.addProductTableLayoutPanel.Controls.Add(this.addButton, 0, 5);
+            this.addProductTableLayoutPanel.Controls.Add(this.categoriesComboBox, 1, 1);
             this.addProductTableLayoutPanel.Location = new System.Drawing.Point(0, 69);
             this.addProductTableLayoutPanel.Name = "addProductTableLayoutPanel";
             this.addProductTableLayoutPanel.RowCount = 6;
@@ -209,19 +208,6 @@
             this.actualQuantityLabel.Text = "Количество:";
             this.actualQuantityLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // categoryIdNumericUpDown
-            // 
-            this.categoryIdNumericUpDown.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.categoryIdNumericUpDown.Location = new System.Drawing.Point(170, 35);
-            this.categoryIdNumericUpDown.Maximum = new decimal(new int[] {
-            -727379969,
-            232,
-            0,
-            0});
-            this.categoryIdNumericUpDown.Name = "categoryIdNumericUpDown";
-            this.categoryIdNumericUpDown.Size = new System.Drawing.Size(130, 20);
-            this.categoryIdNumericUpDown.TabIndex = 7;
-            // 
             // cancelButton
             // 
             this.cancelButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -247,6 +233,14 @@
             this.addButton.UseVisualStyleBackColor = true;
             this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
+            // categoriesComboBox
+            // 
+            this.categoriesComboBox.FormattingEnabled = true;
+            this.categoriesComboBox.Location = new System.Drawing.Point(170, 33);
+            this.categoriesComboBox.Name = "categoriesComboBox";
+            this.categoriesComboBox.Size = new System.Drawing.Size(130, 21);
+            this.categoriesComboBox.TabIndex = 11;
+            // 
             // AddProductForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -263,7 +257,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.actualQuantiryNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.salePriceNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.purchasePriceNumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.categoryIdNumericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -279,11 +272,11 @@
         private System.Windows.Forms.Label purchasePriceLabel;
         private System.Windows.Forms.Label salePriceLabel;
         private System.Windows.Forms.Label actualQuantityLabel;
-        private System.Windows.Forms.NumericUpDown categoryIdNumericUpDown;
         private System.Windows.Forms.NumericUpDown actualQuantiryNumericUpDown;
         private System.Windows.Forms.NumericUpDown salePriceNumericUpDown;
         private System.Windows.Forms.NumericUpDown purchasePriceNumericUpDown;
         private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.Button cancelButton;
+        private System.Windows.Forms.ComboBox categoriesComboBox;
     }
 }

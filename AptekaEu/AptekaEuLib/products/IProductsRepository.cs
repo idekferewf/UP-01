@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using AptekaEuLib.products;
+using System.Collections.Generic;
 
 namespace AptekaEuLib
 {
@@ -7,5 +8,7 @@ namespace AptekaEuLib
         bool AddProduct(Product product);
 
         List<Product> ReadProducts();
+
+        List<Category> ReadCategories();
     }
 }

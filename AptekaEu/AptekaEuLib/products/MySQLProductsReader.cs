@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using MySql.Data.MySqlClient;
 using System.Windows.Forms;
 using System.Configuration;
+using AptekaEuLib.products;
 
 namespace AptekaEuLib
 {
@@ -66,6 +67,36 @@ namespace AptekaEuLib
             }
             catch (Exception ex) {
                 MessageBox.Show($"Произошла ошибка при загрузке товаров: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return result;
+        }
+
+        public List<Category> ReadCategories()
+        {
+            List<Category> result = new List<Category>();
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(myConnectionString))
+                {
+                    conn.Open();
+                    string query = @"SELECT c.id, c.name FROM categories c;";
+                    MySqlCommand command = new MySqlCommand(query, conn);
+
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Category category = new Category();
+                            category.Id = reader.GetInt32("id");
+                            category.Name = reader.GetString("name");
+                            result.Add(category);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Произошла ошибка при загрузке категорий: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return result;
         }
