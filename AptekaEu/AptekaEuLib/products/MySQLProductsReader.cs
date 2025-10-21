@@ -57,8 +57,7 @@ namespace AptekaEuLib
                             Product product = new Product(reader.GetInt32("id"));
                             product.Name = reader.GetString("name");
 
-                            Category category = new Category();
-                            category.Id = reader.GetInt32("category_id");
+                            Category category = new Category(reader.GetInt32("category_id"));
                             category.Name = reader.GetString("category_name");
                             product.Category = category;
 
@@ -84,15 +83,14 @@ namespace AptekaEuLib
                 using (MySqlConnection conn = new MySqlConnection(myConnectionString))
                 {
                     conn.Open();
-                    string query = @"SELECT c.id, c.name FROM categories c;";
+                    string query = @"SELECT id, name FROM categories;";
                     MySqlCommand command = new MySqlCommand(query, conn);
 
                     using (MySqlDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            Category category = new Category();
-                            category.Id = reader.GetInt32("id");
+                            Category category = new Category(reader.GetInt32("id"));
                             category.Name = reader.GetString("name");
                             result.Add(category);
                         }

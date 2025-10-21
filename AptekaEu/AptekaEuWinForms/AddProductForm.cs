@@ -18,8 +18,6 @@ namespace AptekaEuWinForms
 
         private void FillCategories(List<Category> categories)
         {
-            categoriesComboBox.DisplayMember = "Name";
-            categoriesComboBox.ValueMember = "Id";
             categoriesComboBox.DataSource = categories;
         }
 
