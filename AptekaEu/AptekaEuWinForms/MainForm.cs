@@ -22,12 +22,8 @@ namespace AptekaEuWinForms
         public void FillProducts()
         {
             productsGridView.DataSource = productService_.GetAllProducts();
-            productsGridView.Columns["Name"].MinimumWidth = 160;
-            productsGridView.Columns["Category"].MinimumWidth = 180;
-            productsGridView.Columns["PurchasePrice"].MinimumWidth = 110;
-            productsGridView.Columns["SalePrice"].MinimumWidth = 110;
-            productsGridView.Columns["ActualQuantity"].MinimumWidth = 120;
-            productsGridView.Columns["ActualQuantity"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            productsGridView.Columns["Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            productsGridView.Columns["Category"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
         private void addProductBtn_Click(object sender, EventArgs e)
