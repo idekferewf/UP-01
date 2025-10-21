@@ -98,19 +98,17 @@
             this.addProductTableLayoutPanel.Controls.Add(this.purchasePriceLabel, 0, 2);
             this.addProductTableLayoutPanel.Controls.Add(this.salePriceLabel, 0, 3);
             this.addProductTableLayoutPanel.Controls.Add(this.actualQuantityLabel, 0, 4);
-            this.addProductTableLayoutPanel.Controls.Add(this.cancelButton, 1, 5);
-            this.addProductTableLayoutPanel.Controls.Add(this.addButton, 0, 5);
             this.addProductTableLayoutPanel.Controls.Add(this.categoriesComboBox, 1, 1);
             this.addProductTableLayoutPanel.Location = new System.Drawing.Point(0, 69);
             this.addProductTableLayoutPanel.Name = "addProductTableLayoutPanel";
-            this.addProductTableLayoutPanel.RowCount = 6;
+            this.addProductTableLayoutPanel.RowCount = 5;
             this.addProductTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.addProductTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.addProductTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.addProductTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.addProductTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.addProductTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70F));
-            this.addProductTableLayoutPanel.Size = new System.Drawing.Size(334, 220);
+            this.addProductTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.addProductTableLayoutPanel.Size = new System.Drawing.Size(334, 150);
             this.addProductTableLayoutPanel.TabIndex = 3;
             // 
             // actualQuantiryNumericUpDown
@@ -172,7 +170,7 @@
             this.categoryIdLabel.Name = "categoryIdLabel";
             this.categoryIdLabel.Size = new System.Drawing.Size(130, 22);
             this.categoryIdLabel.TabIndex = 3;
-            this.categoryIdLabel.Text = "ID категории:";
+            this.categoryIdLabel.Text = "Категория:";
             this.categoryIdLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // purchasePriceLabel
@@ -212,11 +210,11 @@
             // 
             this.cancelButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.cancelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.cancelButton.Location = new System.Drawing.Point(170, 170);
+            this.cancelButton.Location = new System.Drawing.Point(200, 237);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(100, 30);
             this.cancelButton.TabIndex = 5;
-            this.cancelButton.Text = "Отменить";
+            this.cancelButton.Text = "Отмена";
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
@@ -224,11 +222,11 @@
             // 
             this.addButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.addButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.addButton.Location = new System.Drawing.Point(64, 170);
+            this.addButton.Location = new System.Drawing.Point(94, 237);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(100, 30);
             this.addButton.TabIndex = 4;
-            this.addButton.Text = "Добавить";
+            this.addButton.Text = "Ок";
             this.addButton.UseVisualStyleBackColor = true;
             this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
@@ -244,12 +242,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(334, 306);
+            this.ClientSize = new System.Drawing.Size(334, 292);
             this.Controls.Add(this.addProductTableLayoutPanel);
             this.Controls.Add(this.titleLabel);
+            this.Controls.Add(this.cancelButton);
+            this.Controls.Add(this.addButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.MaximumSize = new System.Drawing.Size(350, 345);
-            this.MinimumSize = new System.Drawing.Size(350, 345);
             this.Name = "AddProductForm";
             this.Text = "Добавление товара – AptekaEu";
             this.addProductTableLayoutPanel.ResumeLayout(false);
