@@ -248,6 +248,7 @@
             this.ClientSize = new System.Drawing.Size(334, 306);
             this.Controls.Add(this.addProductTableLayoutPanel);
             this.Controls.Add(this.titleLabel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximumSize = new System.Drawing.Size(350, 345);
             this.MinimumSize = new System.Drawing.Size(350, 345);
             this.Name = "AddProductForm";
