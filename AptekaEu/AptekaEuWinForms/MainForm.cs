@@ -9,7 +9,6 @@ namespace AptekaEuWinForms
 {
     public partial class MainForm: Form
     {
-        private BindingList<Product> products_;
         private ProductService productService_;
 
         public MainForm()
@@ -17,15 +16,12 @@ namespace AptekaEuWinForms
             InitializeComponent();
 
             productService_ = new ProductService(new MySQLProductsReader());
-
             FillProducts();
         }   
 
         public void FillProducts()
         {
-            products_ = new BindingList<Product>(productService_.GetAllProducts());
-
-            productsGridView.DataSource = products_;
+            productsGridView.DataSource = productService_.GetAllProducts();
             productsGridView.Columns["Name"].MinimumWidth = 160;
             productsGridView.Columns["Category"].MinimumWidth = 180;
             productsGridView.Columns["PurchasePrice"].MinimumWidth = 110;
@@ -47,7 +43,6 @@ namespace AptekaEuWinForms
                 }
                 else
                 {
-                    products_.Add(addProductForm.product);
                     MessageBox.Show("Товар успешно добавлен!", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }

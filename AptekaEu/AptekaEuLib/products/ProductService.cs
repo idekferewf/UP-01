@@ -1,10 +1,12 @@
 ﻿using AptekaEuLib.products;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace AptekaEuLib
 {
     public class ProductService
     {
+        private BindingList<Product> products_ = new BindingList<Product>();
         private IProductsRepository productsRepository_;
 
         public ProductService(IProductsRepository productsRepository)
@@ -35,7 +37,11 @@ namespace AptekaEuLib
             }
 
             bool is_added = productsRepository_.AddProduct(product);
-            if (!is_added)
+            if (is_added)
+            {
+                products_.Add(product);
+            }
+            else
             {
                 return "Не удалось добавить товар в базу данных.";
             }
@@ -43,9 +49,10 @@ namespace AptekaEuLib
             return string.Empty;
         }
 
-        public List<Product> GetAllProducts()
+        public BindingList<Product> GetAllProducts()
         {
-            return productsRepository_.ReadProducts();
+            products_ = new BindingList<Product>(productsRepository_.ReadProducts());
+            return products_;
         }
 
         public List<Category> GetAllCategories()
