@@ -223,7 +223,6 @@
             // addButton
             // 
             this.addButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.addButton.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.addButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.addButton.Location = new System.Drawing.Point(64, 170);
             this.addButton.Name = "addButton";

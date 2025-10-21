@@ -36,6 +36,11 @@ namespace AptekaEuLib
                 return "Цена продажи не может быть отрицательной.";
             }
 
+            if (product.ActualQuantity < 1)
+            {
+                return "Минимальное количество товара - 1 шт.";
+            }
+
             bool is_added = productsRepository_.AddProduct(product);
             if (is_added)
             {
