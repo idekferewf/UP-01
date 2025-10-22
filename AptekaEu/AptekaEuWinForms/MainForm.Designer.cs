@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.productsGridView = new System.Windows.Forms.DataGridView();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.addProductButton = new System.Windows.Forms.ToolStripButton();
@@ -44,11 +43,11 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.productsGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
-            this.productsGridView.Location = new System.Drawing.Point(0, 28);
+            this.productsGridView.Location = new System.Drawing.Point(0, 34);
             this.productsGridView.Name = "productsGridView";
             this.productsGridView.ReadOnly = true;
             this.productsGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.productsGridView.Size = new System.Drawing.Size(800, 422);
+            this.productsGridView.Size = new System.Drawing.Size(800, 412);
             this.productsGridView.TabIndex = 0;
             // 
             // toolStrip1
@@ -57,17 +56,18 @@
             this.addProductButton});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(800, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(800, 31);
             this.toolStrip1.TabIndex = 4;
             this.toolStrip1.Text = "toolStrip1";
             // 
             // addProductButton
             // 
-            this.addProductButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.addProductButton.Image = ((System.Drawing.Image)(resources.GetObject("addProductButton.Image")));
+            this.addProductButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.addProductButton.Image = global::AptekaEuWinForms.Properties.Resources.addIcon;
+            this.addProductButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.addProductButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.addProductButton.Name = "addProductButton";
-            this.addProductButton.Size = new System.Drawing.Size(97, 22);
+            this.addProductButton.Size = new System.Drawing.Size(28, 28);
             this.addProductButton.Text = "Добавить товар";
             this.addProductButton.Click += new System.EventHandler(this.addProductBtn_Click);
             // 
