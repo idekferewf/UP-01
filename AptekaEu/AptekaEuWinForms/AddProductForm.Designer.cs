@@ -279,6 +279,7 @@
             this.Controls.Add(this.addButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "AddProductForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Добавление товара – AptekaEu";
             this.addProductTableLayoutPanel.ResumeLayout(false);
             this.addProductTableLayoutPanel.PerformLayout();

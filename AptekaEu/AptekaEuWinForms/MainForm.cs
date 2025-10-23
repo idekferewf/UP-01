@@ -25,7 +25,7 @@ namespace AptekaEuWinForms
             productsGridView.Columns["Category"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
-        private void addProductBtn_Click(object sender, EventArgs e)
+        private void addProductButton_Click(object sender, EventArgs e)
         {
             List<Category> categories = productService_.GetAllCategories();
             AddProductForm addProductForm = new AddProductForm(categories);
