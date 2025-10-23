@@ -54,6 +54,11 @@ namespace AptekaEuLib
             return string.Empty;
         }
 
+        public string DeleteProducts(List<int> productsIds)
+        {
+            return "";
+        }
+
         public BindingList<Product> GetAllProducts()
         {
             products_ = new BindingList<Product>(productsRepository_.ReadProducts());

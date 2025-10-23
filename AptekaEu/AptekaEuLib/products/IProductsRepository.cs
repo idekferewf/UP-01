@@ -7,6 +7,8 @@ namespace AptekaEuLib
     {
         bool AddProduct(Product product);
 
+        bool DeleteProducts(List<int> productIds);
+
         List<Product> ReadProducts();
 
         List<Category> ReadCategories();
