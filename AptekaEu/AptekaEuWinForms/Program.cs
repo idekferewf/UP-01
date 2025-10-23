@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using AptekaEuLib;
+using System;
 using System.Windows.Forms;
 
 namespace AptekaEuWinForms
@@ -16,6 +14,17 @@ namespace AptekaEuWinForms
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+            if (!MySQLConfig.Initialize())
+            {
+                return;
+            }
+            
+            if (!MySQLConfig.CheckDbConnection())
+            {
+                return;
+            }
+
             Application.Run(new MainForm());
         }
     }

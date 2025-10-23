@@ -8,18 +8,11 @@ namespace AptekaEuLib
 {
     public class MySQLProductsReader : IProductsRepository
     {
-        private string connectionString_;
-
-        public MySQLProductsReader(string connectionString)
-        {
-            connectionString_ = connectionString;
-        }
-
         public bool AddProduct(Product product)
         {
             try
             {
-                using (MySqlConnection conn = new MySqlConnection(connectionString_))
+                using (MySqlConnection conn = new MySqlConnection(MySQLConfig.DbConnectionString))
                 {
                     conn.Open();
                     string query = "INSERT INTO products (name, category_id, purchase_price, sale_price, actual_quantity) " +
@@ -47,7 +40,7 @@ namespace AptekaEuLib
             List<Product> result = new List<Product>();
             try
             {
-                using (MySqlConnection conn = new MySqlConnection(connectionString_))
+                using (MySqlConnection conn = new MySqlConnection(MySQLConfig.DbConnectionString))
                 {
                     conn.Open();
                     string query = @"SELECT p.id, p.category_id, p.name, c.name as category_name, p.purchase_price, p.sale_price, p.actual_quantity 
@@ -84,7 +77,7 @@ namespace AptekaEuLib
             List<Category> result = new List<Category>();
             try
             {
-                using (MySqlConnection conn = new MySqlConnection(connectionString_))
+                using (MySqlConnection conn = new MySqlConnection(MySQLConfig.DbConnectionString))
                 {
                     conn.Open();
                     string query = @"SELECT id, name FROM categories;";

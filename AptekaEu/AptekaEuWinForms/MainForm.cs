@@ -3,8 +3,6 @@ using AptekaEuLib.products;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using IniParser;
-using IniParser.Model;
 
 namespace AptekaEuWinForms
 {
@@ -16,11 +14,7 @@ namespace AptekaEuWinForms
         {
             InitializeComponent();
 
-            var parser = new FileIniDataParser();
-            IniData data = parser.ReadFile("config.ini");
-            string connectionString = data["Db"]["ConnectionString"];
-
-            productService_ = new ProductService(new MySQLProductsReader(connectionString));
+            productService_ = new ProductService(new MySQLProductsReader());
             FillProducts();
         }   
 
