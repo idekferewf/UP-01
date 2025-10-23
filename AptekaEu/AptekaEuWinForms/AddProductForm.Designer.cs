@@ -39,9 +39,9 @@
             this.purchasePriceLabel = new System.Windows.Forms.Label();
             this.salePriceLabel = new System.Windows.Forms.Label();
             this.actualQuantityLabel = new System.Windows.Forms.Label();
+            this.categoriesComboBox = new System.Windows.Forms.ComboBox();
             this.cancelButton = new System.Windows.Forms.Button();
             this.addButton = new System.Windows.Forms.Button();
-            this.categoriesComboBox = new System.Windows.Forms.ComboBox();
             this.addProductTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.actualQuantiryNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.salePriceNumericUpDown)).BeginInit();
@@ -120,9 +120,19 @@
             232,
             0,
             0});
+            this.actualQuantiryNumericUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.actualQuantiryNumericUpDown.Name = "actualQuantiryNumericUpDown";
             this.actualQuantiryNumericUpDown.Size = new System.Drawing.Size(130, 20);
             this.actualQuantiryNumericUpDown.TabIndex = 10;
+            this.actualQuantiryNumericUpDown.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // salePriceNumericUpDown
             // 
@@ -139,9 +149,19 @@
             232,
             0,
             0});
+            this.salePriceNumericUpDown.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             this.salePriceNumericUpDown.Name = "salePriceNumericUpDown";
             this.salePriceNumericUpDown.Size = new System.Drawing.Size(130, 20);
             this.salePriceNumericUpDown.TabIndex = 9;
+            this.salePriceNumericUpDown.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             // 
             // purchasePriceNumericUpDown
             // 
@@ -158,9 +178,19 @@
             232,
             0,
             0});
+            this.purchasePriceNumericUpDown.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             this.purchasePriceNumericUpDown.Name = "purchasePriceNumericUpDown";
             this.purchasePriceNumericUpDown.Size = new System.Drawing.Size(130, 20);
             this.purchasePriceNumericUpDown.TabIndex = 8;
+            this.purchasePriceNumericUpDown.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             // 
             // categoryIdLabel
             // 
@@ -206,6 +236,14 @@
             this.actualQuantityLabel.Text = "Количество:";
             this.actualQuantityLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // categoriesComboBox
+            // 
+            this.categoriesComboBox.FormattingEnabled = true;
+            this.categoriesComboBox.Location = new System.Drawing.Point(170, 33);
+            this.categoriesComboBox.Name = "categoriesComboBox";
+            this.categoriesComboBox.Size = new System.Drawing.Size(130, 21);
+            this.categoriesComboBox.TabIndex = 11;
+            // 
             // cancelButton
             // 
             this.cancelButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -229,14 +267,6 @@
             this.addButton.Text = "Ок";
             this.addButton.UseVisualStyleBackColor = true;
             this.addButton.Click += new System.EventHandler(this.addButton_Click);
-            // 
-            // categoriesComboBox
-            // 
-            this.categoriesComboBox.FormattingEnabled = true;
-            this.categoriesComboBox.Location = new System.Drawing.Point(170, 33);
-            this.categoriesComboBox.Name = "categoriesComboBox";
-            this.categoriesComboBox.Size = new System.Drawing.Size(130, 21);
-            this.categoriesComboBox.TabIndex = 11;
             // 
             // AddProductForm
             // 
