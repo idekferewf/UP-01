@@ -43,6 +43,9 @@
             // 
             this.productsGridView.AllowUserToAddRows = false;
             this.productsGridView.AllowUserToDeleteRows = false;
+            this.productsGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.productsGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
             this.productsGridView.Location = new System.Drawing.Point(3, 37);
             this.productsGridView.Name = "productsGridView";
@@ -100,6 +103,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.productsTabControl);
+            this.MinimumSize = new System.Drawing.Size(600, 350);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Главная – AptekaEu";
