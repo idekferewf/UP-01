@@ -34,7 +34,7 @@
             this.mainTabs = new System.Windows.Forms.TabPage();
             this.productsToolStrip = new System.Windows.Forms.ToolStrip();
             this.addProductButton = new System.Windows.Forms.ToolStripButton();
-            this.removeProductIcon = new System.Windows.Forms.ToolStripButton();
+            this.removeProductsButton = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.productsGridView)).BeginInit();
             this.productsTabControl.SuspendLayout();
             this.mainTabs.SuspendLayout();
@@ -82,7 +82,7 @@
             // 
             this.productsToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addProductButton,
-            this.removeProductIcon});
+            this.removeProductsButton});
             this.productsToolStrip.Location = new System.Drawing.Point(3, 3);
             this.productsToolStrip.Name = "productsToolStrip";
             this.productsToolStrip.Size = new System.Drawing.Size(786, 31);
@@ -100,16 +100,16 @@
             this.addProductButton.Text = "Добавить товар";
             this.addProductButton.Click += new System.EventHandler(this.addProductButton_Click);
             // 
-            // removeProductIcon
+            // removeProductsButton
             // 
-            this.removeProductIcon.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.removeProductIcon.Image = ((System.Drawing.Image)(resources.GetObject("removeProductIcon.Image")));
-            this.removeProductIcon.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.removeProductIcon.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.removeProductIcon.Name = "removeProductIcon";
-            this.removeProductIcon.Size = new System.Drawing.Size(28, 28);
-            this.removeProductIcon.Text = "Удалить товары";
-            this.removeProductIcon.Click += new System.EventHandler(this.removeProductIcon_Click);
+            this.removeProductsButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.removeProductsButton.Image = ((System.Drawing.Image)(resources.GetObject("removeProductsButton.Image")));
+            this.removeProductsButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.removeProductsButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.removeProductsButton.Name = "removeProductsButton";
+            this.removeProductsButton.Size = new System.Drawing.Size(28, 28);
+            this.removeProductsButton.Text = "Удалить товары";
+            this.removeProductsButton.Click += new System.EventHandler(this.removeProductsButton_Click);
             // 
             // MainForm
             // 
@@ -138,7 +138,7 @@
         private System.Windows.Forms.TabPage mainTabs;
         private System.Windows.Forms.ToolStrip productsToolStrip;
         private System.Windows.Forms.ToolStripButton addProductButton;
-        private System.Windows.Forms.ToolStripButton removeProductIcon;
+        private System.Windows.Forms.ToolStripButton removeProductsButton;
     }
 }
 
