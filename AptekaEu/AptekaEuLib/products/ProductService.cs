@@ -1,6 +1,8 @@
 ﻿using AptekaEuLib.products;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
+using System.Web;
 
 namespace AptekaEuLib
 {
@@ -56,7 +58,33 @@ namespace AptekaEuLib
 
         public string DeleteProducts(List<int> productsIds)
         {
-            return "";
+            foreach (int productId in productsIds)
+            {
+                bool productExists = products_.Any(p => p.Id == productId);
+                if (!productExists)
+                {
+                    return "Данных товаров не существует.";
+                }
+            }
+
+            bool is_deleted = productsRepository_.DeleteProducts(productsIds);
+            if (is_deleted)
+            {
+                foreach (int productId in productsIds)
+                {
+                    var productToRemove = products_.FirstOrDefault(p => p.Id == productId);
+                    if (productToRemove != null)
+                    {
+                        products_.Remove(productToRemove);
+                    }
+                }
+            }
+            else
+            {
+                return "Не удалось удалить товары из базы данных.";
+            }
+
+            return string.Empty;
         }
 
         public BindingList<Product> GetAllProducts()
