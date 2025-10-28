@@ -16,7 +16,7 @@ namespace AptekaEuTesting
         [DataRow("Парацетамол 250 мг", 6, 229.00, -129.00, 64, false, "Цена продажи не может быть отрицательной.")]
         [DataRow("Парацетамол 900 мг", 3, -189.00, 399.00, 8, false, "Цена закупки не может быть отрицательной.")]
         [DataRow("Парацетамол 500 мг", -1, 299.00, 399.00, 100, false, "Категория не найдена.")]
-        public void TAddProduct(string name, int categoryId, double purchasePrice, double salePrice, int actualQuantity, bool result, string expected)
+        public void TestAddProduct(string name, int categoryId, double purchasePrice, double salePrice, int actualQuantity, bool result, string expected)
         {
             var mockRepo = new Mock<IProductsRepository>();
 
@@ -53,7 +53,7 @@ namespace AptekaEuTesting
         [DataRow(new int[] { 2, 4 }, true, "")]
         [DataRow(new int[] { 19 }, false, "Данных товаров не существует.")]
         [DataRow(new int[] { 19, 9 }, false, "Данных товаров не существует.")]
-        public void TDeleteProduct(int[] productIds, bool result, string expected)
+        public void TestDeleteProduct(int[] productIds, bool result, string expected)
         {
             var mockRepo = new Mock<IProductsRepository>();
 
