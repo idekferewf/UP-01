@@ -35,6 +35,11 @@ namespace AptekaEuLib
             return true;
         }
 
+        public bool DeleteProducts(List<int> productIds)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<Product> ReadProducts()
         {
             List<Product> result = new List<Product>();
