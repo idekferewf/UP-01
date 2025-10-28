@@ -42,5 +42,9 @@ namespace AptekaEuWinForms
                 }
             }
         }
+
+        private void removeProductIcon_Click(object sender, EventArgs e)
+        {
+        }
     }
 }
