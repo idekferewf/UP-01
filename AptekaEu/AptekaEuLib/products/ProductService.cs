@@ -42,9 +42,10 @@ namespace AptekaEuLib
                 return "Минимальное количество товара - 1 шт.";
             }
 
-            bool is_added = productsRepository_.AddProduct(product);
-            if (is_added)
+            int addedProductId = productsRepository_.AddProduct(product);
+            if (addedProductId != 0)
             {
+                product.Id = addedProductId;
                 products_.Add(product);
             }
             else
