@@ -51,6 +51,18 @@ namespace AptekaEuWinForms
                 return;
             }
 
+            DialogResult result = MessageBox.Show(
+                "Вы действительно хотите удалить выбранные товары?",
+                "Подтверждение удаления",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (result != DialogResult.Yes)
+            {
+                return;
+            }
+
             List<int> productIdsToDelete = new List<int>();
             foreach (DataGridViewRow row in productsGridView.SelectedRows)
             {
