@@ -5,7 +5,7 @@ namespace AptekaEuLib
 {
     public interface IProductsRepository
     {
-        bool AddProduct(Product product);
+        int AddProduct(Product product);
 
         bool DeleteProducts(List<int> productIds);
 
