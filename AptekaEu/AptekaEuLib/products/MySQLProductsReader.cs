@@ -37,7 +37,22 @@ namespace AptekaEuLib
 
         public bool DeleteProducts(List<int> productIds)
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(MySQLConfig.DbConnectionString))
+                {
+                    conn.Open();
+                    string query = $"DELETE FROM products WHERE id IN ({string.Join(",", productIds)});";
+
+                    MySqlCommand command = new MySqlCommand(query, conn);
+                    command.ExecuteNonQuery();
+                }
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
         }
 
         public List<Product> ReadProducts()
