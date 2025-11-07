@@ -1,4 +1,6 @@
-﻿namespace AptekaEuLib.supplies
+﻿using System.ComponentModel;
+
+namespace AptekaEuLib.supplies
 {
     public class SupplyService
     {
@@ -7,6 +9,11 @@
         public SupplyService(ISuppliesRepository suppliesRepository)
         {
             suppliesRepository_ = suppliesRepository;
+        }
+
+        public BindingList<Supply> GetAllSupplies()
+        {
+            return null;
         }
     }
 }
