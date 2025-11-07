@@ -42,5 +42,43 @@ namespace AptekaEuWinForms
                 }
             }
         }
+
+        private void removeProductsButton_Click(object sender, EventArgs e)
+        {
+            if (productsGridView.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Не выбрано ни одного товара.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            DialogResult result = MessageBox.Show(
+                "Вы действительно хотите удалить выбранные товары?",
+                "Подтверждение удаления",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (result != DialogResult.Yes)
+            {
+                return;
+            }
+
+            List<int> productIdsToDelete = new List<int>();
+            foreach (DataGridViewRow row in productsGridView.SelectedRows)
+            {
+                Product product = (Product)row.DataBoundItem;
+                productIdsToDelete.Add((int)product.Id);
+            }
+
+            string error = productService_.DeleteProducts(productIdsToDelete);
+            if (error != string.Empty)
+            {
+                MessageBox.Show(error, "Ошибка при удалении", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                MessageBox.Show("Товары успешно удалены!", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
     }
 }

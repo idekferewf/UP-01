@@ -8,15 +8,17 @@ namespace AptekaEuLib
 {
     public class MySQLProductsReader : IProductsRepository
     {
-        public bool AddProduct(Product product)
+        public int AddProduct(Product product)
         {
+            int newId = 0;
             try
             {
                 using (MySqlConnection conn = new MySqlConnection(MySQLConfig.DbConnectionString))
                 {
                     conn.Open();
                     string query = "INSERT INTO products (name, category_id, purchase_price, sale_price, actual_quantity) " +
-                                   "VALUES (@name, @category_id, @purchase_price, @sale_price, @actual_quantity);";
+                                   "VALUES (@name, @category_id, @purchase_price, @sale_price, @actual_quantity);" +
+                                   "SELECT LAST_INSERT_ID();";
 
                     MySqlCommand command = new MySqlCommand(query, conn);
                     command.Parameters.AddWithValue("@name", product.Name);
@@ -25,6 +27,26 @@ namespace AptekaEuLib
                     command.Parameters.AddWithValue("@sale_price", product.SalePrice);
                     command.Parameters.AddWithValue("@actual_quantity", product.ActualQuantity);
 
+                    newId = Convert.ToInt32(command.ExecuteScalar());
+                }
+            }
+            catch (Exception)
+            {
+                return newId;
+            }
+            return newId;
+        }
+
+        public bool DeleteProducts(List<int> productIds)
+        {
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(MySQLConfig.DbConnectionString))
+                {
+                    conn.Open();
+                    string query = $"DELETE FROM products WHERE id IN ({string.Join(",", productIds)});";
+
+                    MySqlCommand command = new MySqlCommand(query, conn);
                     command.ExecuteNonQuery();
                 }
             }
@@ -33,11 +55,6 @@ namespace AptekaEuLib
                 return false;
             }
             return true;
-        }
-
-        public bool DeleteProducts(List<int> productIds)
-        {
-            throw new NotImplementedException();
         }
 
         public List<Product> ReadProducts()
