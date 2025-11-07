@@ -57,6 +57,18 @@ namespace AptekaEuTesting
 
             Assert.IsNotNull(actualSupplies);
             Assert.AreEqual(expectedSupplies.Count, actualSupplies.Count);
+
+            mockRepo.Verify(repo => repo.ReadSupplies(), Times.Once);
+
+            for (int i = 0; i < expectedSupplies.Count; i++)
+            {
+                Assert.AreEqual(expectedSupplies[i].Id, actualSupplies[i].Id, $"Id поставки {i} не совпадает");
+                Assert.AreEqual(expectedSupplies[i].Product.Name, actualSupplies[i].Product.Name, $"Название продукта поставки {i} не совпадает");
+                Assert.AreEqual(expectedSupplies[i].SupplierTin, actualSupplies[i].SupplierTin, $"ИНН поставщика поставки {i} не совпадает");
+                Assert.AreEqual(expectedSupplies[i].Quantity, actualSupplies[i].Quantity, $"Количество поставки {i} не совпадает");
+                Assert.AreEqual(expectedSupplies[i].ProductionDate, actualSupplies[i].ProductionDate, $"Дата производства поставки {i} не совпадает");
+                Assert.AreEqual(expectedSupplies[i].ExpiryDate, actualSupplies[i].ExpiryDate, $"Срок годности поставки {i} не совпадает");
+            }
         }
     }
 }
