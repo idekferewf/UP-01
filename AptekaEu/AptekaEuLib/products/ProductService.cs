@@ -67,8 +67,8 @@ namespace AptekaEuLib
                 }
             }
 
-            bool is_deleted = productsRepository_.DeleteProducts(productsIds);
-            if (is_deleted)
+            bool isDeleted = productsRepository_.DeleteProducts(productsIds);
+            if (isDeleted)
             {
                 foreach (int productId in productsIds)
                 {
