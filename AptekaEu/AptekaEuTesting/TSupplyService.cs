@@ -50,6 +50,13 @@ namespace AptekaEuTesting
             };
 
             mockRepo.Setup(repo => repo.ReadSupplies()).Returns(expectedSupplies);
+
+            var supplyService = new SupplyService(mockRepo.Object);
+
+            var actualSupplies = supplyService.GetAllSupplies();
+
+            Assert.IsNotNull(actualSupplies);
+            Assert.AreEqual(expectedSupplies.Count, actualSupplies.Count);
         }
     }
 }
