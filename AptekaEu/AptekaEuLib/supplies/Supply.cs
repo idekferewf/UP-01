@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace AptekaEuLib.supplies
 {
@@ -8,15 +9,13 @@ namespace AptekaEuLib.supplies
 
         public int Id { get { return id_; } }
 
-        public Product Product { get; set; }
+        public string SerialNumber { get; set; }
 
         public int SupplierTin { get; set; }
 
-        public int Quantity { get; set; }
+        public List<SupplyItem> Items { get; set; }
 
-        public DateTime ProductionDate { get; set; }
-        
-        public DateTime ExpiryDate { get; set; }
+        public DateTime DeliveryDate { get; set; }
 
         public Supply(int id)
         {
