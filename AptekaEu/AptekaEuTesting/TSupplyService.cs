@@ -11,6 +11,7 @@ namespace AptekaEuTesting
     [TestClass]
     public class TSupplyService
     {
+        [TestMethod]
         public void TestGetAllSupplies()
         {
             var mockRepo = new Mock<ISuppliesRepository>();
@@ -19,33 +20,80 @@ namespace AptekaEuTesting
             {
                 new Product(1) { Name = "Парацетамол 500 мг", Category = new Category(1), PurchasePrice = 299.00, SalePrice = 399.00, ActualQuantity = 100 },
                 new Product(2) { Name = "Парацетамол 250 мг", Category = new Category(1), PurchasePrice = 159.00, SalePrice = 279.00, ActualQuantity = 13 },
+                new Product(3) { Name = "Амоксиклав 625мг таб. №14", Category = new Category(2), PurchasePrice = 199.00, SalePrice = 349.00, ActualQuantity = 79 },
+                new Product(4) { Name = "Мыло жидкое антибактериальное", Category = new Category(3), PurchasePrice = 249.00, SalePrice = 419.00, ActualQuantity = 54 }
             };
 
             var expectedSupplies = new List<Supply>
             {
                 new Supply(1)
                 {
-                    Product = existingProducts[0],
+                    SerialNumber = "SUP-2024-001",
                     SupplierTin = 1001,
-                    Quantity = 50,
-                    ProductionDate = new DateTime(2024, 1, 15),
-                    ExpiryDate = new DateTime(2026, 1, 15)
+                    DeliveryDate = new DateTime(2024, 1, 10),
+                    Items = new List<SupplyItem>
+                    {
+                        new SupplyItem
+                        {
+                            Product = existingProducts[0],
+                            Quantity = 50,
+                            ProductionDate = new DateTime(2024, 1, 15),
+                            ExpiryDate = new DateTime(2026, 1, 15)
+                        },
+                        new SupplyItem
+                        {
+                            Product = existingProducts[1],
+                            Quantity = 30,
+                            ProductionDate = new DateTime(2024, 2, 10),
+                            ExpiryDate = new DateTime(2025, 8, 10)
+                        }
+                    }
                 },
                 new Supply(2)
                 {
-                    Product = existingProducts[1],
+                    SerialNumber = "SUP-2024-002",
                     SupplierTin = 1002,
-                    Quantity = 30,
-                    ProductionDate = new DateTime(2024, 2, 10),
-                    ExpiryDate = new DateTime(2025, 8, 10)
+                    DeliveryDate = new DateTime(2024, 1, 12),
+                    Items = new List<SupplyItem>
+                    {
+                        new SupplyItem
+                        {
+                            Product = existingProducts[3],
+                            Quantity = 100,
+                            ProductionDate = new DateTime(2024, 3, 5),
+                            ExpiryDate = new DateTime(2026, 3, 5)
+                        }
+                    }
                 },
                 new Supply(3)
                 {
-                    Product = existingProducts[1],
+                    SerialNumber = "SUP-2024-003",
                     SupplierTin = 1003,
-                    Quantity = 25,
-                    ProductionDate = new DateTime(2024, 1, 20),
-                    ExpiryDate = new DateTime(2025, 7, 20)
+                    DeliveryDate = new DateTime(2024, 1, 15),
+                    Items = new List<SupplyItem>
+                    {
+                        new SupplyItem
+                        {
+                            Product = existingProducts[0],
+                            Quantity = 40,
+                            ProductionDate = new DateTime(2024, 1, 25),
+                            ExpiryDate = new DateTime(2025, 7, 25)
+                        },
+                        new SupplyItem
+                        {
+                            Product = existingProducts[2],
+                            Quantity = 80,
+                            ProductionDate = new DateTime(2024, 3, 1),
+                            ExpiryDate = new DateTime(2026, 3, 1)
+                        },
+                        new SupplyItem
+                        {
+                            Product = existingProducts[3],
+                            Quantity = 15,
+                            ProductionDate = new DateTime(2024, 2, 20),
+                            ExpiryDate = new DateTime(2025, 11, 20)
+                        }
+                    }
                 }
             };
 
@@ -63,11 +111,10 @@ namespace AptekaEuTesting
             for (int i = 0; i < expectedSupplies.Count; i++)
             {
                 Assert.AreEqual(expectedSupplies[i].Id, actualSupplies[i].Id, $"Id поставки {i} не совпадает");
-                Assert.AreEqual(expectedSupplies[i].Product.Name, actualSupplies[i].Product.Name, $"Название продукта поставки {i} не совпадает");
+                Assert.AreEqual(expectedSupplies[i].SerialNumber, actualSupplies[i].SerialNumber, $"Серийный номер поставки {i} не совпадает");
                 Assert.AreEqual(expectedSupplies[i].SupplierTin, actualSupplies[i].SupplierTin, $"ИНН поставщика поставки {i} не совпадает");
-                Assert.AreEqual(expectedSupplies[i].Quantity, actualSupplies[i].Quantity, $"Количество поставки {i} не совпадает");
-                Assert.AreEqual(expectedSupplies[i].ProductionDate, actualSupplies[i].ProductionDate, $"Дата производства поставки {i} не совпадает");
-                Assert.AreEqual(expectedSupplies[i].ExpiryDate, actualSupplies[i].ExpiryDate, $"Срок годности поставки {i} не совпадает");
+                Assert.AreEqual(expectedSupplies[i].DeliveryDate, actualSupplies[i].DeliveryDate, $"Дата поставки {i} не совпадает");
+                Assert.AreEqual(expectedSupplies[i].Items.Count, actualSupplies[i].Items.Count, $"Количество позиций в поставке {i} не совпадает");
             }
         }
     }
