@@ -115,23 +115,7 @@ namespace AptekaEuTesting
 
             mockRepo.Verify(repo => repo.ReadSupplies(), Times.Once);
 
-            for (int i = 0; i < expectedSupplies.Count; i++)
-            {
-                Assert.AreEqual(expectedSupplies[i].Id, actualSupplies[i].Id, $"Id поставки {i} не совпадает");
-                Assert.AreEqual(expectedSupplies[i].SerialNumber, actualSupplies[i].SerialNumber, $"Серийный номер поставки {i} не совпадает");
-                Assert.AreEqual(expectedSupplies[i].SupplierTin, actualSupplies[i].SupplierTin, $"ИНН поставщика поставки {i} не совпадает");
-                Assert.AreEqual(expectedSupplies[i].DeliveryDate, actualSupplies[i].DeliveryDate, $"Дата поставки {i} не совпадает");
-                Assert.AreEqual(expectedSupplies[i].Items.Count, actualSupplies[i].Items.Count, $"Количество позиций в поставке {i} не совпадает");
-
-                for (int j = 0; j < expectedSupplies[i].Items.Count; j++)
-                {
-                    Assert.AreEqual(expectedSupplies[i].Items[j].Product.Id, actualSupplies[i].Items[j].Product.Id, $"Id продукта в позиции {j} поставки {i} не совпадает");
-                    Assert.AreEqual(expectedSupplies[i].Items[j].Quantity, actualSupplies[i].Items[j].Quantity, $"Количество в позиции {j} поставки {i} не совпадает");
-                    Assert.AreEqual(expectedSupplies[i].Items[j].UnitPrice, actualSupplies[i].Items[j].UnitPrice, $"Цена товара в позиции {j} поставки {i} не совпадает");
-                    Assert.AreEqual(expectedSupplies[i].Items[j].ProductionDate, actualSupplies[i].Items[j].ProductionDate, $"Дата производства в позиции {j} поставки {i} не совпадает");
-                    Assert.AreEqual(expectedSupplies[i].Items[j].ExpiryDate, actualSupplies[i].Items[j].ExpiryDate, $"Срок годности в позиции {j} поставки {i} не совпадает");
-                }
-            }
+            CollectionAssert.AreEqual(expectedSupplies, actualSupplies);
         }
     }
 }
