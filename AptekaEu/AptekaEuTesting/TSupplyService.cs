@@ -5,6 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace AptekaEuTesting
 {
@@ -14,9 +15,9 @@ namespace AptekaEuTesting
         [TestMethod]
         public void TestGetAllSupplies()
         {
-            var mockRepo = new Mock<ISuppliesRepository>();
+            Mock<ISuppliesRepository> mockRepo = new Mock<ISuppliesRepository>();
 
-            var existingProducts = new List<Product>
+            List<Product> existingProducts = new List<Product>
             {
                 new Product(1) { Name = "Парацетамол 500 мг", Category = new Category(1), PurchasePrice = 299.00, SalePrice = 399.00, ActualQuantity = 100 },
                 new Product(2) { Name = "Парацетамол 250 мг", Category = new Category(1), PurchasePrice = 159.00, SalePrice = 279.00, ActualQuantity = 13 },
@@ -24,7 +25,7 @@ namespace AptekaEuTesting
                 new Product(4) { Name = "Мыло жидкое антибактериальное", Category = new Category(3), PurchasePrice = 249.00, SalePrice = 419.00, ActualQuantity = 54 }
             };
 
-            var expectedSupplies = new List<Supply>
+            List<Supply> expectedSupplies = new List<Supply>
             {
                 new Supply(1)
                 {
@@ -105,9 +106,9 @@ namespace AptekaEuTesting
 
             mockRepo.Setup(repo => repo.ReadSupplies()).Returns(expectedSupplies);
 
-            var supplyService = new SupplyService(mockRepo.Object);
+            SupplyService supplyService = new SupplyService(mockRepo.Object);
 
-            var actualSupplies = supplyService.GetAllSupplies();
+            BindingList<Supply> actualSupplies = supplyService.GetAllSupplies();
 
             Assert.IsNotNull(actualSupplies);
             Assert.AreEqual(expectedSupplies.Count, actualSupplies.Count);
