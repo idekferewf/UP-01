@@ -4,6 +4,7 @@ namespace AptekaEuLib.supplies
 {
     public class SupplyService
     {
+        private BindingList<Supply> supplies_;
         private ISuppliesRepository suppliesRepository_;
 
         public SupplyService(ISuppliesRepository suppliesRepository)
@@ -13,7 +14,8 @@ namespace AptekaEuLib.supplies
 
         public BindingList<Supply> GetAllSupplies()
         {
-            return null;
+            supplies_ = new BindingList<Supply>(suppliesRepository_.ReadSupplies());
+            return supplies_;
         }
     }
 }
