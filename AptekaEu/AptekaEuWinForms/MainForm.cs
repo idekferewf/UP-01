@@ -29,6 +29,11 @@ namespace AptekaEuWinForms
             productsGridView.Columns["Category"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
+        public void FillSupplies()
+        {
+            suppliesGridView.DataSource = supplyService_.GetAllSupplies();
+        }
+
         private void addProductButton_Click(object sender, EventArgs e)
         {
             List<Category> categories = productService_.GetAllCategories();
@@ -87,6 +92,10 @@ namespace AptekaEuWinForms
 
         private void mainTabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (mainTabControl.SelectedIndex == 1 && suppliesGridView.DataSource == null)
+            {
+                FillSupplies();
+            }
         }
     }
 }

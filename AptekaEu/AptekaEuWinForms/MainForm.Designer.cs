@@ -131,7 +131,7 @@
             // 
             this.suppliesGridView.AllowUserToAddRows = false;
             this.suppliesGridView.AllowUserToDeleteRows = false;
-            this.suppliesGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
+            this.suppliesGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.suppliesGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.suppliesGridView.Location = new System.Drawing.Point(0, 0);
             this.suppliesGridView.Name = "suppliesGridView";

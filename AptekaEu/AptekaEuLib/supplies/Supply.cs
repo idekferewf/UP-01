@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace AptekaEuLib.supplies
 {
@@ -7,12 +8,15 @@ namespace AptekaEuLib.supplies
     {
         private string serialNumber_;
 
+        [DisplayName("Серийный номер")]
         public string SerialNumber { get { return serialNumber_; } }
 
+        [DisplayName("ИНН поставщика")]
         public string SupplierTin { get; set; }
 
         public List<SupplyItem> Items { get; set; }
 
+        [DisplayName("Дата поставки")]
         public DateTime DeliveryDate { get; set; }
 
         public Supply(string serialNumber)
