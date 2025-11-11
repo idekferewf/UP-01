@@ -5,11 +5,9 @@ namespace AptekaEuLib.supplies
 {
     public class Supply
     {
-        private int id_;
+        private string serialNumber_;
 
-        public int Id { get { return id_; } }
-
-        public string SerialNumber { get; set; }
+        public string SerialNumber { get { return serialNumber_; } }
 
         public string SupplierTin { get; set; }
 
@@ -17,9 +15,9 @@ namespace AptekaEuLib.supplies
 
         public DateTime DeliveryDate { get; set; }
 
-        public Supply(int id)
+        public Supply(string serialNumber)
         {
-            id_ = id;
+            serialNumber_ = serialNumber;
         }
 
         public override bool Equals(object obj)
@@ -31,7 +29,7 @@ namespace AptekaEuLib.supplies
 
             Supply other = (Supply)obj;
 
-            if (Id != other.Id || SerialNumber != other.SerialNumber || SupplierTin != other.SupplierTin || DeliveryDate != other.DeliveryDate)
+            if (SerialNumber != other.SerialNumber || SupplierTin != other.SupplierTin || DeliveryDate != other.DeliveryDate)
             {
                 return false;
             }
