@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace AptekaEuWinForms
 {
-    public partial class MainForm: Form
+    public partial class MainForm : Form
     {
         private ProductService productService_;
 
@@ -16,7 +16,7 @@ namespace AptekaEuWinForms
 
             productService_ = new ProductService(new MySQLProductsReader());
             FillProducts();
-        }   
+        }
 
         public void FillProducts()
         {

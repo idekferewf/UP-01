@@ -42,7 +42,8 @@ namespace AptekaEuTesting
             if (string.IsNullOrEmpty(error))
             {
                 mockRepo.Verify(r => r.AddProduct(product), Times.Once);
-            } else
+            }
+            else
             {
                 mockRepo.Verify(r => r.AddProduct(product), Times.Never);
             }
@@ -65,7 +66,7 @@ namespace AptekaEuTesting
                 new Product(3) { Name = "Амоксиклав 625мг таб. №14", Category = new Category(2), PurchasePrice = 199.00, SalePrice = 349.00, ActualQuantity = 79 },
                 new Product(4) { Name = "Мыло жидкое антибактериальное", Category = new Category(3), PurchasePrice = 249.00, SalePrice = 419.00, ActualQuantity = 54 }
             };
-            
+
             foreach (Product product in existingProducts)
             {
                 mockRepo.Setup(r => r.AddProduct(product)).Returns((int)product.Id);

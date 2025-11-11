@@ -1,8 +1,8 @@
-﻿using IniParser.Model;
-using IniParser;
+﻿using IniParser;
+using IniParser.Model;
+using MySql.Data.MySqlClient;
 using System;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
 
 namespace AptekaEuLib
 {
@@ -34,7 +34,8 @@ namespace AptekaEuLib
                 {
                     conn.Open();
                 }
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show($"Произошла ошибка при подключении к базе данных: {ex}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
