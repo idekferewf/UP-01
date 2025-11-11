@@ -1,5 +1,6 @@
 ﻿using AptekaEuLib;
 using AptekaEuLib.products;
+using AptekaEuLib.supplies;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -9,12 +10,15 @@ namespace AptekaEuWinForms
     public partial class MainForm : Form
     {
         private ProductService productService_;
+        private SupplyService supplyService_;
 
         public MainForm()
         {
             InitializeComponent();
 
             productService_ = new ProductService(new MySQLProductsReader());
+            supplyService_ = new SupplyService(new MySQLSuppliesReader());
+
             FillProducts();
         }
 
@@ -79,6 +83,10 @@ namespace AptekaEuWinForms
             {
                 MessageBox.Show("Товары успешно удалены!", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        private void mainTabControl_SelectedIndexChanged(object sender, EventArgs e)
+        {
         }
     }
 }
