@@ -66,5 +66,30 @@ namespace AptekaEuLib.supplies
 
             return true;
         }
+
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 17;
+                hash = hash * 23 + (SerialNumber?.GetHashCode() ?? 0);
+                hash = hash * 23 + SupplierTin.GetHashCode();
+                hash = hash * 23 + DeliveryDate.GetHashCode();
+
+                if (Items != null)
+                {
+                    foreach (var item in Items)
+                    {
+                        hash = hash * 23 + item.Quantity.GetHashCode();
+                        hash = hash * 23 + item.UnitPrice.GetHashCode();
+                        hash = hash * 23 + item.ProductionDate.GetHashCode();
+                        hash = hash * 23 + item.ExpiryDate.GetHashCode();
+                        hash = hash * 23 + (item.Product?.Id.GetHashCode() ?? 0);
+                    }
+                }
+
+                return hash;
+            }
+        }
     }
 }
