@@ -29,7 +29,7 @@ namespace AptekaEuTesting
                 new Supply(1)
                 {
                     SerialNumber = "SUP-2024-001",
-                    SupplierTin = 1001,
+                    SupplierTin = "1001",
                     DeliveryDate = new DateTime(2024, 1, 10),
                     Items = new List<SupplyItem>
                     {
@@ -37,6 +37,7 @@ namespace AptekaEuTesting
                         {
                             Product = existingProducts[0],
                             Quantity = 50,
+                            UnitPrice = existingProducts[0].PurchasePrice,
                             ProductionDate = new DateTime(2024, 1, 15),
                             ExpiryDate = new DateTime(2026, 1, 15)
                         },
@@ -44,6 +45,7 @@ namespace AptekaEuTesting
                         {
                             Product = existingProducts[1],
                             Quantity = 30,
+                            UnitPrice = existingProducts[1].PurchasePrice,
                             ProductionDate = new DateTime(2024, 2, 10),
                             ExpiryDate = new DateTime(2025, 8, 10)
                         }
@@ -52,7 +54,7 @@ namespace AptekaEuTesting
                 new Supply(2)
                 {
                     SerialNumber = "SUP-2024-002",
-                    SupplierTin = 1002,
+                    SupplierTin = "1002",
                     DeliveryDate = new DateTime(2024, 1, 12),
                     Items = new List<SupplyItem>
                     {
@@ -60,6 +62,7 @@ namespace AptekaEuTesting
                         {
                             Product = existingProducts[3],
                             Quantity = 100,
+                            UnitPrice = existingProducts[3].PurchasePrice,
                             ProductionDate = new DateTime(2024, 3, 5),
                             ExpiryDate = new DateTime(2026, 3, 5)
                         }
@@ -68,7 +71,7 @@ namespace AptekaEuTesting
                 new Supply(3)
                 {
                     SerialNumber = "SUP-2024-003",
-                    SupplierTin = 1003,
+                    SupplierTin = "1003",
                     DeliveryDate = new DateTime(2024, 1, 15),
                     Items = new List<SupplyItem>
                     {
@@ -76,6 +79,7 @@ namespace AptekaEuTesting
                         {
                             Product = existingProducts[0],
                             Quantity = 40,
+                            UnitPrice = existingProducts[0].PurchasePrice,
                             ProductionDate = new DateTime(2024, 1, 25),
                             ExpiryDate = new DateTime(2025, 7, 25)
                         },
@@ -83,6 +87,7 @@ namespace AptekaEuTesting
                         {
                             Product = existingProducts[2],
                             Quantity = 80,
+                            UnitPrice = existingProducts[2].PurchasePrice,
                             ProductionDate = new DateTime(2024, 3, 1),
                             ExpiryDate = new DateTime(2026, 3, 1)
                         },
@@ -90,6 +95,7 @@ namespace AptekaEuTesting
                         {
                             Product = existingProducts[3],
                             Quantity = 15,
+                            UnitPrice = existingProducts[3].PurchasePrice,
                             ProductionDate = new DateTime(2024, 2, 20),
                             ExpiryDate = new DateTime(2025, 11, 20)
                         }
