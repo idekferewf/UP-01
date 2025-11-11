@@ -106,13 +106,14 @@ namespace AptekaEuTesting
             SupplyService supplyService = new SupplyService(mockRepo.Object);
 
             BindingList<Supply> actualSupplies = supplyService.GetAllSupplies();
+            List<Supply> actualSuppliesList = new List<Supply>(actualSupplies);
 
             Assert.IsNotNull(actualSupplies);
-            Assert.AreEqual(expectedSupplies.Count, actualSupplies.Count);
+            Assert.AreEqual(expectedSupplies.Count, actualSuppliesList.Count);
 
             mockRepo.Verify(repo => repo.ReadSupplies(), Times.Once);
 
-            CollectionAssert.AreEqual(expectedSupplies, actualSupplies);
+            CollectionAssert.AreEqual(expectedSupplies, actualSuppliesList);
         }
     }
 }
