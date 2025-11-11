@@ -72,7 +72,7 @@ namespace AptekaEuLib.supplies
             unchecked
             {
                 int hash = 17;
-                hash = hash * 23 + (SerialNumber?.GetHashCode() ?? 0);
+                hash = hash * 23 + SerialNumber.GetHashCode();
                 hash = hash * 23 + SupplierTin.GetHashCode();
                 hash = hash * 23 + DeliveryDate.GetHashCode();
 
