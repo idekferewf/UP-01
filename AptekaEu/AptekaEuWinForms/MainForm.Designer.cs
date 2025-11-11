@@ -30,15 +30,19 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.productsGridView = new System.Windows.Forms.DataGridView();
-            this.productsTabControl = new System.Windows.Forms.TabControl();
-            this.mainTabs = new System.Windows.Forms.TabPage();
+            this.mainTabControl = new System.Windows.Forms.TabControl();
+            this.productsTab = new System.Windows.Forms.TabPage();
             this.productsToolStrip = new System.Windows.Forms.ToolStrip();
             this.addProductButton = new System.Windows.Forms.ToolStripButton();
             this.removeProductsButton = new System.Windows.Forms.ToolStripButton();
+            this.suppliesTab = new System.Windows.Forms.TabPage();
+            this.suppliesGridView = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.productsGridView)).BeginInit();
-            this.productsTabControl.SuspendLayout();
-            this.mainTabs.SuspendLayout();
+            this.mainTabControl.SuspendLayout();
+            this.productsTab.SuspendLayout();
             this.productsToolStrip.SuspendLayout();
+            this.suppliesTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.suppliesGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // productsGridView
@@ -56,27 +60,28 @@
             this.productsGridView.Size = new System.Drawing.Size(786, 384);
             this.productsGridView.TabIndex = 0;
             // 
-            // productsTabControl
+            // mainTabControl
             // 
-            this.productsTabControl.Controls.Add(this.mainTabs);
-            this.productsTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.productsTabControl.Location = new System.Drawing.Point(0, 0);
-            this.productsTabControl.Name = "productsTabControl";
-            this.productsTabControl.SelectedIndex = 0;
-            this.productsTabControl.Size = new System.Drawing.Size(800, 450);
-            this.productsTabControl.TabIndex = 5;
+            this.mainTabControl.Controls.Add(this.productsTab);
+            this.mainTabControl.Controls.Add(this.suppliesTab);
+            this.mainTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mainTabControl.Location = new System.Drawing.Point(0, 0);
+            this.mainTabControl.Name = "mainTabControl";
+            this.mainTabControl.SelectedIndex = 0;
+            this.mainTabControl.Size = new System.Drawing.Size(800, 450);
+            this.mainTabControl.TabIndex = 5;
             // 
-            // mainTabs
+            // productsTab
             // 
-            this.mainTabs.Controls.Add(this.productsToolStrip);
-            this.mainTabs.Controls.Add(this.productsGridView);
-            this.mainTabs.Location = new System.Drawing.Point(4, 22);
-            this.mainTabs.Name = "mainTabs";
-            this.mainTabs.Padding = new System.Windows.Forms.Padding(3);
-            this.mainTabs.Size = new System.Drawing.Size(792, 424);
-            this.mainTabs.TabIndex = 0;
-            this.mainTabs.Text = "Товары";
-            this.mainTabs.UseVisualStyleBackColor = true;
+            this.productsTab.Controls.Add(this.productsToolStrip);
+            this.productsTab.Controls.Add(this.productsGridView);
+            this.productsTab.Location = new System.Drawing.Point(4, 22);
+            this.productsTab.Name = "productsTab";
+            this.productsTab.Padding = new System.Windows.Forms.Padding(3);
+            this.productsTab.Size = new System.Drawing.Size(792, 424);
+            this.productsTab.TabIndex = 0;
+            this.productsTab.Text = "Товары";
+            this.productsTab.UseVisualStyleBackColor = true;
             // 
             // productsToolStrip
             // 
@@ -87,7 +92,7 @@
             this.productsToolStrip.Name = "productsToolStrip";
             this.productsToolStrip.Size = new System.Drawing.Size(786, 31);
             this.productsToolStrip.TabIndex = 5;
-            this.productsToolStrip.Text = "toolStrip2";
+            this.productsToolStrip.Text = "Управление товарами";
             // 
             // addProductButton
             // 
@@ -111,22 +116,47 @@
             this.removeProductsButton.Text = "Удалить товары";
             this.removeProductsButton.Click += new System.EventHandler(this.removeProductsButton_Click);
             // 
+            // suppliesTab
+            // 
+            this.suppliesTab.Controls.Add(this.suppliesGridView);
+            this.suppliesTab.Location = new System.Drawing.Point(4, 22);
+            this.suppliesTab.Name = "suppliesTab";
+            this.suppliesTab.Size = new System.Drawing.Size(792, 424);
+            this.suppliesTab.TabIndex = 1;
+            this.suppliesTab.Text = "Поставки";
+            this.suppliesTab.UseVisualStyleBackColor = true;
+            // 
+            // suppliesGridView
+            // 
+            this.suppliesGridView.AllowUserToAddRows = false;
+            this.suppliesGridView.AllowUserToDeleteRows = false;
+            this.suppliesGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
+            this.suppliesGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.suppliesGridView.Location = new System.Drawing.Point(0, 0);
+            this.suppliesGridView.Name = "suppliesGridView";
+            this.suppliesGridView.ReadOnly = true;
+            this.suppliesGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.suppliesGridView.Size = new System.Drawing.Size(792, 424);
+            this.suppliesGridView.TabIndex = 1;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.productsTabControl);
+            this.Controls.Add(this.mainTabControl);
             this.MinimumSize = new System.Drawing.Size(600, 350);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Главная – AptekaEu";
             ((System.ComponentModel.ISupportInitialize)(this.productsGridView)).EndInit();
-            this.productsTabControl.ResumeLayout(false);
-            this.mainTabs.ResumeLayout(false);
-            this.mainTabs.PerformLayout();
+            this.mainTabControl.ResumeLayout(false);
+            this.productsTab.ResumeLayout(false);
+            this.productsTab.PerformLayout();
             this.productsToolStrip.ResumeLayout(false);
             this.productsToolStrip.PerformLayout();
+            this.suppliesTab.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.suppliesGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -134,11 +164,13 @@
         #endregion
 
         private System.Windows.Forms.DataGridView productsGridView;
-        private System.Windows.Forms.TabControl productsTabControl;
-        private System.Windows.Forms.TabPage mainTabs;
+        private System.Windows.Forms.TabControl mainTabControl;
+        private System.Windows.Forms.TabPage productsTab;
         private System.Windows.Forms.ToolStrip productsToolStrip;
         private System.Windows.Forms.ToolStripButton addProductButton;
         private System.Windows.Forms.ToolStripButton removeProductsButton;
+        private System.Windows.Forms.TabPage suppliesTab;
+        private System.Windows.Forms.DataGridView suppliesGridView;
     }
 }
 
