@@ -106,6 +106,10 @@
     <Compile Include="products\Product.cs" />
     <Compile Include="products\ProductService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="supplies\ISuppliesRepository.cs" />
+    <Compile Include="supplies\Supply.cs" />
+    <Compile Include="supplies\SupplyItem.cs" />
+    <Compile Include="supplies\SupplyService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
