@@ -27,9 +27,8 @@ namespace AptekaEuTesting
 
             List<Supply> expectedSupplies = new List<Supply>
             {
-                new Supply(1)
+                new Supply("SUP-2024-001")
                 {
-                    SerialNumber = "SUP-2024-001",
                     SupplierTin = "1001",
                     DeliveryDate = new DateTime(2024, 1, 10),
                     Items = new List<SupplyItem>
@@ -52,9 +51,8 @@ namespace AptekaEuTesting
                         }
                     }
                 },
-                new Supply(2)
+                new Supply("SUP-2024-002")
                 {
-                    SerialNumber = "SUP-2024-002",
                     SupplierTin = "1002",
                     DeliveryDate = new DateTime(2024, 1, 12),
                     Items = new List<SupplyItem>
@@ -69,9 +67,8 @@ namespace AptekaEuTesting
                         }
                     }
                 },
-                new Supply(3)
+                new Supply("SUP-2024-003")
                 {
-                    SerialNumber = "SUP-2024-003",
                     SupplierTin = "1003",
                     DeliveryDate = new DateTime(2024, 1, 15),
                     Items = new List<SupplyItem>
