@@ -11,7 +11,7 @@ namespace AptekaEuLib.supplies
 
         public string SerialNumber { get; set; }
 
-        public int SupplierTin { get; set; }
+        public string SupplierTin { get; set; }
 
         public List<SupplyItem> Items { get; set; }
 
