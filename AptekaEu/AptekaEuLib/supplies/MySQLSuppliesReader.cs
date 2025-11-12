@@ -17,7 +17,7 @@ namespace AptekaEuLib.supplies
                 {
                     conn.Open();
 
-                    string query = 
+                    string query =
                         @"SELECT 
                             s.serial_number, s.supplier_tin, s.delivery_date,
                             si.product_id, si.quantity, si.unit_price, si.production_date, si.expiry_date,
@@ -52,29 +52,32 @@ namespace AptekaEuLib.supplies
                                 currentSerialNumber = serialNumber;
                             }
 
-                            /// Получение товара и категории
-                            Product product = new Product(reader.GetInt32("product_id"));
-                            product.Name = reader.GetString("product_name");
-
-                            Category category = new Category(reader.GetInt32("category_id"));
-                            category.Name = reader.GetString("category_name");
-                            product.Category = category;
-
-                            product.PurchasePrice = reader.GetDouble("purchase_price");
-                            product.SalePrice = reader.GetDouble("sale_price");
-                            product.ActualQuantity = reader.GetInt32("actual_quantity");
-
-                            /// Получение позиции поставки
-                            SupplyItem supplyItem = new SupplyItem
+                            if (!reader.IsDBNull(reader.GetOrdinal("product_id")))
                             {
-                                Product = product,
-                                Quantity = reader.GetInt32("quantity"),
-                                UnitPrice = reader.GetDouble("unit_price"),
-                                ProductionDate = reader.GetDateTime("production_date"),
-                                ExpiryDate = reader.GetDateTime("expiry_date")
-                            };
+                                /// Получение товара и категории
+                                Product product = new Product(reader.GetInt32("product_id"));
+                                product.Name = reader.GetString("product_name");
 
-                            currentSupply.Items.Add(supplyItem);
+                                Category category = new Category(reader.GetInt32("category_id"));
+                                category.Name = reader.GetString("category_name");
+                                product.Category = category;
+
+                                product.PurchasePrice = reader.GetDouble("purchase_price");
+                                product.SalePrice = reader.GetDouble("sale_price");
+                                product.ActualQuantity = reader.GetInt32("actual_quantity");
+
+                                /// Получение позиции поставки
+                                SupplyItem supplyItem = new SupplyItem
+                                {
+                                    Product = product,
+                                    Quantity = reader.GetInt32("quantity"),
+                                    UnitPrice = reader.GetDouble("unit_price"),
+                                    ProductionDate = reader.GetDateTime("production_date"),
+                                    ExpiryDate = reader.GetDateTime("expiry_date")
+                                };
+
+                                currentSupply.Items.Add(supplyItem);
+                            }
                         }
                     }
                 }
