@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 
 namespace AptekaEuLib.supplies
 {
@@ -18,6 +19,26 @@ namespace AptekaEuLib.supplies
 
         [DisplayName("Дата поставки")]
         public DateTime DeliveryDate { get; set; }
+
+        [Browsable(false)]
+        public double TotalCost
+        {
+            get
+            {
+                if (Items == null || !Items.Any())
+                    return 0;
+                return Items.Sum(item => item.UnitPrice * item.Quantity);
+            }
+        }
+
+        [DisplayName("Сумма поставки")]
+        public string TotalCostDisplay
+        {
+            get
+            {
+                return $"{TotalCost:N2} руб.";
+            }
+        }
 
         public Supply(string serialNumber)
         {
