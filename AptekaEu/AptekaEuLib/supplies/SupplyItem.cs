@@ -33,6 +33,24 @@ namespace AptekaEuLib.supplies
         [DisplayName("Количество")]
         public int Quantity { get; set; }
 
+        [Browsable(false)]
+        public double TotalCost
+        {
+            get
+            {
+                return Quantity * UnitPrice;
+            }
+        }
+
+        [DisplayName("Сумма позиции")]
+        public string TotalCostDisplay
+        {
+            get
+            {
+                return $"{TotalCost:N2} руб.";
+            }
+        }
+
         [DisplayName("Дата производства")]
         public DateTime ProductionDate { get; set; }
 
