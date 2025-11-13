@@ -1,11 +1,22 @@
-﻿using System;
+﻿using AptekaEuLib.products;
+using System;
 using System.ComponentModel;
 
 namespace AptekaEuLib.supplies
 {
     public class SupplyItem
     {
+        [DisplayName("Наименование товара")]
         public Product Product { get; set; }
+
+        [DisplayName("Категория")]
+        public Category Category
+        {
+            get
+            {
+                return Product.Category;
+            }
+        }
 
         [Browsable(false)]
         public double UnitPrice { get; set; }
