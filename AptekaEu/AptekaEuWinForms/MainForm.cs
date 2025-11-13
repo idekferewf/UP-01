@@ -97,5 +97,22 @@ namespace AptekaEuWinForms
                 FillSupplies();
             }
         }
+
+        private void suppliesGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0 || e.ColumnIndex < 0)
+            {
+                return;
+            }
+
+            DataGridViewRow row = suppliesGridView.Rows[e.RowIndex];
+            Supply supply = (Supply)row.DataBoundItem;
+
+            if (supply != null)
+            {
+                SuppliesItemsForm suppliesItemsForm = new SuppliesItemsForm(supply);
+                suppliesItemsForm.ShowDialog();
+            }
+        }
     }
 }
