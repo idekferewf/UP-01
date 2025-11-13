@@ -16,7 +16,9 @@ namespace AptekaEuWinForms
         public SuppliesItemsForm(Supply supply)
         {
             InitializeComponent();
+
             FillSuppliesItems(supply);
+            Text = $"Позиции поставки – {supply.SerialNumber}";
         }
 
         private void FillSuppliesItems(Supply supply)
