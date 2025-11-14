@@ -38,6 +38,12 @@ namespace AptekaEuWinForms
             supplierFilterComboBox.Items.AddRange(supplies.Select(s => s.SupplierTin).ToArray());
         }
 
+        private void FillFilteredSupplies()
+        {
+            suppliesGridView.DataSource = null;
+            suppliesGridView.DataSource = supplyService_.FilteredSupplies;
+        }
+
         private void addProductButton_Click(object sender, EventArgs e)
         {
             List<Category> categories = productService_.GetAllCategories();
@@ -113,8 +119,7 @@ namespace AptekaEuWinForms
             {
                 string propertyName = suppliesGridView.Columns[e.ColumnIndex].DataPropertyName;
                 supplyService_.SortBy(propertyName);
-                suppliesGridView.DataSource = null;
-                suppliesGridView.DataSource = supplyService_.FilteredSupplies;
+                FillFilteredSupplies();
                 return;
             }
 
@@ -138,8 +143,7 @@ namespace AptekaEuWinForms
         private void supplierFilterComboBox_TextChanged(object sender, EventArgs e)
         {
             supplyService_.FilterBySupplierTin(supplierFilterComboBox.Text);
-            suppliesGridView.DataSource = null;
-            suppliesGridView.DataSource = supplyService_.FilteredSupplies;
+            FillFilteredSupplies();
         }
     }
 }
