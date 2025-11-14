@@ -3,6 +3,7 @@ using AptekaEuLib.products;
 using AptekaEuLib.supplies;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Windows.Forms;
 
 namespace AptekaEuWinForms
@@ -11,6 +12,7 @@ namespace AptekaEuWinForms
     {
         private ProductService productService_;
         private SupplyService supplyService_;
+        private SuppliesOrdering suppliesOrdering_;
 
         public MainForm()
         {
@@ -31,7 +33,9 @@ namespace AptekaEuWinForms
 
         private void FillSupplies()
         {
-            suppliesGridView.DataSource = supplyService_.GetAllSupplies();
+            BindingList<Supply> supplies = supplyService_.GetAllSupplies();
+            suppliesGridView.DataSource = supplies;
+            suppliesOrdering_ = new SuppliesOrdering(supplies);
         }
 
         private void addProductButton_Click(object sender, EventArgs e)
@@ -100,8 +104,17 @@ namespace AptekaEuWinForms
 
         private void suppliesGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex < 0 || e.ColumnIndex < 0)
+            if (e.RowIndex == -1 && e.ColumnIndex == -1)
             {
+                return;
+            }
+
+            if (e.RowIndex == -1 && e.ColumnIndex >= 0)
+            {
+                string propertyName = suppliesGridView.Columns[e.ColumnIndex].DataPropertyName;
+                suppliesOrdering_.SortBy(propertyName);
+                suppliesGridView.DataSource = null;
+                suppliesGridView.DataSource = suppliesOrdering_.SortedSupplies;
                 return;
             }
 
