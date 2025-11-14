@@ -22,14 +22,14 @@ namespace AptekaEuWinForms
             FillProducts();
         }
 
-        public void FillProducts()
+        private void FillProducts()
         {
             productsGridView.DataSource = productService_.GetAllProducts();
             productsGridView.Columns["Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             productsGridView.Columns["Category"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
-        public void FillSupplies()
+        private void FillSupplies()
         {
             suppliesGridView.DataSource = supplyService_.GetAllSupplies();
         }
@@ -110,8 +110,15 @@ namespace AptekaEuWinForms
 
             if (supply != null)
             {
-                SuppliesItemsForm suppliesItemsForm = new SuppliesItemsForm(supply);
-                suppliesItemsForm.ShowDialog();
+                if (supply.Items.Count > 0)
+                {
+                    SuppliesItemsForm suppliesItemsForm = new SuppliesItemsForm(supply);
+                    suppliesItemsForm.ShowDialog();
+                } 
+                else
+                {
+                    MessageBox.Show("Позиции для данной поставки не найдены.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
     }
