@@ -1,5 +1,7 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Reflection;
 
 namespace AptekaEuLib.supplies
 {
@@ -8,6 +10,10 @@ namespace AptekaEuLib.supplies
         private BindingList<Supply> supplies_;
         private BindingList<Supply> filteredSupplies_;
         private ISuppliesRepository suppliesRepository_;
+
+        private string currentSortProperty_ = "DeliveryDate";
+        private bool isAscending_ = false;
+        private string currentSupplierFilter_ = "";
 
         public SupplyService(ISuppliesRepository suppliesRepository)
         {
@@ -19,20 +25,58 @@ namespace AptekaEuLib.supplies
         public BindingList<Supply> GetAllSupplies()
         {
             supplies_ = new BindingList<Supply>(suppliesRepository_.ReadSupplies());
-            filteredSupplies_ = supplies_;
+            ApplyFilterAndSort();
             return filteredSupplies_;
         }
 
-        public BindingList<Supply> FilterBySuppliesTin(string supplierTin)
+        public void FilterBySupplierTin(string supplierTin)
         {
-            if (string.IsNullOrEmpty(supplierTin))
+            currentSupplierFilter_ = supplierTin;
+            ApplyFilterAndSort();
+        }
+
+        public void SortBy(string propertyName)
+        {
+            if (propertyName == "TotalCostDisplay")
             {
-                filteredSupplies_ = supplies_;
-                return filteredSupplies_;
+                propertyName = "TotalCost";
             }
 
-            filteredSupplies_ = new BindingList<Supply>(supplies_.Where(s => s.SupplierTin == supplierTin).ToList());
-            return filteredSupplies_;
+            if (currentSortProperty_ == propertyName)
+            {
+                isAscending_ = !isAscending_;
+            }
+            else
+            {
+                currentSortProperty_ = propertyName;
+            }
+
+            ApplyFilterAndSort();
+        }
+
+        private void ApplyFilterAndSort()
+        {
+            if (supplies_ == null)
+            {
+                return;
+            }
+
+            IEnumerable<Supply> result = supplies_;
+
+            if (!string.IsNullOrEmpty(currentSupplierFilter_))
+            {
+                result = result.Where(s => s.SupplierTin == currentSupplierFilter_);
+            }
+
+            PropertyInfo propertyInfo = typeof(Supply).GetProperty(currentSortProperty_);
+            if (propertyInfo != null)
+            {
+                result = isAscending_
+                    ? result.OrderBy(s => propertyInfo.GetValue(s))
+                    : result.OrderByDescending(s => propertyInfo.GetValue(s));
+            }
+
+            filteredSupplies_ = new BindingList<Supply>(result.ToList());
         }
     }
 }
