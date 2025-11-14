@@ -36,17 +36,17 @@
             this.addProductButton = new System.Windows.Forms.ToolStripButton();
             this.removeProductsButton = new System.Windows.Forms.ToolStripButton();
             this.suppliesTab = new System.Windows.Forms.TabPage();
-            this.suppliesGridView = new System.Windows.Forms.DataGridView();
             this.suppliesToolStrip = new System.Windows.Forms.ToolStrip();
             this.supplierFilterLabel = new System.Windows.Forms.ToolStripLabel();
             this.supplierFilterComboBox = new System.Windows.Forms.ToolStripComboBox();
+            this.suppliesGridView = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.productsGridView)).BeginInit();
             this.mainTabControl.SuspendLayout();
             this.productsTab.SuspendLayout();
             this.productsToolStrip.SuspendLayout();
             this.suppliesTab.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.suppliesGridView)).BeginInit();
             this.suppliesToolStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.suppliesGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // productsGridView
@@ -84,7 +84,7 @@
             this.productsTab.Controls.Add(this.productsGridView);
             this.productsTab.Location = new System.Drawing.Point(4, 22);
             this.productsTab.Name = "productsTab";
-            this.productsTab.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.productsTab.Padding = new System.Windows.Forms.Padding(3);
             this.productsTab.Size = new System.Drawing.Size(792, 424);
             this.productsTab.TabIndex = 0;
             this.productsTab.Text = "Товары";
@@ -136,24 +136,6 @@
             this.suppliesTab.Text = "Поставки";
             this.suppliesTab.UseVisualStyleBackColor = true;
             // 
-            // suppliesGridView
-            // 
-            this.suppliesGridView.AllowUserToAddRows = false;
-            this.suppliesGridView.AllowUserToDeleteRows = false;
-            this.suppliesGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.suppliesGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.suppliesGridView.ColumnHeadersHeight = 40;
-            this.suppliesGridView.Location = new System.Drawing.Point(0, 28);
-            this.suppliesGridView.Name = "suppliesGridView";
-            this.suppliesGridView.ReadOnly = true;
-            this.suppliesGridView.RowHeadersWidth = 72;
-            this.suppliesGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.suppliesGridView.Size = new System.Drawing.Size(792, 396);
-            this.suppliesGridView.TabIndex = 1;
-            this.suppliesGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.suppliesGridView_CellDoubleClick);
-            // 
             // suppliesToolStrip
             // 
             this.suppliesToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -177,6 +159,24 @@
             this.supplierFilterComboBox.Size = new System.Drawing.Size(121, 25);
             this.supplierFilterComboBox.TextChanged += new System.EventHandler(this.supplierFilterComboBox_TextChanged);
             // 
+            // suppliesGridView
+            // 
+            this.suppliesGridView.AllowUserToAddRows = false;
+            this.suppliesGridView.AllowUserToDeleteRows = false;
+            this.suppliesGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.suppliesGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.suppliesGridView.ColumnHeadersHeight = 40;
+            this.suppliesGridView.Location = new System.Drawing.Point(0, 28);
+            this.suppliesGridView.Name = "suppliesGridView";
+            this.suppliesGridView.ReadOnly = true;
+            this.suppliesGridView.RowHeadersWidth = 72;
+            this.suppliesGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.suppliesGridView.Size = new System.Drawing.Size(792, 396);
+            this.suppliesGridView.TabIndex = 1;
+            this.suppliesGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.suppliesGridView_CellDoubleClick);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -195,9 +195,9 @@
             this.productsToolStrip.PerformLayout();
             this.suppliesTab.ResumeLayout(false);
             this.suppliesTab.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.suppliesGridView)).EndInit();
             this.suppliesToolStrip.ResumeLayout(false);
             this.suppliesToolStrip.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.suppliesGridView)).EndInit();
             this.ResumeLayout(false);
 
         }

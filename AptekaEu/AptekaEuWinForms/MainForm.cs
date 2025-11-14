@@ -35,9 +35,9 @@ namespace AptekaEuWinForms
         private void FillSupplies()
         {
             BindingList<Supply> supplies = supplyService_.GetAllSupplies();
-            suppliesGridView.DataSource = supplies;
+            suppliesOrdering_ = new SuppliesOrdering();
+            suppliesGridView.DataSource = suppliesOrdering_.SortBy(supplies, "DeliveryDate");
             supplierFilterComboBox.Items.AddRange(supplies.Select(s => s.SupplierTin).ToArray());
-            suppliesOrdering_ = new SuppliesOrdering(supplies);
         }
 
         private void addProductButton_Click(object sender, EventArgs e)
@@ -114,9 +114,7 @@ namespace AptekaEuWinForms
             if (e.RowIndex == -1 && e.ColumnIndex >= 0)
             {
                 string propertyName = suppliesGridView.Columns[e.ColumnIndex].DataPropertyName;
-                suppliesOrdering_.SortBy(propertyName);
-                suppliesGridView.DataSource = null;
-                suppliesGridView.DataSource = suppliesOrdering_.SortedSupplies;
+                FilterAndSortSupplies();
                 return;
             }
 
@@ -139,8 +137,15 @@ namespace AptekaEuWinForms
 
         private void supplierFilterComboBox_TextChanged(object sender, EventArgs e)
         {
+            FilterAndSortSupplies();
+        }
+
+        private void FilterAndSortSupplies()
+        {
+            BindingList<Supply> filteredSupples = supplyService_.FilterBySuppliesTin(supplierFilterComboBox.Text);
+            BindingList<Supply> sortedSupplies = suppliesOrdering_.SortBy(filteredSupples, suppliesOrdering_.CurrentSortProperty);
             suppliesGridView.DataSource = null;
-            suppliesGridView.DataSource = supplyService_.FilterBySuppliesTin(supplierFilterComboBox.Text);
+            suppliesGridView.DataSource = sortedSupplies;
         }
     }
 }

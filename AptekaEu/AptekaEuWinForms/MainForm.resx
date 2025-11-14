@@ -120,24 +120,21 @@
   <metadata name="productsToolStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>122, 17</value>
   </metadata>
-  <metadata name="suppliesToolStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>269, 17</value>
-  </metadata>
-  <metadata name="productsToolStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>122, 17</value>
-  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="removeProductsButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGASURBVEhL3ZW9SsRAFIVT7JLJ4iPIymZmG9vtBE0hEWdu
-        CotVQfABLMTCVkFfw0oWwSfwNfwrRNlCEMVKUBsb/+7IldHJ3ZCk3A8OW9xzTgibuROMOWoxFEqvRQoG
-        QpmLqA0vQsGzkPo8UvpQyGw16PWa5K5GK9Y6knCL5V/FMsMwzuYpVg4s3uPLRin9EBK2KV4Mlu/zJaW0
-        RTU8ra4BJlRB9k3MDNV5TC9PNBU88sEKknDN/vE43MiZ60pmS1TrwM/whDXXEHYdUK2jEesHzlxHYQxn
-        VOvAwZtvFF0zR+ORCJUlfi6U8ERjR9ROX31jmQfYQ+bn7ImnsQMHNzljXcVwRbUO3C3HrLmeBlTrwAOy
-        zhhrCbtWqPYPk/0IF9cdF6gke9BwC1Prf0KlUzZUWrgqujBLdTz45ezw4RKSZpNqisFLZRcDn7mCkUrf
-        8bd4k/rYzdroLNzny3yZoT1sFKvIVCJ+rkxpjvCtLn+vzLADp3bf4AP6QZI0yD2WBME3y2O6BXOb57gA
-        AAAASUVORK5CYII=
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGBSURBVEhL3ZW9SgNBFIW3SNjZ4CNEJDuTxjadoFtExZm7
+        hUVUEHwAC7GwVdDXsJIg+AS+hn+FKCkEiVgJamPj3x25Mjp7s+xumQ8OKe45Z1mycycYc9RSKJRejxT0
+        hTKXURNehIJnIfVFpPSRkOla0OnUyV2ORqx1JOEOy7/yZQZhnHYpVgws3ufLRqn7ISTsUDwfLD/gSwpp
+        m2p4Gm0DTKiE7JuYGarzmF6ZqCt45IMlJOGG/eNxuJkxV5VMl6nWgZ/hKWuuIOw6pFpHLdYPnLmKwhjO
+        qdaBgzffKNpmjsYjESpN/Fwo4YnGjmhy/tU3FnmAPWR+zp54GjtwcJsxVlUM11TrwN1ywpqrqU+1Djwg
+        G4yxkrBrlWr/0OxFuLjuuUAp2YOGW5ha/xMqvcCGCgtXRRtmqY4Hv5xdPlxA0mxRTT54qexh4DNTMFLd
+        d/zN36Q+drPWWovDbJkvM7CHjWIlmUrEz5UpzTG+1dXvlRm24MzuG3xAL0iSGrnHkiD4BoQuufWk+D3m
+        AAAAAElFTkSuQmCC
 </value>
   </data>
+  <metadata name="suppliesToolStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>269, 17</value>
+  </metadata>
 </root>
