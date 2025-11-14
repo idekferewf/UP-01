@@ -20,6 +20,15 @@ namespace AptekaEuLib.supplies
         [DisplayName("Дата поставки")]
         public DateTime DeliveryDate { get; set; }
 
+        [DisplayName("Количество позиций")]
+        public int ItemsCount
+        {
+            get
+            {
+                return Items.Count;
+            }
+        }
+
         [Browsable(false)]
         public double TotalCost
         {
