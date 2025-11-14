@@ -20,7 +20,7 @@ namespace AptekaEuLib.supplies
         {
             supplies_ = new BindingList<Supply>(suppliesRepository_.ReadSupplies());
             filteredSupplies_ = supplies_;
-            return supplies_;
+            return filteredSupplies_;
         }
 
         public BindingList<Supply> FilterBySuppliesTin(string supplierTin)
@@ -31,7 +31,7 @@ namespace AptekaEuLib.supplies
                 return filteredSupplies_;
             }
 
-            filteredSupplies_ = new BindingList<Supply>(filteredSupplies_.Where(s => s.SupplierTin == supplierTin).ToList());
+            filteredSupplies_ = new BindingList<Supply>(supplies_.Where(s => s.SupplierTin == supplierTin).ToList());
             return filteredSupplies_;
         }
     }
