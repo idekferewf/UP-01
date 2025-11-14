@@ -175,6 +175,7 @@
             // 
             this.supplierFilterComboBox.Name = "supplierFilterComboBox";
             this.supplierFilterComboBox.Size = new System.Drawing.Size(121, 25);
+            this.supplierFilterComboBox.TextChanged += new System.EventHandler(this.supplierFilterComboBox_TextChanged);
             // 
             // MainForm
             // 

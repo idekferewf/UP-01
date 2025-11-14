@@ -136,5 +136,11 @@ namespace AptekaEuWinForms
                 }
             }
         }
+
+        private void supplierFilterComboBox_TextChanged(object sender, EventArgs e)
+        {
+            suppliesGridView.DataSource = null;
+            suppliesGridView.DataSource = supplyService_.FilterBySuppliesTin(supplierFilterComboBox.Text);
+        }
     }
 }
