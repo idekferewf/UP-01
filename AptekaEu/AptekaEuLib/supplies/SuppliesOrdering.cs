@@ -27,6 +27,11 @@ namespace AptekaEuLib.supplies
                 return;
             }
 
+            if (propertyName == "TotalCostDisplay")
+            {
+                propertyName = "TotalCost";
+            }
+
             if (currentSortProperty_ == propertyName)
             {
                 isAscending_ = !isAscending_;
