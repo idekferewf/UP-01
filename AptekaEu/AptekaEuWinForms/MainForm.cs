@@ -4,6 +4,7 @@ using AptekaEuLib.supplies;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace AptekaEuWinForms
@@ -35,6 +36,7 @@ namespace AptekaEuWinForms
         {
             BindingList<Supply> supplies = supplyService_.GetAllSupplies();
             suppliesGridView.DataSource = supplies;
+            supplierFilterComboBox.Items.AddRange(supplies.Select(s => s.SupplierTin).ToArray());
             suppliesOrdering_ = new SuppliesOrdering(supplies);
         }
 
