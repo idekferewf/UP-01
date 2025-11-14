@@ -14,6 +14,8 @@ namespace AptekaEuLib.supplies
             suppliesRepository_ = suppliesRepository;
         }
 
+        public BindingList<Supply> FilteredSupplies => filteredSupplies_;
+
         public BindingList<Supply> GetAllSupplies()
         {
             supplies_ = new BindingList<Supply>(suppliesRepository_.ReadSupplies());
