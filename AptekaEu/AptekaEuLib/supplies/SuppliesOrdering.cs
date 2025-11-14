@@ -7,24 +7,16 @@ namespace AptekaEuLib.supplies
 {
     public class SuppliesOrdering
     {
-        private BindingList<Supply> sortedSupplies_;
         private string currentSortProperty_;
-        private bool isAscending_;
+        private bool isAscending_ = false;
 
-        public SuppliesOrdering(BindingList<Supply> sortedSupplies)
+        public string CurrentSortProperty => currentSortProperty_;
+
+        public BindingList<Supply> SortBy(BindingList<Supply> sortedSupplies, string propertyName)
         {
-            sortedSupplies_ = sortedSupplies;
-            currentSortProperty_ = "DeliveryDate";
-            isAscending_ = false;
-        }
-
-        public BindingList<Supply> SortedSupplies => sortedSupplies_;
-
-        public void SortBy(string propertyName)
-        {
-            if (sortedSupplies_ == null || !sortedSupplies_.Any())
+            if (sortedSupplies == null || !sortedSupplies.Any())
             {
-                return;
+                return null;
             }
 
             if (propertyName == "TotalCostDisplay")
@@ -46,14 +38,16 @@ namespace AptekaEuLib.supplies
             List<Supply> supplies;
             if (isAscending_)
             {
-                supplies = sortedSupplies_.OrderBy(s => propertyInfo.GetValue(s)).ToList();
+                supplies = sortedSupplies.OrderBy(s => propertyInfo.GetValue(s)).ToList();
             }
             else
             {
-                supplies = sortedSupplies_.OrderByDescending(s => propertyInfo.GetValue(s)).ToList();
+                supplies = sortedSupplies.OrderByDescending(s => propertyInfo.GetValue(s)).ToList();
             }
 
-            sortedSupplies_ = new BindingList<Supply>(supplies);
+            currentSortProperty_ = propertyName;
+
+            return new BindingList<Supply>(supplies);
         }
     }
 }
