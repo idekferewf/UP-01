@@ -29,5 +29,10 @@ namespace AptekaEuLib
         {
             id_ = id;
         }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

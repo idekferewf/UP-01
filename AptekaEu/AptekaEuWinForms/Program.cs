@@ -19,7 +19,7 @@ namespace AptekaEuWinForms
             {
                 return;
             }
-            
+
             if (!MySQLConfig.CheckDbConnection())
             {
                 return;
