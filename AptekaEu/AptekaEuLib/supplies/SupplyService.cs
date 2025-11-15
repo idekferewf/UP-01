@@ -31,7 +31,15 @@ namespace AptekaEuLib.supplies
 
         public void FilterBySupplierTin(string supplierTin)
         {
-            currentSupplierFilter_ = supplierTin;
+            if (supplierTin == "Все" || string.IsNullOrWhiteSpace(supplierTin))
+            {
+                currentSupplierFilter_ = null;
+            }
+            else
+            {
+                currentSupplierFilter_ = supplierTin;
+            }
+
             ApplyFilterAndSort();
         }
 

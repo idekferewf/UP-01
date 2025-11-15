@@ -155,6 +155,8 @@
             // 
             // supplierFilterComboBox
             // 
+            this.supplierFilterComboBox.Items.AddRange(new object[] {
+            "Все"});
             this.supplierFilterComboBox.Name = "supplierFilterComboBox";
             this.supplierFilterComboBox.Size = new System.Drawing.Size(121, 25);
             this.supplierFilterComboBox.Text = "Все";
