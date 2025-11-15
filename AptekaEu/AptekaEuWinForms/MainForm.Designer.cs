@@ -150,13 +150,14 @@
             // supplierFilterLabel
             // 
             this.supplierFilterLabel.Name = "supplierFilterLabel";
-            this.supplierFilterLabel.Size = new System.Drawing.Size(67, 22);
-            this.supplierFilterLabel.Text = "Поствщик:";
+            this.supplierFilterLabel.Size = new System.Drawing.Size(73, 22);
+            this.supplierFilterLabel.Text = "Поставщик:";
             // 
             // supplierFilterComboBox
             // 
             this.supplierFilterComboBox.Name = "supplierFilterComboBox";
             this.supplierFilterComboBox.Size = new System.Drawing.Size(121, 25);
+            this.supplierFilterComboBox.Text = "Все";
             this.supplierFilterComboBox.TextChanged += new System.EventHandler(this.supplierFilterComboBox_TextChanged);
             // 
             // suppliesGridView
