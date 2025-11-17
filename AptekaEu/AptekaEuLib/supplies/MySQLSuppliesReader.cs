@@ -52,32 +52,29 @@ namespace AptekaEuLib.supplies
                                 currentSerialNumber = serialNumber;
                             }
 
-                            if (!reader.IsDBNull(reader.GetOrdinal("product_id")))
+                            /// Получение товара и категории
+                            Product product = new Product(reader.GetInt32("product_id"));
+                            product.Name = reader.GetString("product_name");
+
+                            Category category = new Category(reader.GetInt32("category_id"));
+                            category.Name = reader.GetString("category_name");
+                            product.Category = category;
+
+                            product.PurchasePrice = reader.GetDouble("purchase_price");
+                            product.SalePrice = reader.GetDouble("sale_price");
+                            product.ActualQuantity = reader.GetInt32("actual_quantity");
+
+                            /// Получение позиции поставки
+                            SupplyItem supplyItem = new SupplyItem
                             {
-                                /// Получение товара и категории
-                                Product product = new Product(reader.GetInt32("product_id"));
-                                product.Name = reader.GetString("product_name");
+                                Product = product,
+                                Quantity = reader.GetInt32("quantity"),
+                                UnitPrice = reader.GetDouble("unit_price"),
+                                ProductionDate = reader.GetDateTime("production_date"),
+                                ExpiryDate = reader.GetDateTime("expiry_date")
+                            };
 
-                                Category category = new Category(reader.GetInt32("category_id"));
-                                category.Name = reader.GetString("category_name");
-                                product.Category = category;
-
-                                product.PurchasePrice = reader.GetDouble("purchase_price");
-                                product.SalePrice = reader.GetDouble("sale_price");
-                                product.ActualQuantity = reader.GetInt32("actual_quantity");
-
-                                /// Получение позиции поставки
-                                SupplyItem supplyItem = new SupplyItem
-                                {
-                                    Product = product,
-                                    Quantity = reader.GetInt32("quantity"),
-                                    UnitPrice = reader.GetDouble("unit_price"),
-                                    ProductionDate = reader.GetDateTime("production_date"),
-                                    ExpiryDate = reader.GetDateTime("expiry_date")
-                                };
-
-                                currentSupply.Items.Add(supplyItem);
-                            }
+                            currentSupply.Items.Add(supplyItem);
                         }
                     }
                 }
