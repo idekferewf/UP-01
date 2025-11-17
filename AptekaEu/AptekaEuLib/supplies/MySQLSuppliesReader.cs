@@ -33,14 +33,13 @@ namespace AptekaEuLib.supplies
                     using (MySqlDataReader reader = command.ExecuteReader())
                     {
                         Supply currentSupply = null;
-                        string currentSerialNumber = null;
 
                         while (reader.Read())
                         {
                             string serialNumber = reader.GetString("serial_number");
 
                             /// Создаём объект Supply, если это новая поставка
-                            if (currentSerialNumber != serialNumber)
+                            if (currentSupply?.SerialNumber != serialNumber)
                             {
                                 currentSupply = new Supply(serialNumber)
                                 {
@@ -49,7 +48,6 @@ namespace AptekaEuLib.supplies
                                     Items = new List<SupplyItem>()
                                 };
                                 result.Add(currentSupply);
-                                currentSerialNumber = serialNumber;
                             }
 
                             /// Получение товара и категории
