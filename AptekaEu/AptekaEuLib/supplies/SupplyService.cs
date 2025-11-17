@@ -8,7 +8,7 @@ namespace AptekaEuLib.supplies
     public class SupplyService
     {
         private BindingList<Supply> supplies_;
-        private BindingList<Supply> filteredSupplies_;
+        private BindingList<Supply> filteredAndSortedSupplies_;
         private ISuppliesRepository suppliesRepository_;
 
         private string currentSortProperty_ = "DeliveryDate";
@@ -20,13 +20,13 @@ namespace AptekaEuLib.supplies
             suppliesRepository_ = suppliesRepository;
         }
 
-        public BindingList<Supply> FilteredSupplies => filteredSupplies_;
+        public BindingList<Supply> FilteredAndSortedSupplies => filteredAndSortedSupplies_;
 
         public BindingList<Supply> GetAllSupplies()
         {
             supplies_ = new BindingList<Supply>(suppliesRepository_.ReadSupplies());
             ApplyFilterAndSort();
-            return filteredSupplies_;
+            return filteredAndSortedSupplies_;
         }
 
         public void FilterBySupplierTin(string supplierTin)
@@ -84,7 +84,7 @@ namespace AptekaEuLib.supplies
                     : result.OrderByDescending(s => propertyInfo.GetValue(s));
             }
 
-            filteredSupplies_ = new BindingList<Supply>(result.ToList());
+            filteredAndSortedSupplies_ = new BindingList<Supply>(result.ToList());
         }
     }
 }

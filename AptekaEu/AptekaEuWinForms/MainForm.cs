@@ -41,7 +41,7 @@ namespace AptekaEuWinForms
         private void FillFilteredSupplies()
         {
             suppliesGridView.DataSource = null;
-            suppliesGridView.DataSource = supplyService_.FilteredSupplies;
+            suppliesGridView.DataSource = supplyService_.FilteredAndSortedSupplies;
         }
 
         private void addProductButton_Click(object sender, EventArgs e)
