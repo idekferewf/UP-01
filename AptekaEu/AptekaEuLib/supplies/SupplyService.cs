@@ -45,9 +45,9 @@ namespace AptekaEuLib.supplies
 
         public void SortBy(string propertyName)
         {
-            if (propertyName == "TotalCostDisplay")
+            if (Supply.SortProperties.ContainsKey(propertyName))
             {
-                propertyName = "TotalCost";
+                propertyName = Supply.SortProperties[propertyName];
             }
 
             if (currentSortProperty_ == propertyName)

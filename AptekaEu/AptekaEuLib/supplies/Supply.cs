@@ -54,6 +54,11 @@ namespace AptekaEuLib.supplies
             serialNumber_ = serialNumber;
         }
 
+        public static readonly Dictionary<string, string> SortProperties = new Dictionary<string, string>()
+        {
+            { nameof(TotalCostDisplay), nameof(TotalCost) }
+        };
+
         public override bool Equals(object obj)
         {
             if (obj == null || GetType() != obj.GetType())
