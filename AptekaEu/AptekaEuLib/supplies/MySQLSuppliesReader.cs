@@ -19,14 +19,14 @@ namespace AptekaEuLib.supplies
 
                     string query =
                         @"SELECT 
-                            s.serial_number, s.supplier_tin, s.delivery_date,
-                            si.product_id, si.quantity, si.unit_price, si.production_date, si.expiry_date,
-                            p.name as product_name, p.category_id, c.name as category_name, p.purchase_price, p.sale_price, p.actual_quantity
-                        FROM supplies s
-                            LEFT JOIN supply_items si ON s.serial_number = si.supply_serial_number
-                            LEFT JOIN products p ON si.product_id = p.id
-                            LEFT JOIN categories c ON p.category_id = c.id
-                        ORDER BY s.delivery_date, s.serial_number";
+                            supplies.serial_number, supplies.supplier_tin, supplies.delivery_date,
+                            supply_items.product_id, supply_items.quantity, supply_items.unit_price, supply_items.production_date, supply_items.expiry_date,
+                            products.name as product_name, products.category_id, categories.name as category_name, products.purchase_price, products.sale_price, products.actual_quantity
+                        FROM supplies supplies
+                            LEFT JOIN supply_items supply_items ON supplies.serial_number = supply_items.supply_serial_number
+                            LEFT JOIN products products ON supply_items.product_id = products.id
+                            LEFT JOIN categories categories ON products.category_id = categories.id
+                        ORDER BY supplies.delivery_date, supplies.serial_number";
 
                     MySqlCommand command = new MySqlCommand(query, conn);
 
