@@ -128,15 +128,8 @@ namespace AptekaEuWinForms
 
             if (supply != null)
             {
-                if (supply.Items.Count > 0)
-                {
-                    SuppliesItemsForm suppliesItemsForm = new SuppliesItemsForm(supply);
-                    suppliesItemsForm.ShowDialog();
-                } 
-                else
-                {
-                    MessageBox.Show("Позиции для данной поставки не найдены.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                SuppliesItemsForm suppliesItemsForm = new SuppliesItemsForm(supply);
+                suppliesItemsForm.ShowDialog();
             }
         }
 

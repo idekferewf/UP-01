@@ -105,9 +105,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\removeIcon1.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\removeIcon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
