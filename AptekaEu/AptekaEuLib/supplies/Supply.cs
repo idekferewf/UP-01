@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
 
 namespace AptekaEuLib.supplies
 {
@@ -7,18 +9,55 @@ namespace AptekaEuLib.supplies
     {
         private string serialNumber_;
 
+        [DisplayName("Серийный номер")]
         public string SerialNumber { get { return serialNumber_; } }
 
+        [DisplayName("ИНН поставщика")]
         public string SupplierTin { get; set; }
 
         public List<SupplyItem> Items { get; set; }
 
+        [DisplayName("Дата поставки")]
         public DateTime DeliveryDate { get; set; }
+
+        [DisplayName("Количество позиций")]
+        public int ItemsCount
+        {
+            get
+            {
+                return Items.Count;
+            }
+        }
+
+        [Browsable(false)]
+        public double TotalCost
+        {
+            get
+            {
+                if (Items == null || !Items.Any())
+                    return 0;
+                return Items.Sum(item => item.UnitPrice * item.Quantity);
+            }
+        }
+
+        [DisplayName("Сумма поставки")]
+        public string TotalCostDisplay
+        {
+            get
+            {
+                return $"{TotalCost:N2} руб.";
+            }
+        }
 
         public Supply(string serialNumber)
         {
             serialNumber_ = serialNumber;
         }
+
+        public static readonly Dictionary<string, string> SortProperties = new Dictionary<string, string>()
+        {
+            { nameof(TotalCostDisplay), nameof(TotalCost) }
+        };
 
         public override bool Equals(object obj)
         {

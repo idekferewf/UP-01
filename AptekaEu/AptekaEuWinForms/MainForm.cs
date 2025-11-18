@@ -1,28 +1,47 @@
 ﻿using AptekaEuLib;
 using AptekaEuLib.products;
+using AptekaEuLib.supplies;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace AptekaEuWinForms
 {
-    public partial class MainForm: Form
+    public partial class MainForm : Form
     {
         private ProductService productService_;
+        private SupplyService supplyService_;
 
         public MainForm()
         {
             InitializeComponent();
 
             productService_ = new ProductService(new MySQLProductsReader());
-            FillProducts();
-        }   
+            supplyService_ = new SupplyService(new MySQLSuppliesReader());
 
-        public void FillProducts()
+            FillProducts();
+        }
+
+        private void FillProducts()
         {
             productsGridView.DataSource = productService_.GetAllProducts();
             productsGridView.Columns["Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             productsGridView.Columns["Category"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+        }
+
+        private void FillSupplies()
+        {
+            BindingList<Supply> supplies = supplyService_.GetAllSupplies();
+            suppliesGridView.DataSource = supplies;
+            supplierFilterComboBox.Items.AddRange(supplies.Select(s => s.SupplierTin).ToArray());
+        }
+
+        private void FillFilteredSupplies()
+        {
+            suppliesGridView.DataSource = null;
+            suppliesGridView.DataSource = supplyService_.FilteredAndSortedSupplies;
         }
 
         private void addProductButton_Click(object sender, EventArgs e)
@@ -79,6 +98,45 @@ namespace AptekaEuWinForms
             {
                 MessageBox.Show("Товары успешно удалены!", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        private void mainTabControl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (mainTabControl.SelectedIndex == 1 && suppliesGridView.DataSource == null)
+            {
+                FillSupplies();
+            }
+        }
+
+        private void suppliesGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex == -1 && e.ColumnIndex == -1)
+            {
+                return;
+            }
+
+            if (e.RowIndex == -1 && e.ColumnIndex >= 0)
+            {
+                string propertyName = suppliesGridView.Columns[e.ColumnIndex].DataPropertyName;
+                supplyService_.SortBy(propertyName);
+                FillFilteredSupplies();
+                return;
+            }
+
+            DataGridViewRow row = suppliesGridView.Rows[e.RowIndex];
+            Supply supply = (Supply)row.DataBoundItem;
+
+            if (supply != null)
+            {
+                SuppliesItemsForm suppliesItemsForm = new SuppliesItemsForm(supply);
+                suppliesItemsForm.ShowDialog();
+            }
+        }
+
+        private void supplierFilterComboBox_TextChanged(object sender, EventArgs e)
+        {
+            supplyService_.FilterBySupplierTin(supplierFilterComboBox.Text);
+            FillFilteredSupplies();
         }
     }
 }

@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using AptekaEuLib.products;
 using MySql.Data.MySqlClient;
+using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
-using AptekaEuLib.products;
 
 namespace AptekaEuLib
 {
@@ -88,7 +88,8 @@ namespace AptekaEuLib
                     }
                 }
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 MessageBox.Show($"Произошла ошибка при загрузке товаров: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return result;

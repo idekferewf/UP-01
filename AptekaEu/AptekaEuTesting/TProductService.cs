@@ -18,11 +18,11 @@ namespace AptekaEuTesting
         [DataRow("Парацетамол 500 мг", -1, 299.00, 399.00, 100, 0, "Категория не найдена.")]
         public void TestAddProduct(string name, int categoryId, double purchasePrice, double salePrice, int actualQuantity, int result, string expected)
         {
-            var mockRepo = new Mock<IProductsRepository>();
+            Mock<IProductsRepository> mockRepo = new Mock<IProductsRepository>();
 
-            var category = new Category(categoryId);
+            Category category = new Category(categoryId);
 
-            var product = new Product(null)
+            Product product = new Product(null)
             {
                 Name = name,
                 Category = category,
@@ -33,7 +33,7 @@ namespace AptekaEuTesting
 
             mockRepo.Setup(r => r.AddProduct(product)).Returns(result);
 
-            var productService = new ProductService(mockRepo.Object);
+            ProductService productService = new ProductService(mockRepo.Object);
 
             string error = productService.AddProduct(product);
 
@@ -42,7 +42,8 @@ namespace AptekaEuTesting
             if (string.IsNullOrEmpty(error))
             {
                 mockRepo.Verify(r => r.AddProduct(product), Times.Once);
-            } else
+            }
+            else
             {
                 mockRepo.Verify(r => r.AddProduct(product), Times.Never);
             }
@@ -55,17 +56,17 @@ namespace AptekaEuTesting
         [DataRow(new int[] { 19, 9 }, false, "Данных товаров не существует.")]
         public void TestDeleteProduct(int[] productIds, bool result, string expected)
         {
-            var mockRepo = new Mock<IProductsRepository>();
-            var productService = new ProductService(mockRepo.Object);
+            Mock<IProductsRepository> mockRepo = new Mock<IProductsRepository>();
+            ProductService productService = new ProductService(mockRepo.Object);
 
-            var existingProducts = new List<Product>
+            List<Product> existingProducts = new List<Product>
             {
                 new Product(1) { Name = "Парацетамол 500 мг", Category = new Category(1), PurchasePrice = 299.00, SalePrice = 399.00, ActualQuantity = 100 },
                 new Product(2) { Name = "Парацетамол 250 мг", Category = new Category(1), PurchasePrice = 159.00, SalePrice = 279.00, ActualQuantity = 13 },
                 new Product(3) { Name = "Амоксиклав 625мг таб. №14", Category = new Category(2), PurchasePrice = 199.00, SalePrice = 349.00, ActualQuantity = 79 },
                 new Product(4) { Name = "Мыло жидкое антибактериальное", Category = new Category(3), PurchasePrice = 249.00, SalePrice = 419.00, ActualQuantity = 54 }
             };
-            
+
             foreach (Product product in existingProducts)
             {
                 mockRepo.Setup(r => r.AddProduct(product)).Returns((int)product.Id);
