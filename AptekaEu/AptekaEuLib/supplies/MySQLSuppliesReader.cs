@@ -27,8 +27,7 @@ namespace AptekaEuLib.supplies
                             INNER JOIN suppliers suppliers ON supplies.supplier_tin = suppliers.tin
                             INNER JOIN supply_items supply_items ON supplies.serial_number = supply_items.supply_serial_number
                             INNER JOIN products products ON supply_items.product_id = products.id
-                            INNER JOIN categories categories ON products.category_id = categories.id
-                        ORDER BY supplies.delivery_date, supplies.serial_number";
+                            INNER JOIN categories categories ON products.category_id = categories.id;";
 
                     MySqlCommand command = new MySqlCommand(query, conn);
 
