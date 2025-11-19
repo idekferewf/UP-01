@@ -6,13 +6,13 @@
 
         public string Tin { get {  return tin_; } }
 
-        public string Name;
+        public string Name { get; set; }
 
-        public string ContactPerson;
+        public string ContactPerson { get; set; }
 
-        public string Phone;
+        public string Phone { get; set; }
 
-        public string Address;
+        public string Address { get; set; }
 
         public Supplier(string tin)
         {
