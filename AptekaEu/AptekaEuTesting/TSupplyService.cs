@@ -197,5 +197,34 @@ namespace AptekaEuTesting
             Assert.AreEqual("Серийный номер не может быть пустым.", result);
             mockRepo.Verify(repo => repo.AddSupply(supply), Times.Never);
         }
+
+        [TestMethod]
+        public void TestAddSupply_WithNullSupplier()
+        {
+            Mock<ISuppliesRepository> mockRepo = new Mock<ISuppliesRepository>();
+            SupplyService supplyService = new SupplyService(mockRepo.Object);
+
+            Product existingProduct = new Product(1) { Name = "Парацетамол 500 мг", ActualQuantity = 13 };
+
+            Supply supply = new Supply("SUP-2025-002")
+            {
+                Supplier = null,
+                DeliveryDate = new DateTime(2025, 11, 1),
+                Items = new List<SupplyItem>
+                {
+                    new SupplyItem
+                    {
+                        Product = existingProduct,
+                        Quantity = 20,
+                        UnitPrice = 299.00
+                    }
+                }
+            };
+
+            string result = supplyService.AddSupply(supply);
+
+            Assert.AreEqual("Поставщик не указан.", result);
+            mockRepo.Verify(repo => repo.AddSupply(supply), Times.Never);
+        }
     }
 }
