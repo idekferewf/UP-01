@@ -73,7 +73,7 @@ namespace AptekaEuLib.supplies
 
             if (!string.IsNullOrEmpty(currentSupplierFilter_))
             {
-                result = result.Where(s => s.SupplierTin == currentSupplierFilter_);
+                result = result.Where(s => s.Supplier.Tin == currentSupplierFilter_);
             }
 
             PropertyInfo propertyInfo = typeof(Supply).GetProperty(currentSortProperty_);

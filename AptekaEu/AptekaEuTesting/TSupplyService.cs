@@ -29,7 +29,7 @@ namespace AptekaEuTesting
             {
                 new Supply("SUP-2024-001")
                 {
-                    SupplierTin = "1001",
+                    Supplier = new Supplier("1001"),
                     DeliveryDate = new DateTime(2024, 1, 10),
                     Items = new List<SupplyItem>
                     {
@@ -53,7 +53,7 @@ namespace AptekaEuTesting
                 },
                 new Supply("SUP-2024-002")
                 {
-                    SupplierTin = "1002",
+                    Supplier = new Supplier("1001"),
                     DeliveryDate = new DateTime(2024, 1, 12),
                     Items = new List<SupplyItem>
                     {
@@ -69,7 +69,7 @@ namespace AptekaEuTesting
                 },
                 new Supply("SUP-2024-003")
                 {
-                    SupplierTin = "1003",
+                    Supplier = new Supplier("1001"),
                     DeliveryDate = new DateTime(2024, 1, 15),
                     Items = new List<SupplyItem>
                     {

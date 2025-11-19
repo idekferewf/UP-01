@@ -52,7 +52,6 @@ namespace AptekaEuLib.supplies
 
                                 currentSupply = new Supply(serialNumber)
                                 {
-                                    SupplierTin = reader.GetString("supplier_tin"),
                                     Supplier = supplier,
                                     DeliveryDate = reader.GetDateTime("delivery_date"),
                                     Items = new List<SupplyItem>()
