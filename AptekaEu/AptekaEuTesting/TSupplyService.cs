@@ -166,5 +166,36 @@ namespace AptekaEuTesting
             double expectedTotalCost = (50 * 165.00) + (25 * 159.00);
             Assert.AreEqual(expectedTotalCost, supply.TotalCost);
         }
+
+        [TestMethod]
+        public void TestAddSupply_WithEmptySerialNumber()
+        {
+            Mock<ISuppliesRepository> mockRepo = new Mock<ISuppliesRepository>();
+            SupplyService supplyService = new SupplyService(mockRepo.Object);
+
+            Supplier supplier = new Supplier("1234567890") { Name = "ЗАО \"Технопром\"" };
+
+            Product existingProduct = new Product(1) { Name = "Нурофен 500мг таб. №12", ActualQuantity = 10 };
+
+            Supply supply = new Supply("")
+            {
+                Supplier = supplier,
+                DeliveryDate = new DateTime(2025, 11, 10),
+                Items = new List<SupplyItem>
+                {
+                    new SupplyItem
+                    {
+                        Product = existingProduct,
+                        Quantity = 10,
+                        UnitPrice = 200.00
+                    }
+                }
+            };
+
+            string result = supplyService.AddSupply(supply);
+
+            Assert.AreEqual("Серийный номер не может быть пустым.", result);
+            mockRepo.Verify(repo => repo.AddSupply(supply), Times.Never);
+        }
     }
 }
