@@ -29,6 +29,11 @@ namespace AptekaEuLib.supplies
             return filteredAndSortedSupplies_;
         }
 
+        public string AddSupply(Supply supply)
+        {
+            return "";
+        }
+
         public void FilterBySupplierTin(string supplierTin)
         {
             if (supplierTin == "Все" || string.IsNullOrWhiteSpace(supplierTin))
