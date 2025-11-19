@@ -115,5 +115,48 @@ namespace AptekaEuTesting
 
             CollectionAssert.AreEqual(expectedSupplies, actualSuppliesList);
         }
+
+        [TestMethod]
+        public void TestAddSupply_WithCorrectData()
+        {
+            Mock<ISuppliesRepository> mockRepo = new Mock<ISuppliesRepository>();
+            SupplyService supplyService = new SupplyService(mockRepo.Object);
+
+            Supplier supplier = new Supplier("1234567890") { Name = "ЗАО \"Технопром\"" };
+
+            List<Product> existingProducts = new List<Product>
+            {
+                new Product(1) { Name = "Нурофен 200мг таб. №10", ActualQuantity = 23 },
+                new Product(2) { Name = "Парацетамол 250 мг", ActualQuantity = 15 }
+            };
+
+            Supply supply = new Supply("SUP-2025-001")
+            {
+                Supplier = supplier,
+                DeliveryDate = new DateTime(2025, 11, 15),
+                Items = new List<SupplyItem>
+                {
+                    new SupplyItem
+                    {
+                        Product = existingProducts[0],
+                        Quantity = 50,
+                        UnitPrice = 165.00
+                    },
+                    new SupplyItem
+                    {
+                        Product = existingProducts[1],
+                        Quantity = 25,
+                        UnitPrice = 159.00
+                    }
+                }
+            };
+
+            mockRepo.Setup(repo => repo.AddSupply(supply)).Returns(true);
+
+            string result = supplyService.AddSupply(supply);
+
+            Assert.AreEqual(string.Empty, result);
+            mockRepo.Verify(repo => repo.AddSupply(supply), Times.Once);
+        }
     }
 }
