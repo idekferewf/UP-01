@@ -53,7 +53,7 @@ namespace AptekaEuTesting
                 },
                 new Supply("SUP-2024-002")
                 {
-                    Supplier = new Supplier("1001"),
+                    Supplier = new Supplier("1002"),
                     DeliveryDate = new DateTime(2024, 1, 12),
                     Items = new List<SupplyItem>
                     {
@@ -69,7 +69,7 @@ namespace AptekaEuTesting
                 },
                 new Supply("SUP-2024-003")
                 {
-                    Supplier = new Supplier("1001"),
+                    Supplier = new Supplier("1003"),
                     DeliveryDate = new DateTime(2024, 1, 15),
                     Items = new List<SupplyItem>
                     {
@@ -122,7 +122,7 @@ namespace AptekaEuTesting
             Mock<ISuppliesRepository> mockRepo = new Mock<ISuppliesRepository>();
             SupplyService supplyService = new SupplyService(mockRepo.Object);
 
-            Supplier supplier = new Supplier("1234567890") { Name = "ЗАО \"Технопром\"" };
+            Supplier supplier = new Supplier("1001") { Name = "ЗАО \"Технопром\"" };
 
             List<Product> existingProducts = new List<Product>
             {
@@ -173,7 +173,7 @@ namespace AptekaEuTesting
             Mock<ISuppliesRepository> mockRepo = new Mock<ISuppliesRepository>();
             SupplyService supplyService = new SupplyService(mockRepo.Object);
 
-            Supplier supplier = new Supplier("1234567890") { Name = "ЗАО \"Технопром\"" };
+            Supplier supplier = new Supplier("1001") { Name = "ЗАО \"Технопром\"" };
 
             Product existingProduct = new Product(1) { Name = "Нурофен 500мг таб. №12", ActualQuantity = 10 };
 
@@ -233,9 +233,9 @@ namespace AptekaEuTesting
             Mock<ISuppliesRepository> mockRepo = new Mock<ISuppliesRepository>();
             SupplyService supplyService = new SupplyService(mockRepo.Object);
 
-            var supplier = new Supplier("1234567890") { Name = "ЗАО \"Технопром\"" };
+            Supplier supplier = new Supplier("1001") { Name = "ЗАО \"Технопром\"" };
 
-            var supply = new Supply("SUP-2025-004")
+            Supply supply = new Supply("SUP-2025-004")
             {
                 Supplier = supplier,
                 DeliveryDate = new DateTime(2025, 10, 1),
