@@ -226,5 +226,26 @@ namespace AptekaEuTesting
             Assert.AreEqual("Поставщик не указан.", result);
             mockRepo.Verify(repo => repo.AddSupply(supply), Times.Never);
         }
+
+        [TestMethod]
+        public void TestAddSupply_WithEmptyItems()
+        {
+            Mock<ISuppliesRepository> mockRepo = new Mock<ISuppliesRepository>();
+            SupplyService supplyService = new SupplyService(mockRepo.Object);
+
+            var supplier = new Supplier("1234567890") { Name = "ЗАО \"Технопром\"" };
+
+            var supply = new Supply("SUP-2025-004")
+            {
+                Supplier = supplier,
+                DeliveryDate = new DateTime(2025, 10, 1),
+                Items = new List<SupplyItem>()
+            };
+
+            string result = supplyService.AddSupply(supply);
+
+            Assert.AreEqual("Необходимо добавить хотя бы одну позицию для создания поставки.", result);
+            mockRepo.Verify(repo => repo.AddSupply(supply), Times.Never);
+        }
     }
 }
