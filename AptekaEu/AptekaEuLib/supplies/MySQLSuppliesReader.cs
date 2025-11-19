@@ -8,6 +8,11 @@ namespace AptekaEuLib.supplies
 {
     public class MySQLSuppliesReader : ISuppliesRepository
     {
+        public bool AddSupply(Supply supply)
+        {
+            return false;
+        }
+
         public List<Supply> ReadSupplies()
         {
             List<Supply> result = new List<Supply>();
