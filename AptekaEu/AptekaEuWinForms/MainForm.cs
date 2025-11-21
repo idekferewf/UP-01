@@ -138,5 +138,9 @@ namespace AptekaEuWinForms
             supplyService_.FilterBySupplierTin(supplierFilterComboBox.Text);
             FillFilteredSupplies();
         }
+
+        private void addSupplyButton_Click(object sender, EventArgs e)
+        {
+        }
     }
 }
