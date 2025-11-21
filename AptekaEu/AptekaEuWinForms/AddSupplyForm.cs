@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AptekaEuLib.supplies;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,14 @@ namespace AptekaEuWinForms
 {
     public partial class AddSupplyForm: Form
     {
-        public AddSupplyForm()
+        public AddSupplyForm(List<Supplier> suppliers)
         {
             InitializeComponent();
+        }
+
+        public void FillSuppliers(List<Supplier> suppliers)
+        {
+            supplierComboBox.DataSource = suppliers;
         }
     }
 }
