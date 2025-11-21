@@ -156,5 +156,34 @@ namespace AptekaEuLib.supplies
             }
             return result;
         }
+
+        public List<Supplier> ReadSuppliers()
+        {
+            List<Supplier> result = new List<Supplier>();
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(MySQLConfig.DbConnectionString))
+                {
+                    conn.Open();
+                    string query = @"SELECT tin, name FROM suppliers;";
+                    MySqlCommand command = new MySqlCommand(query, conn);
+
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Supplier supplier = new Supplier(reader.GetString("tin"));
+                            supplier.Name = reader.GetString("name");
+                            result.Add(supplier);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Произошла ошибка при загрузке поставщиков: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return result;
+        }
     }
 }

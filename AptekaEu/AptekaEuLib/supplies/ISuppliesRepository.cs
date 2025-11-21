@@ -7,5 +7,7 @@ namespace AptekaEuLib.supplies
         bool AddSupply(Supply supply);
 
         List<Supply> ReadSupplies();
+
+        List<Supplier> ReadSupplier();
     }
 }
