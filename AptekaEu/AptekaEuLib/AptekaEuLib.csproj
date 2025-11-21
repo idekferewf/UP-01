@@ -111,6 +111,7 @@
     <Compile Include="supplies\Supply.cs" />
     <Compile Include="supplies\SupplyItem.cs" />
     <Compile Include="supplies\SupplyService.cs" />
+    <Compile Include="supplies\Supplier.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
