@@ -13,7 +13,7 @@ namespace AptekaEuLib.supplies
         public string SerialNumber { get { return serialNumber_; } }
 
         [DisplayName("ИНН поставщика")]
-        public string SupplierTin { get; set; }
+        public Supplier Supplier { get; set; }
 
         public List<SupplyItem> Items { get; set; }
 
@@ -68,7 +68,7 @@ namespace AptekaEuLib.supplies
 
             Supply other = (Supply)obj;
 
-            if (SerialNumber != other.SerialNumber || SupplierTin != other.SupplierTin || DeliveryDate != other.DeliveryDate)
+            if (SerialNumber != other.SerialNumber || Supplier.Tin != other.Supplier.Tin || DeliveryDate != other.DeliveryDate)
             {
                 return false;
             }
@@ -112,7 +112,7 @@ namespace AptekaEuLib.supplies
             {
                 int hash = 17;
                 hash = hash * 23 + SerialNumber.GetHashCode();
-                hash = hash * 23 + SupplierTin.GetHashCode();
+                hash = hash * 23 + Supplier.Tin.GetHashCode();
                 hash = hash * 23 + DeliveryDate.GetHashCode();
 
                 if (Items != null)

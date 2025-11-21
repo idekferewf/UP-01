@@ -8,6 +8,11 @@ namespace AptekaEuLib.supplies
 {
     public class MySQLSuppliesReader : ISuppliesRepository
     {
+        public bool AddSupply(Supply supply)
+        {
+            return false;
+        }
+
         public List<Supply> ReadSupplies()
         {
             List<Supply> result = new List<Supply>();
@@ -19,14 +24,15 @@ namespace AptekaEuLib.supplies
 
                     string query =
                         @"SELECT 
-                            supplies.serial_number, supplies.supplier_tin, supplies.delivery_date,
+                            supplies.serial_number, supplies.supplier_tin, supplies.delivery_date, suppliers.name as supplier_name,
                             supply_items.product_id, supply_items.quantity, supply_items.unit_price, supply_items.production_date, supply_items.expiry_date,
                             products.name as product_name, products.category_id, categories.name as category_name, products.purchase_price, products.sale_price, products.actual_quantity
                         FROM supplies supplies
+                            INNER JOIN suppliers suppliers ON supplies.supplier_tin = suppliers.tin
                             INNER JOIN supply_items supply_items ON supplies.serial_number = supply_items.supply_serial_number
                             INNER JOIN products products ON supply_items.product_id = products.id
                             INNER JOIN categories categories ON products.category_id = categories.id
-                        ORDER BY supplies.delivery_date, supplies.serial_number";
+                        ORDER BY supplies.serial_number;";
 
                     MySqlCommand command = new MySqlCommand(query, conn);
 
@@ -41,9 +47,14 @@ namespace AptekaEuLib.supplies
                             /// Создаём объект Supply, если это новая поставка
                             if (currentSupply?.SerialNumber != serialNumber)
                             {
+                                Supplier supplier = new Supplier(reader.GetString("supplier_tin"))
+                                {
+                                    Name = reader.GetString("supplier_name"),
+                                };
+
                                 currentSupply = new Supply(serialNumber)
                                 {
-                                    SupplierTin = reader.GetString("supplier_tin"),
+                                    Supplier = supplier,
                                     DeliveryDate = reader.GetDateTime("delivery_date"),
                                     Items = new List<SupplyItem>()
                                 };
