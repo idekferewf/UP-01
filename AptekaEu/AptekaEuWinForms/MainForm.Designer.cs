@@ -58,12 +58,12 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.productsGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
             this.productsGridView.ColumnHeadersHeight = 40;
-            this.productsGridView.Location = new System.Drawing.Point(3, 37);
+            this.productsGridView.Location = new System.Drawing.Point(0, 37);
             this.productsGridView.Name = "productsGridView";
             this.productsGridView.ReadOnly = true;
             this.productsGridView.RowHeadersWidth = 72;
             this.productsGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.productsGridView.Size = new System.Drawing.Size(786, 384);
+            this.productsGridView.Size = new System.Drawing.Size(792, 387);
             this.productsGridView.TabIndex = 0;
             // 
             // mainTabControl
