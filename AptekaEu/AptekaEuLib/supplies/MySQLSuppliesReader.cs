@@ -24,8 +24,7 @@ namespace AptekaEuLib.supplies
 
                     string query =
                         @"SELECT 
-                            supplies.serial_number, supplies.supplier_tin, supplies.delivery_date,
-                            suppliers.name as supplier_name, suppliers.contact_person, suppliers.phone, suppliers.address,
+                            supplies.serial_number, supplies.supplier_tin, supplies.delivery_date, suppliers.name as supplier_name,
                             supply_items.product_id, supply_items.quantity, supply_items.unit_price, supply_items.production_date, supply_items.expiry_date,
                             products.name as product_name, products.category_id, categories.name as category_name, products.purchase_price, products.sale_price, products.actual_quantity
                         FROM supplies supplies
@@ -51,9 +50,6 @@ namespace AptekaEuLib.supplies
                                 Supplier supplier = new Supplier(reader.GetString("supplier_tin"))
                                 {
                                     Name = reader.GetString("supplier_name"),
-                                    ContactPerson = reader.GetString("contact_person"),
-                                    Phone = reader.GetString("phone"),
-                                    Address = reader.GetString("address")
                                 };
 
                                 currentSupply = new Supply(serialNumber)
