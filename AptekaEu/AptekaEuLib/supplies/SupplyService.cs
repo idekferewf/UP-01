@@ -29,6 +29,11 @@ namespace AptekaEuLib.supplies
             return filteredAndSortedSupplies_;
         }
 
+        public List<Supplier> GetAllSuppliers()
+        {
+            return suppliesRepository_.ReadSuppliers();
+        }
+
         public string AddSupply(Supply supply)
         {
             if (string.IsNullOrEmpty(supply.SerialNumber))

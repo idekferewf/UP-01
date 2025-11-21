@@ -8,6 +8,6 @@ namespace AptekaEuLib.supplies
 
         List<Supply> ReadSupplies();
 
-        List<Supplier> ReadSupplier();
+        List<Supplier> ReadSuppliers();
     }
 }
