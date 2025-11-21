@@ -50,7 +50,7 @@ namespace AptekaEuWinForms
             AddProductForm addProductForm = new AddProductForm(categories);
             if (addProductForm.ShowDialog() == DialogResult.OK)
             {
-                string error = productService_.AddProduct(addProductForm.product);
+                string error = productService_.AddProduct(addProductForm.Product);
                 if (error != string.Empty)
                 {
                     MessageBox.Show(error, "Ошибка при добавлении", MessageBoxButtons.OK, MessageBoxIcon.Error);
