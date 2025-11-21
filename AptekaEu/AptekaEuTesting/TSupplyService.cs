@@ -119,10 +119,11 @@ namespace AptekaEuTesting
         [TestMethod]
         public void TestAddSupply_WithCorrectData()
         {
-            Mock<ISuppliesRepository> mockRepo = new Mock<ISuppliesRepository>();
-            SupplyService supplyService = new SupplyService(mockRepo.Object);
+            Mock<ISuppliesRepository> suppliesMockRepo = new Mock<ISuppliesRepository>();
+            SupplyService supplyService = new SupplyService(suppliesMockRepo.Object);
 
-            Supplier supplier = new Supplier("1001") { Name = "ЗАО \"Технопром\"" };
+            Mock<IProductsRepository> productsMockRepo = new Mock<IProductsRepository>();
+            ProductService productService = new ProductService(productsMockRepo.Object);
 
             List<Product> existingProducts = new List<Product>
             {
@@ -130,9 +131,11 @@ namespace AptekaEuTesting
                 new Product(2) { Name = "Парацетамол 250 мг", ActualQuantity = 15 }
             };
 
+            productsMockRepo.Setup(repo => repo.ReadProducts()).Returns(existingProducts);
+
             Supply supply = new Supply("SUP-2025-001")
             {
-                Supplier = supplier,
+                Supplier = new Supplier("1001"),
                 DeliveryDate = new DateTime(2025, 11, 15),
                 Items = new List<SupplyItem>
                 {
@@ -151,15 +154,17 @@ namespace AptekaEuTesting
                 }
             };
 
-            mockRepo.Setup(repo => repo.AddSupply(supply)).Returns(true);
+            suppliesMockRepo.Setup(repo => repo.AddSupply(supply)).Returns(true);
 
             string result = supplyService.AddSupply(supply);
 
             Assert.AreEqual(string.Empty, result);
-            mockRepo.Verify(repo => repo.AddSupply(supply), Times.Once);
+            suppliesMockRepo.Verify(repo => repo.AddSupply(supply), Times.Once);
 
-            Assert.AreEqual(73, existingProducts[0].ActualQuantity);
-            Assert.AreEqual(40, existingProducts[1].ActualQuantity);
+            BindingList<Product> resultProducts = productService.GetAllProducts();
+            Assert.AreEqual(2, resultProducts.Count);
+            Assert.AreEqual(73, resultProducts[0].ActualQuantity);
+            Assert.AreEqual(40, resultProducts[1].ActualQuantity);
 
             double expectedTotalCost = (50 * 165.00) + (25 * 159.00);
             Assert.AreEqual(expectedTotalCost, supply.TotalCost);
