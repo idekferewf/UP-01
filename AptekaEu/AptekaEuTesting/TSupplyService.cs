@@ -158,11 +158,9 @@ namespace AptekaEuTesting
             Assert.AreEqual(string.Empty, result);
             mockRepo.Verify(repo => repo.AddSupply(supply), Times.Once);
 
-            // Проверка обновления количества товаров
             Assert.AreEqual(73, existingProducts[0].ActualQuantity);
             Assert.AreEqual(40, existingProducts[1].ActualQuantity);
 
-            // Проверка общей суммы поставки
             double expectedTotalCost = (50 * 165.00) + (25 * 159.00);
             Assert.AreEqual(expectedTotalCost, supply.TotalCost);
         }
