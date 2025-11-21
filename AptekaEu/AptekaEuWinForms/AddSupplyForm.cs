@@ -1,4 +1,5 @@
 ﻿using AptekaEuLib.supplies;
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
@@ -16,6 +17,11 @@ namespace AptekaEuWinForms
         public void FillSuppliers(List<Supplier> suppliers)
         {
             supplierComboBox.DataSource = suppliers;
+        }
+
+        private void cancelButton_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
