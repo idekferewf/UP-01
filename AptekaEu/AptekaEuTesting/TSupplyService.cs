@@ -168,83 +168,38 @@ namespace AptekaEuTesting
         }
 
         [TestMethod]
-        public void TestAddSupply_WithEmptySerialNumber()
+        [DataRow("", "1001", true, "Серийный номер не может быть пустым.")]
+        [DataRow("SUP-2025-002", null, true, "Поставщик не указан.")]
+        [DataRow("SUP-2025-003", "1002", false, "Необходимо добавить хотя бы одну позицию для создания поставки.")]
+        public void TestAddSupply_WithIncorrectData(string serialNumber, string supplierTin, bool hasItems, string expected)
         {
             Mock<ISuppliesRepository> mockRepo = new Mock<ISuppliesRepository>();
             SupplyService supplyService = new SupplyService(mockRepo.Object);
 
-            Supplier supplier = new Supplier("1001") { Name = "ЗАО \"Технопром\"" };
+            Supplier supplier = string.IsNullOrEmpty(supplierTin) ? null : new Supplier(supplierTin);
 
-            Product existingProduct = new Product(1) { Name = "Нурофен 500мг таб. №12", ActualQuantity = 10 };
+            List<SupplyItem> items = new List<SupplyItem>();
+            if (hasItems)
+            {
+                Product existingProduct = new Product(1) { Name = "Нурофен 500мг таб. №12", ActualQuantity = 10 };
+                items.Add(new SupplyItem
+                {
+                    Product = existingProduct,
+                    Quantity = 10,
+                    UnitPrice = 200.00
+                });
+            }
 
-            Supply supply = new Supply("")
+            Supply supply = new Supply(serialNumber)
             {
                 Supplier = supplier,
                 DeliveryDate = new DateTime(2025, 11, 10),
-                Items = new List<SupplyItem>
-                {
-                    new SupplyItem
-                    {
-                        Product = existingProduct,
-                        Quantity = 10,
-                        UnitPrice = 200.00
-                    }
-                }
+                Items = items
             };
 
             string result = supplyService.AddSupply(supply);
 
-            Assert.AreEqual("Серийный номер не может быть пустым.", result);
-            mockRepo.Verify(repo => repo.AddSupply(supply), Times.Never);
-        }
-
-        [TestMethod]
-        public void TestAddSupply_WithNullSupplier()
-        {
-            Mock<ISuppliesRepository> mockRepo = new Mock<ISuppliesRepository>();
-            SupplyService supplyService = new SupplyService(mockRepo.Object);
-
-            Product existingProduct = new Product(1) { Name = "Парацетамол 500 мг", ActualQuantity = 13 };
-
-            Supply supply = new Supply("SUP-2025-002")
-            {
-                Supplier = null,
-                DeliveryDate = new DateTime(2025, 11, 1),
-                Items = new List<SupplyItem>
-                {
-                    new SupplyItem
-                    {
-                        Product = existingProduct,
-                        Quantity = 20,
-                        UnitPrice = 299.00
-                    }
-                }
-            };
-
-            string result = supplyService.AddSupply(supply);
-
-            Assert.AreEqual("Поставщик не указан.", result);
-            mockRepo.Verify(repo => repo.AddSupply(supply), Times.Never);
-        }
-
-        [TestMethod]
-        public void TestAddSupply_WithEmptyItems()
-        {
-            Mock<ISuppliesRepository> mockRepo = new Mock<ISuppliesRepository>();
-            SupplyService supplyService = new SupplyService(mockRepo.Object);
-
-            Supplier supplier = new Supplier("1001") { Name = "ЗАО \"Технопром\"" };
-
-            Supply supply = new Supply("SUP-2025-004")
-            {
-                Supplier = supplier,
-                DeliveryDate = new DateTime(2025, 10, 1),
-                Items = new List<SupplyItem>()
-            };
-
-            string result = supplyService.AddSupply(supply);
-
-            Assert.AreEqual("Необходимо добавить хотя бы одну позицию для создания поставки.", result);
+            Assert.AreEqual(expected, result);
             mockRepo.Verify(repo => repo.AddSupply(supply), Times.Never);
         }
     }
