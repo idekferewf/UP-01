@@ -45,6 +45,17 @@ namespace AptekaEuLib.supplies
                                 itemCommand.Parameters.AddWithValue("@production_date", item.ProductionDate);
                                 itemCommand.Parameters.AddWithValue("@expiry_date", item.ExpiryDate);
                                 itemCommand.ExecuteNonQuery();
+
+                                // Обновление количества товара
+                                string updateProductQuery = @"
+                                    UPDATE products 
+                                    SET actual_quantity = actual_quantity + @quantity 
+                                    WHERE id = @product_id;";
+
+                                MySqlCommand updateCommand = new MySqlCommand(updateProductQuery, conn, transaction);
+                                updateCommand.Parameters.AddWithValue("@quantity", item.Quantity);
+                                updateCommand.Parameters.AddWithValue("@product_id", item.Product.Id);
+                                updateCommand.ExecuteNonQuery();
                             }
 
                             transaction.Commit();
