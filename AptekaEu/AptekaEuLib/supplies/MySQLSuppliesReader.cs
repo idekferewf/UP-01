@@ -10,7 +10,58 @@ namespace AptekaEuLib.supplies
     {
         public bool AddSupply(Supply supply)
         {
-            return false;
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(MySQLConfig.DbConnectionString))
+                {
+                    conn.Open();
+                    using (MySqlTransaction transaction = conn.BeginTransaction())
+                    {
+                        try
+                        {
+                            // Добавление поставки
+                            string supplyQuery = @"
+                                INSERT INTO supplies (serial_number, supplier_tin, delivery_date) 
+                                VALUES (@serial_number, @supplier_tin, @delivery_date);";
+
+                            MySqlCommand supplyCommand = new MySqlCommand(supplyQuery, conn, transaction);
+                            supplyCommand.Parameters.AddWithValue("@serial_number", supply.SerialNumber);
+                            supplyCommand.Parameters.AddWithValue("@supplier_tin", supply.Supplier.Tin);
+                            supplyCommand.Parameters.AddWithValue("@delivery_date", supply.DeliveryDate);
+                            supplyCommand.ExecuteNonQuery();
+
+                            // Добавление позиций поставки
+                            foreach (SupplyItem item in supply.Items)
+                            {
+                                string supplyItemQuery = @"
+                                    INSERT INTO supply_items (supply_serial_number, product_id, quantity, unit_price, production_date, expiry_date) 
+                                    VALUES (@supply_serial_number, @product_id, @quantity, @unit_price, @production_date, @expiry_date);";
+
+                                MySqlCommand itemCommand = new MySqlCommand(supplyItemQuery, conn, transaction);
+                                itemCommand.Parameters.AddWithValue("@supply_serial_number", supply.SerialNumber);
+                                itemCommand.Parameters.AddWithValue("@product_id", item.Product.Id);
+                                itemCommand.Parameters.AddWithValue("@quantity", item.Quantity);
+                                itemCommand.Parameters.AddWithValue("@unit_price", item.UnitPrice);
+                                itemCommand.Parameters.AddWithValue("@production_date", item.ProductionDate);
+                                itemCommand.Parameters.AddWithValue("@expiry_date", item.ExpiryDate);
+                                itemCommand.ExecuteNonQuery();
+                            }
+
+                            transaction.Commit();
+                        }
+                        catch (Exception)
+                        {
+                            transaction.Rollback();
+                            return false;
+                        }
+                    }
+                }
+            } 
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
         }
 
         public List<Supply> ReadSupplies()
