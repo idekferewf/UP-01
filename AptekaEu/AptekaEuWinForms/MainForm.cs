@@ -35,7 +35,7 @@ namespace AptekaEuWinForms
         {
             BindingList<Supply> supplies = supplyService_.GetAllSupplies();
             suppliesGridView.DataSource = supplies;
-            supplierFilterComboBox.Items.AddRange(supplies.Select(s => s.Supplier.Tin).ToArray());
+            supplierFilterComboBox.Items.AddRange(supplies.Select(s => s.Supplier.Name).ToArray());
         }
 
         private void FillFilteredSupplies()
