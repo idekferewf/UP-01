@@ -8,7 +8,7 @@ namespace AptekaEuWinForms
 {
     public partial class AddProductForm : Form
     {
-        public Product product { get; set; }
+        public Product Product { get; set; }
 
         public AddProductForm(List<Category> categories)
         {
@@ -46,7 +46,7 @@ namespace AptekaEuWinForms
                     SalePrice = (double)salePriceNumericUpDown.Value,
                     ActualQuantity = (int)actualQuantiryNumericUpDown.Value,
                 };
-                product = productToAdd;
+                Product = productToAdd;
 
                 DialogResult = DialogResult.OK;
             }

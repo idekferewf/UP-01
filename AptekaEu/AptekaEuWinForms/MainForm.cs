@@ -35,7 +35,7 @@ namespace AptekaEuWinForms
         {
             BindingList<Supply> supplies = supplyService_.GetAllSupplies();
             suppliesGridView.DataSource = supplies;
-            supplierFilterComboBox.Items.AddRange(supplies.Select(s => s.Supplier.Tin).ToArray());
+            supplierFilterComboBox.Items.AddRange(supplies.Select(s => s.Supplier.Name).ToArray());
         }
 
         private void FillFilteredSupplies()
@@ -50,7 +50,7 @@ namespace AptekaEuWinForms
             AddProductForm addProductForm = new AddProductForm(categories);
             if (addProductForm.ShowDialog() == DialogResult.OK)
             {
-                string error = productService_.AddProduct(addProductForm.product);
+                string error = productService_.AddProduct(addProductForm.Product);
                 if (error != string.Empty)
                 {
                     MessageBox.Show(error, "Ошибка при добавлении", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -137,6 +137,24 @@ namespace AptekaEuWinForms
         {
             supplyService_.FilterBySupplierTin(supplierFilterComboBox.Text);
             FillFilteredSupplies();
+        }
+
+        private void addSupplyButton_Click(object sender, EventArgs e)
+        {
+            List<Supplier> suppliers = supplyService_.GetAllSuppliers();
+            AddSupplyForm addSupplyForm = new AddSupplyForm(suppliers);
+            if (addSupplyForm.ShowDialog() == DialogResult.OK)
+            {
+                string error = supplyService_.AddSupply(addSupplyForm.Supply);
+                if (error != string.Empty)
+                {
+                    MessageBox.Show(error, "Ошибка при добавлении", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    MessageBox.Show("Поставщик успешно добавлен!", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
         }
     }
 }

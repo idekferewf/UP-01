@@ -10,7 +10,69 @@ namespace AptekaEuLib.supplies
     {
         public bool AddSupply(Supply supply)
         {
-            return false;
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(MySQLConfig.DbConnectionString))
+                {
+                    conn.Open();
+                    using (MySqlTransaction transaction = conn.BeginTransaction())
+                    {
+                        try
+                        {
+                            // Добавление поставки
+                            string supplyQuery = @"
+                                INSERT INTO supplies (serial_number, supplier_tin, delivery_date) 
+                                VALUES (@serial_number, @supplier_tin, @delivery_date);";
+
+                            MySqlCommand supplyCommand = new MySqlCommand(supplyQuery, conn, transaction);
+                            supplyCommand.Parameters.AddWithValue("@serial_number", supply.SerialNumber);
+                            supplyCommand.Parameters.AddWithValue("@supplier_tin", supply.Supplier.Tin);
+                            supplyCommand.Parameters.AddWithValue("@delivery_date", supply.DeliveryDate);
+                            supplyCommand.ExecuteNonQuery();
+
+                            // Добавление позиций поставки
+                            foreach (SupplyItem item in supply.Items)
+                            {
+                                string supplyItemQuery = @"
+                                    INSERT INTO supply_items (supply_serial_number, product_id, quantity, unit_price, production_date, expiry_date) 
+                                    VALUES (@supply_serial_number, @product_id, @quantity, @unit_price, @production_date, @expiry_date);";
+
+                                MySqlCommand itemCommand = new MySqlCommand(supplyItemQuery, conn, transaction);
+                                itemCommand.Parameters.AddWithValue("@supply_serial_number", supply.SerialNumber);
+                                itemCommand.Parameters.AddWithValue("@product_id", item.Product.Id);
+                                itemCommand.Parameters.AddWithValue("@quantity", item.Quantity);
+                                itemCommand.Parameters.AddWithValue("@unit_price", item.UnitPrice);
+                                itemCommand.Parameters.AddWithValue("@production_date", item.ProductionDate);
+                                itemCommand.Parameters.AddWithValue("@expiry_date", item.ExpiryDate);
+                                itemCommand.ExecuteNonQuery();
+
+                                // Обновление количества товара
+                                string updateProductQuery = @"
+                                    UPDATE products 
+                                    SET actual_quantity = actual_quantity + @quantity 
+                                    WHERE id = @product_id;";
+
+                                MySqlCommand updateCommand = new MySqlCommand(updateProductQuery, conn, transaction);
+                                updateCommand.Parameters.AddWithValue("@quantity", item.Quantity);
+                                updateCommand.Parameters.AddWithValue("@product_id", item.Product.Id);
+                                updateCommand.ExecuteNonQuery();
+                            }
+
+                            transaction.Commit();
+                        }
+                        catch (Exception)
+                        {
+                            transaction.Rollback();
+                            return false;
+                        }
+                    }
+                }
+            } 
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
         }
 
         public List<Supply> ReadSupplies()
@@ -91,6 +153,35 @@ namespace AptekaEuLib.supplies
             catch (Exception ex)
             {
                 MessageBox.Show($"Произошла ошибка при загрузке поставок: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return result;
+        }
+
+        public List<Supplier> ReadSuppliers()
+        {
+            List<Supplier> result = new List<Supplier>();
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(MySQLConfig.DbConnectionString))
+                {
+                    conn.Open();
+                    string query = @"SELECT tin, name FROM suppliers;";
+                    MySqlCommand command = new MySqlCommand(query, conn);
+
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Supplier supplier = new Supplier(reader.GetString("tin"));
+                            supplier.Name = reader.GetString("name");
+                            result.Add(supplier);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Произошла ошибка при загрузке поставщиков: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return result;
         }
