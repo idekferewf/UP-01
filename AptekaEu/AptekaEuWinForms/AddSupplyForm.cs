@@ -22,6 +22,7 @@ namespace AptekaEuWinForms
         public void FillSuppliers(List<Supplier> suppliers)
         {
             supplierComboBox.DataSource = suppliers;
+            supplierComboBox.DisplayMember = "Name";
         }
 
         public void FillProducts(BindingList<Product> products)
