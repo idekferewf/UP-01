@@ -102,7 +102,7 @@ namespace AptekaEuWinForms
 
         private void mainTabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (mainTabControl.SelectedIndex == 1 && suppliesGridView.DataSource == null)
+            if (mainTabControl.SelectedIndex == 1)
             {
                 FillSupplies();
             }
