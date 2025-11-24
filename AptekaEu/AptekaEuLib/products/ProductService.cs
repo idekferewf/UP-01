@@ -15,6 +15,8 @@ namespace AptekaEuLib
             productsRepository_ = productsRepository;
         }
 
+        public BindingList<Product> Products => products_;
+
         public string AddProduct(Product product)
         {
             if (string.IsNullOrEmpty(product.Name))
