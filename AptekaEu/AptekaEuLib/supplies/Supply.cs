@@ -12,8 +12,17 @@ namespace AptekaEuLib.supplies
         [DisplayName("Серийный номер")]
         public string SerialNumber { get { return serialNumber_; } }
 
-        [DisplayName("ИНН поставщика")]
+        [Browsable(false)]
         public Supplier Supplier { get; set; }
+
+        [DisplayName("ИНН поставщика")]
+        public string SupplierName
+        {
+            get
+            {
+                return Supplier.Name;
+            }
+        }
 
         public List<SupplyItem> Items { get; set; }
 

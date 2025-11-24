@@ -18,10 +18,5 @@
         {
             tin_ = tin;
         }
-
-        public override string ToString()
-        {
-            return Name;
-        }
     }
 }
