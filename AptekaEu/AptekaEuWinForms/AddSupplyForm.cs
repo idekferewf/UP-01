@@ -67,7 +67,12 @@ namespace AptekaEuWinForms
 
         private void productsListBox_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            // ...
+            Product product = (Product)productsListBox.SelectedItem;
+            SupplyItem supplyItem = new SupplyItem() 
+            {
+                Product = product,
+            };
+            supplyItems_.Add(supplyItem);
         }
     }
 }
