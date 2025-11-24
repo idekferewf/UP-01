@@ -104,7 +104,11 @@ namespace AptekaEuWinForms
         {
             if (mainTabControl.SelectedIndex == 1)
             {
+                Text = "Поставки – AptekaEu";
                 FillSupplies();
+            } else
+            {
+                Text = "Главная – AptekaEu";
             }
         }
 
