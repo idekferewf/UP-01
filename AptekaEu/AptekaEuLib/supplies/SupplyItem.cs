@@ -18,7 +18,7 @@ namespace AptekaEuLib.supplies
             }
         }
 
-        [Browsable(false)]
+        [DisplayName("Стоимость товара")]
         public double UnitPrice { get; set; }
 
         [DisplayName("Стоимость товара")]
