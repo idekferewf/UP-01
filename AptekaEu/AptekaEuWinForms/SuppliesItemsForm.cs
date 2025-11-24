@@ -17,6 +17,7 @@ namespace AptekaEuWinForms
         private void FillSuppliesItems(Supply supply)
         {
             suppliesItemsGridView.DataSource = supply.Items;
+            suppliesItemsGridView.Columns["UnitPrice"].Visible = false;
             suppliesItemsGridView.Columns["Product"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             suppliesItemsGridView.Columns["Category"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         } 
