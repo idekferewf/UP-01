@@ -37,6 +37,9 @@ namespace AptekaEuWinForms
         {
             itemsGridView.DataSource = supplyItems_;
             itemsGridView.Columns["Category"].Visible = false;
+            itemsGridView.Columns["UnitPriceDisplay"].Visible = false;
+            itemsGridView.Columns["ProductionDate"].DefaultCellStyle.Format = "dd.MM.yyyy";
+            itemsGridView.Columns["ExpiryDate"].DefaultCellStyle.Format = "dd.MM.yyyy";
         }
 
         private void cancelButton_Click(object sender, EventArgs e)

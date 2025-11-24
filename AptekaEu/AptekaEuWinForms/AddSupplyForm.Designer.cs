@@ -112,16 +112,20 @@
             this.productsListBox.FormattingEnabled = true;
             this.productsListBox.Location = new System.Drawing.Point(46, 193);
             this.productsListBox.Name = "productsListBox";
-            this.productsListBox.Size = new System.Drawing.Size(409, 121);
+            this.productsListBox.Size = new System.Drawing.Size(409, 108);
             this.productsListBox.TabIndex = 17;
             this.productsListBox.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.productsListBox_MouseDoubleClick);
             // 
             // itemsGridView
             // 
             this.itemsGridView.AllowUserToAddRows = false;
+            this.itemsGridView.AllowUserToResizeRows = false;
+            this.itemsGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.itemsGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.itemsGridView.Location = new System.Drawing.Point(46, 349);
+            this.itemsGridView.Location = new System.Drawing.Point(46, 335);
             this.itemsGridView.Name = "itemsGridView";
+            this.itemsGridView.RowHeadersVisible = false;
+            this.itemsGridView.RowTemplate.Height = 16;
             this.itemsGridView.Size = new System.Drawing.Size(409, 160);
             this.itemsGridView.TabIndex = 18;
             // 
@@ -139,7 +143,7 @@
             // 
             this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cancelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.cancelButton.Location = new System.Drawing.Point(355, 525);
+            this.cancelButton.Location = new System.Drawing.Point(355, 513);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(100, 30);
             this.cancelButton.TabIndex = 23;
@@ -150,7 +154,7 @@
             // addSupplyButton
             // 
             this.addSupplyButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.addSupplyButton.Location = new System.Drawing.Point(249, 525);
+            this.addSupplyButton.Location = new System.Drawing.Point(249, 513);
             this.addSupplyButton.Name = "addSupplyButton";
             this.addSupplyButton.Size = new System.Drawing.Size(100, 30);
             this.addSupplyButton.TabIndex = 24;
@@ -162,7 +166,7 @@
             // 
             this.itemsLabel.AutoSize = true;
             this.itemsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.itemsLabel.Location = new System.Drawing.Point(43, 325);
+            this.itemsLabel.Location = new System.Drawing.Point(43, 311);
             this.itemsLabel.Name = "itemsLabel";
             this.itemsLabel.Size = new System.Drawing.Size(132, 16);
             this.itemsLabel.TabIndex = 25;
@@ -172,7 +176,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(497, 583);
+            this.ClientSize = new System.Drawing.Size(497, 569);
             this.Controls.Add(this.itemsLabel);
             this.Controls.Add(this.addSupplyButton);
             this.Controls.Add(this.cancelButton);
