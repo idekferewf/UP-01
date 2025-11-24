@@ -127,6 +127,7 @@
             this.itemsGridView.RowTemplate.Height = 16;
             this.itemsGridView.Size = new System.Drawing.Size(409, 160);
             this.itemsGridView.TabIndex = 18;
+            this.itemsGridView.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.itemsGridView_DataError);
             // 
             // productsLabel
             // 

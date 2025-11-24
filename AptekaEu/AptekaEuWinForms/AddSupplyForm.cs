@@ -1,5 +1,4 @@
 ﻿using AptekaEuLib;
-using AptekaEuLib.products;
 using AptekaEuLib.supplies;
 using System;
 using System.Collections.Generic;
@@ -83,6 +82,29 @@ namespace AptekaEuWinForms
                 Product = product,
             };
             supplyItems_.Add(supplyItem);
+        }
+
+        private void itemsGridView_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            e.ThrowException = false;
+
+            string errorMessage;
+            if (e.Exception is FormatException)
+            {
+                errorMessage = "Неверный формат данных. Проверьте введенные значения.";
+            }
+            else if (e.Exception is ArgumentException)
+            {
+                errorMessage = "Недопустимое значение.";
+            }
+            else
+            {
+                errorMessage = e.Exception.Message;
+            }
+
+            MessageBox.Show(errorMessage, "Ошибка ввода", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            e.Cancel = true;
         }
     }
 }
