@@ -37,9 +37,10 @@
             this.deliveryDateLabel = new System.Windows.Forms.Label();
             this.productsListBox = new System.Windows.Forms.ListBox();
             this.itemsGridView = new System.Windows.Forms.DataGridView();
-            this.itemsLabel = new System.Windows.Forms.Label();
+            this.productsLabel = new System.Windows.Forms.Label();
             this.cancelButton = new System.Windows.Forms.Button();
             this.addSupplyButton = new System.Windows.Forms.Button();
+            this.itemsLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.itemsGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,7 +57,6 @@
             // 
             // serialNumberTextBox
             // 
-            this.serialNumberTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.serialNumberTextBox.Location = new System.Drawing.Point(167, 78);
             this.serialNumberTextBox.Name = "serialNumberTextBox";
             this.serialNumberTextBox.Size = new System.Drawing.Size(288, 20);
@@ -112,34 +112,34 @@
             this.productsListBox.FormattingEnabled = true;
             this.productsListBox.Location = new System.Drawing.Point(46, 193);
             this.productsListBox.Name = "productsListBox";
-            this.productsListBox.Size = new System.Drawing.Size(117, 160);
+            this.productsListBox.Size = new System.Drawing.Size(409, 121);
             this.productsListBox.TabIndex = 17;
+            this.productsListBox.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.productsListBox_MouseDoubleClick);
             // 
             // itemsGridView
             // 
             this.itemsGridView.AllowUserToAddRows = false;
             this.itemsGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.itemsGridView.Location = new System.Drawing.Point(167, 193);
+            this.itemsGridView.Location = new System.Drawing.Point(46, 349);
             this.itemsGridView.Name = "itemsGridView";
-            this.itemsGridView.Size = new System.Drawing.Size(288, 160);
+            this.itemsGridView.Size = new System.Drawing.Size(409, 160);
             this.itemsGridView.TabIndex = 18;
             // 
-            // itemsLabel
+            // productsLabel
             // 
-            this.itemsLabel.AutoSize = true;
-            this.itemsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.itemsLabel.Location = new System.Drawing.Point(43, 169);
-            this.itemsLabel.Name = "itemsLabel";
-            this.itemsLabel.Size = new System.Drawing.Size(132, 16);
-            this.itemsLabel.TabIndex = 22;
-            this.itemsLabel.Text = "Позиции поставки:";
+            this.productsLabel.AutoSize = true;
+            this.productsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.productsLabel.Location = new System.Drawing.Point(43, 169);
+            this.productsLabel.Name = "productsLabel";
+            this.productsLabel.Size = new System.Drawing.Size(60, 16);
+            this.productsLabel.TabIndex = 22;
+            this.productsLabel.Text = "Товары:";
             // 
             // cancelButton
             // 
-            this.cancelButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cancelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.cancelButton.Location = new System.Drawing.Point(355, 366);
+            this.cancelButton.Location = new System.Drawing.Point(355, 525);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(100, 30);
             this.cancelButton.TabIndex = 23;
@@ -149,24 +149,34 @@
             // 
             // addSupplyButton
             // 
-            this.addSupplyButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.addSupplyButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.addSupplyButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.addSupplyButton.Location = new System.Drawing.Point(249, 366);
+            this.addSupplyButton.Location = new System.Drawing.Point(249, 525);
             this.addSupplyButton.Name = "addSupplyButton";
             this.addSupplyButton.Size = new System.Drawing.Size(100, 30);
             this.addSupplyButton.TabIndex = 24;
             this.addSupplyButton.Text = "Ок";
             this.addSupplyButton.UseVisualStyleBackColor = true;
+            this.addSupplyButton.Click += new System.EventHandler(this.addSupplyButton_Click);
+            // 
+            // itemsLabel
+            // 
+            this.itemsLabel.AutoSize = true;
+            this.itemsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.itemsLabel.Location = new System.Drawing.Point(43, 325);
+            this.itemsLabel.Name = "itemsLabel";
+            this.itemsLabel.Size = new System.Drawing.Size(132, 16);
+            this.itemsLabel.TabIndex = 25;
+            this.itemsLabel.Text = "Позиции поставки:";
             // 
             // AddSupplyForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(497, 421);
+            this.ClientSize = new System.Drawing.Size(497, 583);
+            this.Controls.Add(this.itemsLabel);
             this.Controls.Add(this.addSupplyButton);
             this.Controls.Add(this.cancelButton);
-            this.Controls.Add(this.itemsLabel);
+            this.Controls.Add(this.productsLabel);
             this.Controls.Add(this.itemsGridView);
             this.Controls.Add(this.productsListBox);
             this.Controls.Add(this.deliveryDateLabel);
@@ -197,8 +207,9 @@
         private System.Windows.Forms.Label deliveryDateLabel;
         private System.Windows.Forms.ListBox productsListBox;
         private System.Windows.Forms.DataGridView itemsGridView;
-        private System.Windows.Forms.Label itemsLabel;
+        private System.Windows.Forms.Label productsLabel;
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.Button addSupplyButton;
+        private System.Windows.Forms.Label itemsLabel;
     }
 }
