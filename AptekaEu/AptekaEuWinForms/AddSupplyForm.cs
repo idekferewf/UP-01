@@ -88,6 +88,27 @@ namespace AptekaEuWinForms
             supplyItems_.Add(supplyItem);
         }
 
+        private void addSelectedProductsButton_Click(object sender, EventArgs e)
+        {
+            if (productsListBox.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Не выбрано ни одного товара.", "Ошибка добавления", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            foreach (Product product in productsListBox.SelectedItems)
+            {
+                if (supplyItems_.Any(i => i.Product.Name == product.Name))
+                {
+                    MessageBox.Show($"Товар  «{product.Name}» уже добавлен.", "Ошибка добавления", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    continue;
+                }
+                
+                SupplyItem supplyItem = new SupplyItem() { Product = product };
+                supplyItems_.Add(supplyItem);
+            }
+        }
+
         private void itemsGridView_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
             e.ThrowException = false;

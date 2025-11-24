@@ -41,6 +41,7 @@
             this.cancelButton = new System.Windows.Forms.Button();
             this.addSupplyButton = new System.Windows.Forms.Button();
             this.itemsLabel = new System.Windows.Forms.Label();
+            this.addSelectedProductsButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.itemsGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -112,7 +113,8 @@
             this.productsListBox.FormattingEnabled = true;
             this.productsListBox.Location = new System.Drawing.Point(46, 193);
             this.productsListBox.Name = "productsListBox";
-            this.productsListBox.Size = new System.Drawing.Size(409, 108);
+            this.productsListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.productsListBox.Size = new System.Drawing.Size(244, 108);
             this.productsListBox.TabIndex = 17;
             this.productsListBox.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.productsListBox_MouseDoubleClick);
             // 
@@ -173,11 +175,22 @@
             this.itemsLabel.TabIndex = 25;
             this.itemsLabel.Text = "Позиции поставки:";
             // 
+            // addSelectedProductsButton
+            // 
+            this.addSelectedProductsButton.Location = new System.Drawing.Point(296, 193);
+            this.addSelectedProductsButton.Name = "addSelectedProductsButton";
+            this.addSelectedProductsButton.Size = new System.Drawing.Size(159, 23);
+            this.addSelectedProductsButton.TabIndex = 26;
+            this.addSelectedProductsButton.Text = "Добавить выделенные";
+            this.addSelectedProductsButton.UseVisualStyleBackColor = true;
+            this.addSelectedProductsButton.Click += new System.EventHandler(this.addSelectedProductsButton_Click);
+            // 
             // AddSupplyForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(497, 569);
+            this.Controls.Add(this.addSelectedProductsButton);
             this.Controls.Add(this.itemsLabel);
             this.Controls.Add(this.addSupplyButton);
             this.Controls.Add(this.cancelButton);
@@ -216,5 +229,6 @@
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.Button addSupplyButton;
         private System.Windows.Forms.Label itemsLabel;
+        private System.Windows.Forms.Button addSelectedProductsButton;
     }
 }
