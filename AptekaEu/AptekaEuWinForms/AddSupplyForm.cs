@@ -106,5 +106,11 @@ namespace AptekaEuWinForms
 
             e.Cancel = true;
         }
+
+        private void itemsGridView_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            itemsGridView.Rows[e.RowIndex].Cells["ProductionDate"].Value = DateTime.Today;
+            itemsGridView.Rows[e.RowIndex].Cells["ExpiryDate"].Value = DateTime.Today.AddYears(1);
+        }
     }
 }
