@@ -156,7 +156,7 @@ namespace AptekaEuWinForms
                 }
                 else
                 {
-                    MessageBox.Show("Поставщик успешно добавлен!", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Поставка успешно добавлена!", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }
