@@ -42,6 +42,7 @@
             this.addSupplyButton = new System.Windows.Forms.Button();
             this.itemsLabel = new System.Windows.Forms.Label();
             this.addSelectedProductsButton = new System.Windows.Forms.Button();
+            this.addAllProductsButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.itemsGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -185,11 +186,22 @@
             this.addSelectedProductsButton.UseVisualStyleBackColor = true;
             this.addSelectedProductsButton.Click += new System.EventHandler(this.addSelectedProductsButton_Click);
             // 
+            // addAllProductsButton
+            // 
+            this.addAllProductsButton.Location = new System.Drawing.Point(296, 222);
+            this.addAllProductsButton.Name = "addAllProductsButton";
+            this.addAllProductsButton.Size = new System.Drawing.Size(159, 23);
+            this.addAllProductsButton.TabIndex = 27;
+            this.addAllProductsButton.Text = "Добавить все";
+            this.addAllProductsButton.UseVisualStyleBackColor = true;
+            this.addAllProductsButton.Click += new System.EventHandler(this.addAllProductsButton_Click);
+            // 
             // AddSupplyForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(497, 569);
+            this.Controls.Add(this.addAllProductsButton);
             this.Controls.Add(this.addSelectedProductsButton);
             this.Controls.Add(this.itemsLabel);
             this.Controls.Add(this.addSupplyButton);
@@ -230,5 +242,6 @@
         private System.Windows.Forms.Button addSupplyButton;
         private System.Windows.Forms.Label itemsLabel;
         private System.Windows.Forms.Button addSelectedProductsButton;
+        private System.Windows.Forms.Button addAllProductsButton;
     }
 }

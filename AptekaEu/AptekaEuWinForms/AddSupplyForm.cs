@@ -75,6 +75,21 @@ namespace AptekaEuWinForms
             }
         }
 
+        private void AddProducts(List<Product> products)
+        {
+            foreach (Product product in products)
+            {
+                if (supplyItems_.Any(i => i.Product.Name == product.Name))
+                {
+                    MessageBox.Show($"Товар «{product.Name}» уже добавлен.", "Ошибка добавления", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    continue;
+                }
+
+                SupplyItem supplyItem = new SupplyItem() { Product = product };
+                supplyItems_.Add(supplyItem);
+            }
+        }
+
         private void productsListBox_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             Product product = (Product)productsListBox.SelectedItem;
@@ -96,17 +111,14 @@ namespace AptekaEuWinForms
                 return;
             }
 
-            foreach (Product product in productsListBox.SelectedItems)
-            {
-                if (supplyItems_.Any(i => i.Product.Name == product.Name))
-                {
-                    MessageBox.Show($"Товар  «{product.Name}» уже добавлен.", "Ошибка добавления", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    continue;
-                }
-                
-                SupplyItem supplyItem = new SupplyItem() { Product = product };
-                supplyItems_.Add(supplyItem);
-            }
+            List<Product> selectedProducts = productsListBox.SelectedItems.Cast<Product>().ToList();
+            AddProducts(selectedProducts);
+        }
+
+        private void addAllProductsButton_Click(object sender, EventArgs e)
+        {
+            List<Product> allProducts = productsListBox.Items.Cast<Product>().ToList();
+            AddProducts(allProducts);
         }
 
         private void itemsGridView_DataError(object sender, DataGridViewDataErrorEventArgs e)
