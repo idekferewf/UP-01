@@ -93,7 +93,7 @@ namespace AptekaEuWinForms
         private void productsListBox_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             Product product = (Product)productsListBox.SelectedItem;
-            if (supplyItems_.Select(i => i.Product.Name == product.Name).Any())
+            if (supplyItems_.Any(i => i.Product.Name == product.Name))
             {
                 MessageBox.Show("Данный товар уже добавлен.", "Ошибка добавления", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
