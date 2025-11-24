@@ -3,6 +3,7 @@ using AptekaEuLib.supplies;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace AptekaEuWinForms
@@ -77,10 +78,13 @@ namespace AptekaEuWinForms
         private void productsListBox_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             Product product = (Product)productsListBox.SelectedItem;
-            SupplyItem supplyItem = new SupplyItem() 
+            if (supplyItems_.Select(i => i.Product.Name == product.Name).Any())
             {
-                Product = product,
-            };
+                MessageBox.Show("Данный товар уже добавлен.", "Ошибка добавления", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            SupplyItem supplyItem = new SupplyItem() { Product = product };
             supplyItems_.Add(supplyItem);
         }
 
