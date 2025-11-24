@@ -52,14 +52,14 @@
             this.titleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.titleLabel.Location = new System.Drawing.Point(0, 0);
             this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(497, 75);
+            this.titleLabel.Size = new System.Drawing.Size(483, 75);
             this.titleLabel.TabIndex = 1;
             this.titleLabel.Text = "Добавить поставку";
             this.titleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // serialNumberTextBox
             // 
-            this.serialNumberTextBox.Location = new System.Drawing.Point(167, 78);
+            this.serialNumberTextBox.Location = new System.Drawing.Point(163, 78);
             this.serialNumberTextBox.Name = "serialNumberTextBox";
             this.serialNumberTextBox.Size = new System.Drawing.Size(288, 20);
             this.serialNumberTextBox.TabIndex = 3;
@@ -67,7 +67,7 @@
             // supplierComboBox
             // 
             this.supplierComboBox.FormattingEnabled = true;
-            this.supplierComboBox.Location = new System.Drawing.Point(167, 104);
+            this.supplierComboBox.Location = new System.Drawing.Point(163, 104);
             this.supplierComboBox.Name = "supplierComboBox";
             this.supplierComboBox.Size = new System.Drawing.Size(288, 21);
             this.supplierComboBox.TabIndex = 12;
@@ -76,7 +76,7 @@
             // 
             this.serialNumberLabel.AutoSize = true;
             this.serialNumberLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.serialNumberLabel.Location = new System.Drawing.Point(43, 80);
+            this.serialNumberLabel.Location = new System.Drawing.Point(39, 80);
             this.serialNumberLabel.Name = "serialNumberLabel";
             this.serialNumberLabel.Size = new System.Drawing.Size(120, 16);
             this.serialNumberLabel.TabIndex = 13;
@@ -86,7 +86,7 @@
             // 
             this.supplierLabel.AutoSize = true;
             this.supplierLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.supplierLabel.Location = new System.Drawing.Point(81, 106);
+            this.supplierLabel.Location = new System.Drawing.Point(77, 106);
             this.supplierLabel.Name = "supplierLabel";
             this.supplierLabel.Size = new System.Drawing.Size(82, 16);
             this.supplierLabel.TabIndex = 14;
@@ -94,7 +94,7 @@
             // 
             // deliveryDatePicker
             // 
-            this.deliveryDatePicker.Location = new System.Drawing.Point(167, 131);
+            this.deliveryDatePicker.Location = new System.Drawing.Point(163, 131);
             this.deliveryDatePicker.Name = "deliveryDatePicker";
             this.deliveryDatePicker.Size = new System.Drawing.Size(288, 20);
             this.deliveryDatePicker.TabIndex = 15;
@@ -103,7 +103,7 @@
             // 
             this.deliveryDateLabel.AutoSize = true;
             this.deliveryDateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.deliveryDateLabel.Location = new System.Drawing.Point(57, 132);
+            this.deliveryDateLabel.Location = new System.Drawing.Point(53, 132);
             this.deliveryDateLabel.Name = "deliveryDateLabel";
             this.deliveryDateLabel.Size = new System.Drawing.Size(106, 16);
             this.deliveryDateLabel.TabIndex = 16;
@@ -112,10 +112,10 @@
             // productsListBox
             // 
             this.productsListBox.FormattingEnabled = true;
-            this.productsListBox.Location = new System.Drawing.Point(46, 193);
+            this.productsListBox.Location = new System.Drawing.Point(32, 193);
             this.productsListBox.Name = "productsListBox";
             this.productsListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.productsListBox.Size = new System.Drawing.Size(244, 108);
+            this.productsListBox.Size = new System.Drawing.Size(258, 108);
             this.productsListBox.TabIndex = 17;
             this.productsListBox.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.productsListBox_MouseDoubleClick);
             // 
@@ -125,10 +125,10 @@
             this.itemsGridView.AllowUserToResizeRows = false;
             this.itemsGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.itemsGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.itemsGridView.Location = new System.Drawing.Point(46, 335);
+            this.itemsGridView.Location = new System.Drawing.Point(32, 335);
             this.itemsGridView.Name = "itemsGridView";
             this.itemsGridView.RowTemplate.Height = 16;
-            this.itemsGridView.Size = new System.Drawing.Size(409, 160);
+            this.itemsGridView.Size = new System.Drawing.Size(421, 160);
             this.itemsGridView.TabIndex = 18;
             this.itemsGridView.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.itemsGridView_DataError);
             this.itemsGridView.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.itemsGridView_RowsAdded);
@@ -137,7 +137,7 @@
             // 
             this.productsLabel.AutoSize = true;
             this.productsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.productsLabel.Location = new System.Drawing.Point(43, 169);
+            this.productsLabel.Location = new System.Drawing.Point(30, 171);
             this.productsLabel.Name = "productsLabel";
             this.productsLabel.Size = new System.Drawing.Size(60, 16);
             this.productsLabel.TabIndex = 22;
@@ -147,7 +147,7 @@
             // 
             this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cancelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.cancelButton.Location = new System.Drawing.Point(355, 513);
+            this.cancelButton.Location = new System.Drawing.Point(353, 511);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(100, 30);
             this.cancelButton.TabIndex = 23;
@@ -158,7 +158,7 @@
             // addSupplyButton
             // 
             this.addSupplyButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.addSupplyButton.Location = new System.Drawing.Point(249, 513);
+            this.addSupplyButton.Location = new System.Drawing.Point(247, 511);
             this.addSupplyButton.Name = "addSupplyButton";
             this.addSupplyButton.Size = new System.Drawing.Size(100, 30);
             this.addSupplyButton.TabIndex = 24;
@@ -170,7 +170,7 @@
             // 
             this.itemsLabel.AutoSize = true;
             this.itemsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.itemsLabel.Location = new System.Drawing.Point(43, 311);
+            this.itemsLabel.Location = new System.Drawing.Point(30, 313);
             this.itemsLabel.Name = "itemsLabel";
             this.itemsLabel.Size = new System.Drawing.Size(132, 16);
             this.itemsLabel.TabIndex = 25;
@@ -180,7 +180,7 @@
             // 
             this.addSelectedProductsButton.Location = new System.Drawing.Point(296, 193);
             this.addSelectedProductsButton.Name = "addSelectedProductsButton";
-            this.addSelectedProductsButton.Size = new System.Drawing.Size(159, 23);
+            this.addSelectedProductsButton.Size = new System.Drawing.Size(157, 23);
             this.addSelectedProductsButton.TabIndex = 26;
             this.addSelectedProductsButton.Text = "Добавить выделенные";
             this.addSelectedProductsButton.UseVisualStyleBackColor = true;
@@ -190,7 +190,7 @@
             // 
             this.addAllProductsButton.Location = new System.Drawing.Point(296, 222);
             this.addAllProductsButton.Name = "addAllProductsButton";
-            this.addAllProductsButton.Size = new System.Drawing.Size(159, 23);
+            this.addAllProductsButton.Size = new System.Drawing.Size(157, 23);
             this.addAllProductsButton.TabIndex = 27;
             this.addAllProductsButton.Text = "Добавить все";
             this.addAllProductsButton.UseVisualStyleBackColor = true;
@@ -200,7 +200,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(497, 569);
+            this.ClientSize = new System.Drawing.Size(483, 569);
             this.Controls.Add(this.addAllProductsButton);
             this.Controls.Add(this.addSelectedProductsButton);
             this.Controls.Add(this.itemsLabel);
