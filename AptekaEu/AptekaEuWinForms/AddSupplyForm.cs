@@ -1,4 +1,5 @@
 ﻿using AptekaEuLib;
+using AptekaEuLib.products;
 using AptekaEuLib.supplies;
 using System;
 using System.Collections.Generic;
@@ -63,7 +64,13 @@ namespace AptekaEuWinForms
             }
             else
             {
-                // ...
+                Supply supplyToAdd = new Supply(serialNumberTextBox.Text)
+                {
+                    Supplier = (Supplier)supplierComboBox.SelectedItem,
+                    DeliveryDate = deliveryDatePicker.Value,
+                    Items = new List<SupplyItem>(supplyItems_)
+                };
+                Supply = supplyToAdd;
                 DialogResult = DialogResult.OK;
             }
         }

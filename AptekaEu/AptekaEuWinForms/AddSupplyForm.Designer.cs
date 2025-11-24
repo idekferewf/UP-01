@@ -124,7 +124,6 @@
             this.itemsGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.itemsGridView.Location = new System.Drawing.Point(46, 335);
             this.itemsGridView.Name = "itemsGridView";
-            this.itemsGridView.RowHeadersVisible = false;
             this.itemsGridView.RowTemplate.Height = 16;
             this.itemsGridView.Size = new System.Drawing.Size(409, 160);
             this.itemsGridView.TabIndex = 18;
