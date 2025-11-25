@@ -52,15 +52,15 @@ namespace AptekaEuWinForms
         {
             if (string.IsNullOrEmpty(serialNumberTextBox.Text))
             {
-                MessageBox.Show("Необходимо заполнить серийный номер поставки.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Необходимо заполнить серийный номер поставки.", "Ошибка валидации", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (supplierComboBox.SelectedItem == null)
             {
-                MessageBox.Show("Необходимо выбрать поставщика.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Необходимо выбрать поставщика.", "Ошибка валидации", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (itemsGridView.Rows.Count == 0)
             {
-                MessageBox.Show("Необходимо добавить хотя бы одну позицию.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Необходимо добавить хотя бы одну позицию.", "Ошибка валидации", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
