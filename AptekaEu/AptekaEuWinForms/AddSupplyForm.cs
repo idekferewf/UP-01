@@ -157,7 +157,7 @@ namespace AptekaEuWinForms
             }
             else
             {
-                result = products_.Where(p => p.Name.Contains(searchProductsTextBox.Text)).ToList();
+                result = products_.Where(p => p.Name.ToLower().Contains(searchProductsTextBox.Text.ToLower())).ToList();
             }
 
             productsListBox.DataSource = null;
