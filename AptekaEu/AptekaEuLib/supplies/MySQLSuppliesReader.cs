@@ -169,7 +169,7 @@ namespace AptekaEuLib.supplies
                 using (MySqlConnection conn = new MySqlConnection(MySQLConfig.DbConnectionString))
                 {
                     conn.Open();
-                    string query = @"SELECT tin, name FROM suppliers;";
+                    string query = @"SELECT tin, name, contact_person, phone, address FROM suppliers;";
                     MySqlCommand command = new MySqlCommand(query, conn);
 
                     using (MySqlDataReader reader = command.ExecuteReader())
@@ -178,6 +178,9 @@ namespace AptekaEuLib.supplies
                         {
                             Supplier supplier = new Supplier(reader.GetString("tin"));
                             supplier.Name = reader.GetString("name");
+                            supplier.ContactPerson = reader.GetString("contact_person");
+                            supplier.Phone = reader.GetString("phone");
+                            supplier.Address = reader.GetString("address");
                             result.Add(supplier);
                         }
                     }
