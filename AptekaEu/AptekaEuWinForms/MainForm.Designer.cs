@@ -33,16 +33,16 @@
             this.mainTabControl = new System.Windows.Forms.TabControl();
             this.productsTab = new System.Windows.Forms.TabPage();
             this.productsToolStrip = new System.Windows.Forms.ToolStrip();
+            this.addProductButton = new System.Windows.Forms.ToolStripButton();
+            this.removeProductsButton = new System.Windows.Forms.ToolStripButton();
             this.suppliesTab = new System.Windows.Forms.TabPage();
             this.suppliesToolStrip = new System.Windows.Forms.ToolStrip();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.generateReportsButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.supplierFilterLabel = new System.Windows.Forms.ToolStripLabel();
             this.supplierFilterComboBox = new System.Windows.Forms.ToolStripComboBox();
             this.suppliesGridView = new System.Windows.Forms.DataGridView();
-            this.addProductButton = new System.Windows.Forms.ToolStripButton();
-            this.removeProductsButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.generateReportsButton = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.productsGridView)).BeginInit();
             this.mainTabControl.SuspendLayout();
             this.productsTab.SuspendLayout();
@@ -105,6 +105,28 @@
             this.productsToolStrip.TabIndex = 5;
             this.productsToolStrip.Text = "Управление товарами";
             // 
+            // addProductButton
+            // 
+            this.addProductButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.addProductButton.Image = global::AptekaEuWinForms.Properties.Resources.addIcon;
+            this.addProductButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.addProductButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.addProductButton.Name = "addProductButton";
+            this.addProductButton.Size = new System.Drawing.Size(40, 28);
+            this.addProductButton.Text = "Добавить товар";
+            this.addProductButton.Click += new System.EventHandler(this.addProductButton_Click);
+            // 
+            // removeProductsButton
+            // 
+            this.removeProductsButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.removeProductsButton.Image = ((System.Drawing.Image)(resources.GetObject("removeProductsButton.Image")));
+            this.removeProductsButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.removeProductsButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.removeProductsButton.Name = "removeProductsButton";
+            this.removeProductsButton.Size = new System.Drawing.Size(40, 28);
+            this.removeProductsButton.Text = "Удалить товары";
+            this.removeProductsButton.Click += new System.EventHandler(this.removeProductsButton_Click);
+            // 
             // suppliesTab
             // 
             this.suppliesTab.Controls.Add(this.suppliesToolStrip);
@@ -130,6 +152,28 @@
             this.suppliesToolStrip.Size = new System.Drawing.Size(792, 38);
             this.suppliesToolStrip.TabIndex = 2;
             this.suppliesToolStrip.Text = "Инструменты для поставок";
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = global::AptekaEuWinForms.Properties.Resources.addIcon;
+            this.toolStripButton1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(40, 32);
+            this.toolStripButton1.Text = "Добавить поставку";
+            this.toolStripButton1.Click += new System.EventHandler(this.addSupplyButton_Click);
+            // 
+            // generateReportsButton
+            // 
+            this.generateReportsButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.generateReportsButton.Image = global::AptekaEuWinForms.Properties.Resources.generateReports;
+            this.generateReportsButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.generateReportsButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.generateReportsButton.Name = "generateReportsButton";
+            this.generateReportsButton.Size = new System.Drawing.Size(40, 32);
+            this.generateReportsButton.Text = "Сформировать отчёты";
+            this.generateReportsButton.Click += new System.EventHandler(this.generateReportsButton_Click);
             // 
             // toolStripSeparator1
             // 
@@ -168,49 +212,6 @@
             this.suppliesGridView.Size = new System.Drawing.Size(792, 390);
             this.suppliesGridView.TabIndex = 1;
             this.suppliesGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.suppliesGridView_CellDoubleClick);
-            // 
-            // addProductButton
-            // 
-            this.addProductButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.addProductButton.Image = global::AptekaEuWinForms.Properties.Resources.addIcon;
-            this.addProductButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.addProductButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.addProductButton.Name = "addProductButton";
-            this.addProductButton.Size = new System.Drawing.Size(40, 38);
-            this.addProductButton.Text = "Добавить товар";
-            this.addProductButton.Click += new System.EventHandler(this.addProductButton_Click);
-            // 
-            // removeProductsButton
-            // 
-            this.removeProductsButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.removeProductsButton.Image = ((System.Drawing.Image)(resources.GetObject("removeProductsButton.Image")));
-            this.removeProductsButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.removeProductsButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.removeProductsButton.Name = "removeProductsButton";
-            this.removeProductsButton.Size = new System.Drawing.Size(40, 28);
-            this.removeProductsButton.Text = "Удалить товары";
-            this.removeProductsButton.Click += new System.EventHandler(this.removeProductsButton_Click);
-            // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = global::AptekaEuWinForms.Properties.Resources.addIcon;
-            this.toolStripButton1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(40, 32);
-            this.toolStripButton1.Text = "Добавить поставку";
-            // 
-            // generateReportsButton
-            // 
-            this.generateReportsButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.generateReportsButton.Image = global::AptekaEuWinForms.Properties.Resources.generateReports;
-            this.generateReportsButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.generateReportsButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.generateReportsButton.Name = "generateReportsButton";
-            this.generateReportsButton.Size = new System.Drawing.Size(40, 32);
-            this.generateReportsButton.Text = "Сформировать отчёты";
-            this.generateReportsButton.Click += new System.EventHandler(this.generateReportsButton_Click);
             // 
             // MainForm
             // 

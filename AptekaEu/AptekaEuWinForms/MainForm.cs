@@ -191,29 +191,27 @@ namespace AptekaEuWinForms
                 return;
             }
 
-            Supply selectedSupply = (Supply)suppliesGridView.SelectedRows[0].DataBoundItem;
-            if (selectedSupply == null)
+            foreach (DataGridViewRow row in suppliesGridView.SelectedRows)
             {
-                return;
-            }
-
-            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
-            {
-                saveFileDialog.Filter = "HTML files (*.html)|*.html";
-                saveFileDialog.FileName = $"Приходная накладная {selectedSupply.SerialNumber}.html";
-                saveFileDialog.DefaultExt = "html";
-
-                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                Supply supply = (Supply)row.DataBoundItem;
+                using (SaveFileDialog saveFileDialog = new SaveFileDialog())
                 {
-                    try
+                    saveFileDialog.Filter = "HTML files (*.html)|*.html";
+                    saveFileDialog.FileName = $"Приходная накладная {supply.SerialNumber}.html";
+                    saveFileDialog.DefaultExt = "html";
+
+                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
                     {
-                        SupplyReportGenerator reportGenerator = new SupplyReportGenerator();
-                        reportGenerator.SaveReportToFile(selectedSupply, saveFileDialog.FileName);
-                        MessageBox.Show($"Отчет успешно сохранен по пути: {saveFileDialog.FileName}", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Ошибка при сохранении отчета:\n{ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        try
+                        {
+                            SupplyReportGenerator reportGenerator = new SupplyReportGenerator();
+                            reportGenerator.SaveReportToFile(supply, saveFileDialog.FileName);
+                            MessageBox.Show($"Отчет успешно сохранен по пути: {saveFileDialog.FileName}", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show($"Ошибка при сохранении отчета:\n{ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                 }
             }
