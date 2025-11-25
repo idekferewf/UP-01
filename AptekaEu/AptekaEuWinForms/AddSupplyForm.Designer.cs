@@ -134,7 +134,6 @@
             this.itemsGridView.Size = new System.Drawing.Size(421, 160);
             this.itemsGridView.TabIndex = 18;
             this.itemsGridView.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.itemsGridView_CellValidating);
-            this.itemsGridView.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.itemsGridView_DataError);
             this.itemsGridView.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.itemsGridView_RowsAdded);
             // 
             // productsLabel

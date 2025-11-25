@@ -124,25 +124,6 @@ namespace AptekaEuWinForms
             AddProducts(allProducts);
         }
 
-        private void itemsGridView_DataError(object sender, DataGridViewDataErrorEventArgs e)
-        {
-            e.ThrowException = false;
-
-            string errorMessage;
-            if (e.Exception is FormatException)
-            {
-                errorMessage = "Неверный формат данных. Проверьте введенные значения.";
-            }
-            else
-            {
-                errorMessage = e.Exception.Message;
-            }
-
-            MessageBox.Show(errorMessage, "Ошибка ввода", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-            e.Cancel = true;
-        }
-
         private void itemsGridView_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
             itemsGridView.Rows[e.RowIndex].Cells["ProductionDate"].Value = DateTime.Today;
