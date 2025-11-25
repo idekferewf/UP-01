@@ -181,9 +181,9 @@
             // 
             // addSelectedProductsButton
             // 
-            this.addSelectedProductsButton.Location = new System.Drawing.Point(294, 236);
+            this.addSelectedProductsButton.Location = new System.Drawing.Point(296, 235);
             this.addSelectedProductsButton.Name = "addSelectedProductsButton";
-            this.addSelectedProductsButton.Size = new System.Drawing.Size(157, 23);
+            this.addSelectedProductsButton.Size = new System.Drawing.Size(155, 23);
             this.addSelectedProductsButton.TabIndex = 26;
             this.addSelectedProductsButton.Text = "Добавить выделенные";
             this.addSelectedProductsButton.UseVisualStyleBackColor = true;
@@ -191,9 +191,9 @@
             // 
             // addAllProductsButton
             // 
-            this.addAllProductsButton.Location = new System.Drawing.Point(294, 265);
+            this.addAllProductsButton.Location = new System.Drawing.Point(296, 264);
             this.addAllProductsButton.Name = "addAllProductsButton";
-            this.addAllProductsButton.Size = new System.Drawing.Size(157, 23);
+            this.addAllProductsButton.Size = new System.Drawing.Size(155, 23);
             this.addAllProductsButton.TabIndex = 27;
             this.addAllProductsButton.Text = "Добавить все";
             this.addAllProductsButton.UseVisualStyleBackColor = true;
@@ -201,16 +201,16 @@
             // 
             // searchProductsTextBox
             // 
-            this.searchProductsTextBox.Location = new System.Drawing.Point(294, 209);
+            this.searchProductsTextBox.Location = new System.Drawing.Point(296, 209);
             this.searchProductsTextBox.Name = "searchProductsTextBox";
-            this.searchProductsTextBox.Size = new System.Drawing.Size(157, 20);
+            this.searchProductsTextBox.Size = new System.Drawing.Size(155, 20);
             this.searchProductsTextBox.TabIndex = 28;
             this.searchProductsTextBox.TextChanged += new System.EventHandler(this.searchProductsTextBox_TextChanged);
             // 
             // searchProductsLabel
             // 
             this.searchProductsLabel.AutoSize = true;
-            this.searchProductsLabel.Location = new System.Drawing.Point(292, 192);
+            this.searchProductsLabel.Location = new System.Drawing.Point(293, 193);
             this.searchProductsLabel.Name = "searchProductsLabel";
             this.searchProductsLabel.Size = new System.Drawing.Size(86, 13);
             this.searchProductsLabel.TabIndex = 29;
