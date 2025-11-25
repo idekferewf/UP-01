@@ -182,5 +182,10 @@ namespace AptekaEuWinForms
                 }
             }
         }
+
+        private void generateReportsButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

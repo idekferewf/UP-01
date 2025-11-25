@@ -33,15 +33,16 @@
             this.mainTabControl = new System.Windows.Forms.TabControl();
             this.productsTab = new System.Windows.Forms.TabPage();
             this.productsToolStrip = new System.Windows.Forms.ToolStrip();
-            this.addProductButton = new System.Windows.Forms.ToolStripButton();
-            this.removeProductsButton = new System.Windows.Forms.ToolStripButton();
             this.suppliesTab = new System.Windows.Forms.TabPage();
             this.suppliesToolStrip = new System.Windows.Forms.ToolStrip();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.supplierFilterLabel = new System.Windows.Forms.ToolStripLabel();
             this.supplierFilterComboBox = new System.Windows.Forms.ToolStripComboBox();
             this.suppliesGridView = new System.Windows.Forms.DataGridView();
-            this.addSupplyButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.addProductButton = new System.Windows.Forms.ToolStripButton();
+            this.removeProductsButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.generateReportsButton = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.productsGridView)).BeginInit();
             this.mainTabControl.SuspendLayout();
             this.productsTab.SuspendLayout();
@@ -100,32 +101,9 @@
             this.removeProductsButton});
             this.productsToolStrip.Location = new System.Drawing.Point(3, 3);
             this.productsToolStrip.Name = "productsToolStrip";
-            this.productsToolStrip.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
-            this.productsToolStrip.Size = new System.Drawing.Size(786, 31);
+            this.productsToolStrip.Size = new System.Drawing.Size(786, 34);
             this.productsToolStrip.TabIndex = 5;
             this.productsToolStrip.Text = "Управление товарами";
-            // 
-            // addProductButton
-            // 
-            this.addProductButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.addProductButton.Image = global::AptekaEuWinForms.Properties.Resources.addIcon;
-            this.addProductButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.addProductButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.addProductButton.Name = "addProductButton";
-            this.addProductButton.Size = new System.Drawing.Size(28, 28);
-            this.addProductButton.Text = "Добавить товар";
-            this.addProductButton.Click += new System.EventHandler(this.addProductButton_Click);
-            // 
-            // removeProductsButton
-            // 
-            this.removeProductsButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.removeProductsButton.Image = ((System.Drawing.Image)(resources.GetObject("removeProductsButton.Image")));
-            this.removeProductsButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.removeProductsButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.removeProductsButton.Name = "removeProductsButton";
-            this.removeProductsButton.Size = new System.Drawing.Size(28, 28);
-            this.removeProductsButton.Text = "Удалить товары";
-            this.removeProductsButton.Click += new System.EventHandler(this.removeProductsButton_Click);
             // 
             // suppliesTab
             // 
@@ -140,21 +118,28 @@
             // 
             // suppliesToolStrip
             // 
+            this.suppliesToolStrip.ImageScalingSize = new System.Drawing.Size(28, 28);
             this.suppliesToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addSupplyButton,
+            this.toolStripButton1,
+            this.generateReportsButton,
             this.toolStripSeparator1,
             this.supplierFilterLabel,
             this.supplierFilterComboBox});
             this.suppliesToolStrip.Location = new System.Drawing.Point(0, 0);
             this.suppliesToolStrip.Name = "suppliesToolStrip";
-            this.suppliesToolStrip.Size = new System.Drawing.Size(792, 31);
+            this.suppliesToolStrip.Size = new System.Drawing.Size(792, 38);
             this.suppliesToolStrip.TabIndex = 2;
             this.suppliesToolStrip.Text = "Инструменты для поставок";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 38);
             // 
             // supplierFilterLabel
             // 
             this.supplierFilterLabel.Name = "supplierFilterLabel";
-            this.supplierFilterLabel.Size = new System.Drawing.Size(73, 28);
+            this.supplierFilterLabel.Size = new System.Drawing.Size(125, 32);
             this.supplierFilterLabel.Text = "Поставщик:";
             // 
             // supplierFilterComboBox
@@ -162,7 +147,7 @@
             this.supplierFilterComboBox.Items.AddRange(new object[] {
             "Все"});
             this.supplierFilterComboBox.Name = "supplierFilterComboBox";
-            this.supplierFilterComboBox.Size = new System.Drawing.Size(121, 31);
+            this.supplierFilterComboBox.Size = new System.Drawing.Size(121, 38);
             this.supplierFilterComboBox.Text = "Все";
             this.supplierFilterComboBox.TextChanged += new System.EventHandler(this.supplierFilterComboBox_TextChanged);
             // 
@@ -184,21 +169,48 @@
             this.suppliesGridView.TabIndex = 1;
             this.suppliesGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.suppliesGridView_CellDoubleClick);
             // 
-            // addSupplyButton
+            // addProductButton
             // 
-            this.addSupplyButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.addSupplyButton.Image = global::AptekaEuWinForms.Properties.Resources.addIcon;
-            this.addSupplyButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.addSupplyButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.addSupplyButton.Name = "addSupplyButton";
-            this.addSupplyButton.Size = new System.Drawing.Size(28, 28);
-            this.addSupplyButton.Text = "Добавить поставку";
-            this.addSupplyButton.Click += new System.EventHandler(this.addSupplyButton_Click);
+            this.addProductButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.addProductButton.Image = global::AptekaEuWinForms.Properties.Resources.addIcon;
+            this.addProductButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.addProductButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.addProductButton.Name = "addProductButton";
+            this.addProductButton.Size = new System.Drawing.Size(40, 38);
+            this.addProductButton.Text = "Добавить товар";
+            this.addProductButton.Click += new System.EventHandler(this.addProductButton_Click);
             // 
-            // toolStripSeparator1
+            // removeProductsButton
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 31);
+            this.removeProductsButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.removeProductsButton.Image = ((System.Drawing.Image)(resources.GetObject("removeProductsButton.Image")));
+            this.removeProductsButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.removeProductsButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.removeProductsButton.Name = "removeProductsButton";
+            this.removeProductsButton.Size = new System.Drawing.Size(40, 28);
+            this.removeProductsButton.Text = "Удалить товары";
+            this.removeProductsButton.Click += new System.EventHandler(this.removeProductsButton_Click);
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = global::AptekaEuWinForms.Properties.Resources.addIcon;
+            this.toolStripButton1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(40, 32);
+            this.toolStripButton1.Text = "Добавить поставку";
+            // 
+            // generateReportsButton
+            // 
+            this.generateReportsButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.generateReportsButton.Image = global::AptekaEuWinForms.Properties.Resources.generateReports;
+            this.generateReportsButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.generateReportsButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.generateReportsButton.Name = "generateReportsButton";
+            this.generateReportsButton.Size = new System.Drawing.Size(40, 32);
+            this.generateReportsButton.Text = "Сформировать отчёты";
+            this.generateReportsButton.Click += new System.EventHandler(this.generateReportsButton_Click);
             // 
             // MainForm
             // 
@@ -238,8 +250,9 @@
         private System.Windows.Forms.ToolStrip suppliesToolStrip;
         private System.Windows.Forms.ToolStripLabel supplierFilterLabel;
         private System.Windows.Forms.ToolStripComboBox supplierFilterComboBox;
-        private System.Windows.Forms.ToolStripButton addSupplyButton;
+        private System.Windows.Forms.ToolStripButton generateReportsButton;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
     }
 }
 
