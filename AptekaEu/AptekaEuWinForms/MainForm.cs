@@ -35,13 +35,15 @@ namespace AptekaEuWinForms
         {
             BindingList<Supply> supplies = supplyService_.GetAllSupplies();
             suppliesGridView.DataSource = supplies;
-            supplierFilterComboBox.Items.AddRange(supplies.Select(s => s.SupplierName).ToArray());
+            suppliesGridView.Columns["DeliveryDate"].DefaultCellStyle.Format = "yyyy-MM-dd";
+            supplierFilterComboBox.Items.AddRange(supplies.Select(s => s.SupplierName).Distinct().ToArray());
         }
 
         private void FillFilteredSupplies()
         {
             suppliesGridView.DataSource = null;
             suppliesGridView.DataSource = supplyService_.FilteredAndSortedSupplies;
+            suppliesGridView.Columns["DeliveryDate"].DefaultCellStyle.Format = "yyyy-MM-dd";
         }
 
         private void addProductButton_Click(object sender, EventArgs e)
@@ -175,7 +177,42 @@ namespace AptekaEuWinForms
                 }
                 else
                 {
+                    FillFilteredSupplies();
                     MessageBox.Show("Поставка успешно добавлена!", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
+
+        private void generateReportsButton_Click(object sender, EventArgs e)
+        {
+            if (suppliesGridView.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Не выбрано ни одной поставки.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            foreach (DataGridViewRow row in suppliesGridView.SelectedRows)
+            {
+                Supply supply = (Supply)row.DataBoundItem;
+                using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+                {
+                    saveFileDialog.Filter = "HTML files (*.html)|*.html";
+                    saveFileDialog.FileName = $"Приходная накладная {supply.SerialNumber}.html";
+                    saveFileDialog.DefaultExt = "html";
+
+                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        try
+                        {
+                            SupplyReportGenerator reportGenerator = new SupplyReportGenerator();
+                            reportGenerator.SaveReportToFile(supply, saveFileDialog.FileName);
+                            MessageBox.Show($"Отчет успешно сохранен по пути: {saveFileDialog.FileName}", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show($"Ошибка при сохранении отчета:\n{ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
                 }
             }
         }

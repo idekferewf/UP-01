@@ -86,7 +86,8 @@ namespace AptekaEuLib.supplies
 
                     string query =
                         @"SELECT 
-                            supplies.serial_number, supplies.supplier_tin, supplies.delivery_date, suppliers.name as supplier_name,
+                            supplies.serial_number, supplies.supplier_tin, supplies.delivery_date, 
+                            suppliers.name as supplier_name, suppliers.contact_person, suppliers.phone, suppliers.address,
                             supply_items.product_id, supply_items.quantity, supply_items.unit_price, supply_items.production_date, supply_items.expiry_date,
                             products.name as product_name, products.category_id, categories.name as category_name, products.purchase_price, products.sale_price, products.actual_quantity
                         FROM supplies supplies
@@ -112,6 +113,9 @@ namespace AptekaEuLib.supplies
                                 Supplier supplier = new Supplier(reader.GetString("supplier_tin"))
                                 {
                                     Name = reader.GetString("supplier_name"),
+                                    ContactPerson = reader.GetString("contact_person"),
+                                    Phone = reader.GetString("phone"),
+                                    Address = reader.GetString("address"),
                                 };
 
                                 currentSupply = new Supply(serialNumber)
@@ -165,7 +169,7 @@ namespace AptekaEuLib.supplies
                 using (MySqlConnection conn = new MySqlConnection(MySQLConfig.DbConnectionString))
                 {
                     conn.Open();
-                    string query = @"SELECT tin, name FROM suppliers;";
+                    string query = @"SELECT tin, name, contact_person, phone, address FROM suppliers;";
                     MySqlCommand command = new MySqlCommand(query, conn);
 
                     using (MySqlDataReader reader = command.ExecuteReader())
@@ -174,6 +178,9 @@ namespace AptekaEuLib.supplies
                         {
                             Supplier supplier = new Supplier(reader.GetString("tin"));
                             supplier.Name = reader.GetString("name");
+                            supplier.ContactPerson = reader.GetString("contact_person");
+                            supplier.Phone = reader.GetString("phone");
+                            supplier.Address = reader.GetString("address");
                             result.Add(supplier);
                         }
                     }
