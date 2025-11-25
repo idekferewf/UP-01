@@ -18,10 +18,10 @@ namespace AptekaEuLib.supplies
             }
         }
 
-        [DisplayName("Стоимость товара")]
+        [DisplayName("Цена товара")]
         public double UnitPrice { get; set; }
 
-        [DisplayName("Стоимость товара")]
+        [DisplayName("Цена товара")]
         public string UnitPriceDisplay 
         {
             get
