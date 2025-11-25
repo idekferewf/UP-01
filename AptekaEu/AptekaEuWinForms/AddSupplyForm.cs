@@ -145,5 +145,10 @@ namespace AptekaEuWinForms
             itemsGridView.Rows[e.RowIndex].Cells["ProductionDate"].Value = DateTime.Today;
             itemsGridView.Rows[e.RowIndex].Cells["ExpiryDate"].Value = DateTime.Today.AddYears(1);
         }
+
+        private void searchProductsTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

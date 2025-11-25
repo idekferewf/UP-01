@@ -43,6 +43,8 @@
             this.itemsLabel = new System.Windows.Forms.Label();
             this.addSelectedProductsButton = new System.Windows.Forms.Button();
             this.addAllProductsButton = new System.Windows.Forms.Button();
+            this.searchProductsTextBox = new System.Windows.Forms.TextBox();
+            this.searchProductsLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.itemsGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -178,7 +180,7 @@
             // 
             // addSelectedProductsButton
             // 
-            this.addSelectedProductsButton.Location = new System.Drawing.Point(296, 193);
+            this.addSelectedProductsButton.Location = new System.Drawing.Point(294, 236);
             this.addSelectedProductsButton.Name = "addSelectedProductsButton";
             this.addSelectedProductsButton.Size = new System.Drawing.Size(157, 23);
             this.addSelectedProductsButton.TabIndex = 26;
@@ -188,7 +190,7 @@
             // 
             // addAllProductsButton
             // 
-            this.addAllProductsButton.Location = new System.Drawing.Point(296, 222);
+            this.addAllProductsButton.Location = new System.Drawing.Point(294, 265);
             this.addAllProductsButton.Name = "addAllProductsButton";
             this.addAllProductsButton.Size = new System.Drawing.Size(157, 23);
             this.addAllProductsButton.TabIndex = 27;
@@ -196,11 +198,30 @@
             this.addAllProductsButton.UseVisualStyleBackColor = true;
             this.addAllProductsButton.Click += new System.EventHandler(this.addAllProductsButton_Click);
             // 
+            // searchProductsTextBox
+            // 
+            this.searchProductsTextBox.Location = new System.Drawing.Point(294, 209);
+            this.searchProductsTextBox.Name = "searchProductsTextBox";
+            this.searchProductsTextBox.Size = new System.Drawing.Size(157, 20);
+            this.searchProductsTextBox.TabIndex = 28;
+            this.searchProductsTextBox.TextChanged += new System.EventHandler(this.searchProductsTextBox_TextChanged);
+            // 
+            // searchProductsLabel
+            // 
+            this.searchProductsLabel.AutoSize = true;
+            this.searchProductsLabel.Location = new System.Drawing.Point(292, 192);
+            this.searchProductsLabel.Name = "searchProductsLabel";
+            this.searchProductsLabel.Size = new System.Drawing.Size(86, 13);
+            this.searchProductsLabel.TabIndex = 29;
+            this.searchProductsLabel.Text = "Поиск товаров:";
+            // 
             // AddSupplyForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(483, 569);
+            this.Controls.Add(this.searchProductsLabel);
+            this.Controls.Add(this.searchProductsTextBox);
             this.Controls.Add(this.addAllProductsButton);
             this.Controls.Add(this.addSelectedProductsButton);
             this.Controls.Add(this.itemsLabel);
@@ -243,5 +264,7 @@
         private System.Windows.Forms.Label itemsLabel;
         private System.Windows.Forms.Button addSelectedProductsButton;
         private System.Windows.Forms.Button addAllProductsButton;
+        private System.Windows.Forms.TextBox searchProductsTextBox;
+        private System.Windows.Forms.Label searchProductsLabel;
     }
 }
