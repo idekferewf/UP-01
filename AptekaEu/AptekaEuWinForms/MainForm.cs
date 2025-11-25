@@ -185,7 +185,38 @@ namespace AptekaEuWinForms
 
         private void generateReportsButton_Click(object sender, EventArgs e)
         {
+            if (suppliesGridView.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Не выбрано ни одной поставки.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
+            Supply selectedSupply = (Supply)suppliesGridView.SelectedRows[0].DataBoundItem;
+            if (selectedSupply == null)
+            {
+                return;
+            }
+
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+            {
+                saveFileDialog.Filter = "HTML files (*.html)|*.html";
+                saveFileDialog.FileName = $"Приходная накладная {selectedSupply.SerialNumber}.html";
+                saveFileDialog.DefaultExt = "html";
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        SupplyReportGenerator reportGenerator = new SupplyReportGenerator();
+                        reportGenerator.SaveReportToFile(selectedSupply, saveFileDialog.FileName);
+                        MessageBox.Show($"Отчет успешно сохранен по пути: {saveFileDialog.FileName}", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Ошибка при сохранении отчета:\n{ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
         }
     }
 }
