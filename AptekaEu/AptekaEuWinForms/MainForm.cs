@@ -146,6 +146,19 @@ namespace AptekaEuWinForms
         private void addSupplyButton_Click(object sender, EventArgs e)
         {
             List<Supplier> suppliers = supplyService_.GetAllSuppliers();
+
+            if (suppliers.Count == 0)
+            {
+                MessageBox.Show("Для добавления поставки необходимо добавить хотя бы одного поставщика.", "Нет поставщиков", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            if (productService_.Products.Count == 0)
+            {
+                MessageBox.Show("Для добавления поставки необходимо добавить хотя бы один товар.", "Нет товаров", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
             AddSupplyForm addSupplyForm = new AddSupplyForm(suppliers, productService_.Products);
             if (addSupplyForm.ShowDialog() == DialogResult.OK)
             {
