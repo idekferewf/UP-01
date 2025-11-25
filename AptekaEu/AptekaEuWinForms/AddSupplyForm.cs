@@ -11,8 +11,7 @@ namespace AptekaEuWinForms
     public partial class AddSupplyForm: Form
     {
         private BindingList<SupplyItem> supplyItems_ = new BindingList<SupplyItem>();
-        private BindingList<Product> products_;
-        private BindingList<Product> filteredProducts_;
+        private List<Product> products_;
 
         public Supply Supply { get; set; }
 
@@ -33,9 +32,8 @@ namespace AptekaEuWinForms
 
         public void FillProducts(BindingList<Product> products)
         {
-            products_ = products;
-            filteredProducts_ = products;
-            productsListBox.DataSource = filteredProducts_;
+            products_ = new List<Product>(products);
+            productsListBox.DataSource = products_;
         }
 
         public void FillSupplyItems()
@@ -152,18 +150,18 @@ namespace AptekaEuWinForms
 
         private void searchProductsTextBox_TextChanged(object sender, EventArgs e)
         {
+            List<Product> result;
             if (string.IsNullOrEmpty(searchProductsTextBox.Text))
             {
-                filteredProducts_ = products_;
+                result = products_;
             }
             else
             {
-                List<Product> result = products_.Where(p => p.Name.Contains(searchProductsTextBox.Text)).ToList();
-                filteredProducts_ = new BindingList<Product>(result);
+                result = products_.Where(p => p.Name.Contains(searchProductsTextBox.Text)).ToList();
             }
 
             productsListBox.DataSource = null;
-            productsListBox.DataSource = filteredProducts_;
+            productsListBox.DataSource = result;
         }
     }   
 }
