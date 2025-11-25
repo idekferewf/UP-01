@@ -47,6 +47,12 @@ namespace AptekaEuWinForms
         private void addProductButton_Click(object sender, EventArgs e)
         {
             List<Category> categories = productService_.GetAllCategories();
+            if (categories.Count == 0)
+            {
+                MessageBox.Show("Для добавления товара необходимо добавить хотя бы одну категорию.", "Нет категорий", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
             AddProductForm addProductForm = new AddProductForm(categories);
             if (addProductForm.ShowDialog() == DialogResult.OK)
             {
