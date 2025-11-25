@@ -62,7 +62,7 @@
             // 
             // serialNumberTextBox
             // 
-            this.serialNumberTextBox.Location = new System.Drawing.Point(174, 78);
+            this.serialNumberTextBox.Location = new System.Drawing.Point(171, 78);
             this.serialNumberTextBox.Name = "serialNumberTextBox";
             this.serialNumberTextBox.Size = new System.Drawing.Size(475, 20);
             this.serialNumberTextBox.TabIndex = 3;
@@ -70,7 +70,7 @@
             // supplierComboBox
             // 
             this.supplierComboBox.FormattingEnabled = true;
-            this.supplierComboBox.Location = new System.Drawing.Point(174, 104);
+            this.supplierComboBox.Location = new System.Drawing.Point(171, 104);
             this.supplierComboBox.Name = "supplierComboBox";
             this.supplierComboBox.Size = new System.Drawing.Size(475, 21);
             this.supplierComboBox.TabIndex = 12;
@@ -79,7 +79,7 @@
             // 
             this.serialNumberLabel.AutoSize = true;
             this.serialNumberLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.serialNumberLabel.Location = new System.Drawing.Point(50, 80);
+            this.serialNumberLabel.Location = new System.Drawing.Point(47, 80);
             this.serialNumberLabel.Name = "serialNumberLabel";
             this.serialNumberLabel.Size = new System.Drawing.Size(120, 16);
             this.serialNumberLabel.TabIndex = 13;
@@ -89,7 +89,7 @@
             // 
             this.supplierLabel.AutoSize = true;
             this.supplierLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.supplierLabel.Location = new System.Drawing.Point(88, 106);
+            this.supplierLabel.Location = new System.Drawing.Point(85, 106);
             this.supplierLabel.Name = "supplierLabel";
             this.supplierLabel.Size = new System.Drawing.Size(82, 16);
             this.supplierLabel.TabIndex = 14;
@@ -97,7 +97,7 @@
             // 
             // deliveryDatePicker
             // 
-            this.deliveryDatePicker.Location = new System.Drawing.Point(174, 131);
+            this.deliveryDatePicker.Location = new System.Drawing.Point(171, 131);
             this.deliveryDatePicker.Name = "deliveryDatePicker";
             this.deliveryDatePicker.Size = new System.Drawing.Size(475, 20);
             this.deliveryDatePicker.TabIndex = 15;
@@ -106,7 +106,7 @@
             // 
             this.deliveryDateLabel.AutoSize = true;
             this.deliveryDateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.deliveryDateLabel.Location = new System.Drawing.Point(64, 132);
+            this.deliveryDateLabel.Location = new System.Drawing.Point(61, 132);
             this.deliveryDateLabel.Name = "deliveryDateLabel";
             this.deliveryDateLabel.Size = new System.Drawing.Size(106, 16);
             this.deliveryDateLabel.TabIndex = 16;
@@ -133,6 +133,7 @@
             this.itemsGridView.RowTemplate.Height = 16;
             this.itemsGridView.Size = new System.Drawing.Size(627, 184);
             this.itemsGridView.TabIndex = 18;
+            this.itemsGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.itemsGridView_CellEndEdit);
             this.itemsGridView.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.itemsGridView_CellValidating);
             this.itemsGridView.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.itemsGridView_RowsAdded);
             // 

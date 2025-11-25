@@ -184,5 +184,10 @@ namespace AptekaEuWinForms
                 }
             }
         }
+
+        private void itemsGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            itemsGridView.Refresh();
+        }
     }   
 }
