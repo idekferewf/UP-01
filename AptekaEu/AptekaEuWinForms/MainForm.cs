@@ -177,6 +177,7 @@ namespace AptekaEuWinForms
                 }
                 else
                 {
+                    FillFilteredSupplies();
                     MessageBox.Show("Поставка успешно добавлена!", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
