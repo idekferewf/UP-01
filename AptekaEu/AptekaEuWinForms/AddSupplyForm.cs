@@ -69,7 +69,7 @@ namespace AptekaEuWinForms
                 Supply supplyToAdd = new Supply(serialNumberTextBox.Text)
                 {
                     Supplier = (Supplier)supplierComboBox.SelectedItem,
-                    DeliveryDate = deliveryDatePicker.Value,
+                    DeliveryDate = deliveryDatePicker.Value.Date,
                     Items = new List<SupplyItem>(supplyItems_)
                 };
                 Supply = supplyToAdd;
