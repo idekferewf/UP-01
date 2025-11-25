@@ -29,9 +29,40 @@ namespace AptekaEuLib.supplies
             return filteredAndSortedSupplies_;
         }
 
+        public List<Supplier> GetAllSuppliers()
+        {
+            return suppliesRepository_.ReadSuppliers();
+        }
+
         public string AddSupply(Supply supply)
         {
-            return "";
+            if (string.IsNullOrEmpty(supply.SerialNumber))
+            {
+                return "Серийный номер не может быть пустым.";
+            }
+
+            if (supply.Supplier == null)
+            {
+                return "Поставщик не указан.";
+            }
+
+            if (supply.ItemsCount == 0)
+            {
+                return "Необходимо добавить хотя бы одну позицию для создания поставки.";
+            }
+
+            bool isAdded = suppliesRepository_.AddSupply(supply);
+            if (isAdded)
+            {
+                supplies_.Add(supply);
+                ApplyFilterAndSort();
+            }
+            else
+            {
+                return "Не удалось добавить поставку в базу данных.";
+            }
+
+            return string.Empty;
         }
 
         public void FilterBySupplierTin(string supplierTin)
@@ -78,7 +109,7 @@ namespace AptekaEuLib.supplies
 
             if (!string.IsNullOrEmpty(currentSupplierFilter_))
             {
-                result = result.Where(s => s.Supplier.Tin == currentSupplierFilter_);
+                result = result.Where(s => s.SupplierName == currentSupplierFilter_);
             }
 
             PropertyInfo propertyInfo = typeof(Supply).GetProperty(currentSortProperty_);

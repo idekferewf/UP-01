@@ -35,7 +35,7 @@ namespace AptekaEuWinForms
         {
             BindingList<Supply> supplies = supplyService_.GetAllSupplies();
             suppliesGridView.DataSource = supplies;
-            supplierFilterComboBox.Items.AddRange(supplies.Select(s => s.Supplier.Tin).ToArray());
+            supplierFilterComboBox.Items.AddRange(supplies.Select(s => s.SupplierName).ToArray());
         }
 
         private void FillFilteredSupplies()
@@ -47,10 +47,16 @@ namespace AptekaEuWinForms
         private void addProductButton_Click(object sender, EventArgs e)
         {
             List<Category> categories = productService_.GetAllCategories();
+            if (categories.Count == 0)
+            {
+                MessageBox.Show("Для добавления товара необходимо добавить хотя бы одну категорию.", "Нет категорий", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
             AddProductForm addProductForm = new AddProductForm(categories);
             if (addProductForm.ShowDialog() == DialogResult.OK)
             {
-                string error = productService_.AddProduct(addProductForm.product);
+                string error = productService_.AddProduct(addProductForm.Product);
                 if (error != string.Empty)
                 {
                     MessageBox.Show(error, "Ошибка при добавлении", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -102,9 +108,13 @@ namespace AptekaEuWinForms
 
         private void mainTabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (mainTabControl.SelectedIndex == 1 && suppliesGridView.DataSource == null)
+            if (mainTabControl.SelectedIndex == 1)
             {
+                Text = "Поставки – AptekaEu";
                 FillSupplies();
+            } else
+            {
+                Text = "Главная – AptekaEu";
             }
         }
 
@@ -137,6 +147,37 @@ namespace AptekaEuWinForms
         {
             supplyService_.FilterBySupplierTin(supplierFilterComboBox.Text);
             FillFilteredSupplies();
+        }
+
+        private void addSupplyButton_Click(object sender, EventArgs e)
+        {
+            List<Supplier> suppliers = supplyService_.GetAllSuppliers();
+
+            if (suppliers.Count == 0)
+            {
+                MessageBox.Show("Для добавления поставки необходимо добавить хотя бы одного поставщика.", "Нет поставщиков", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            if (productService_.Products.Count == 0)
+            {
+                MessageBox.Show("Для добавления поставки необходимо добавить хотя бы один товар.", "Нет товаров", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            AddSupplyForm addSupplyForm = new AddSupplyForm(suppliers, productService_.Products);
+            if (addSupplyForm.ShowDialog() == DialogResult.OK)
+            {
+                string error = supplyService_.AddSupply(addSupplyForm.Supply);
+                if (error != string.Empty)
+                {
+                    MessageBox.Show(error, "Ошибка при добавлении", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    MessageBox.Show("Поставка успешно добавлена!", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
         }
     }
 }
