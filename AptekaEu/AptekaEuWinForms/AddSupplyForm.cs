@@ -119,6 +119,8 @@ namespace AptekaEuWinForms
 
         private void itemsGridView_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
+            itemsGridView.Rows[e.RowIndex].Cells["Quantity"].Value = 1;
+            itemsGridView.Rows[e.RowIndex].Cells["UnitPrice"].Value = 100;
             itemsGridView.Rows[e.RowIndex].Cells["ProductionDate"].Value = DateTime.Today;
             itemsGridView.Rows[e.RowIndex].Cells["ExpiryDate"].Value = DateTime.Today.AddYears(1);
         }
