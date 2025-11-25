@@ -130,10 +130,6 @@ namespace AptekaEuWinForms
             {
                 errorMessage = "Неверный формат данных. Проверьте введенные значения.";
             }
-            else if (e.Exception is ArgumentException)
-            {
-                errorMessage = "Недопустимое значение.";
-            }
             else
             {
                 errorMessage = e.Exception.Message;
