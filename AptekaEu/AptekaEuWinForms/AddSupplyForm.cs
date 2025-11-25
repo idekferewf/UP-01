@@ -172,11 +172,19 @@ namespace AptekaEuWinForms
                     e.Cancel = true;
                 }
             }
-            else if (columnName == "ExpiryDate")
+            else if (columnName == "ExpiryDate" || columnName == "ProductionDate")
             {
-                if (DateTime.TryParse(value, out DateTime selectedDate) && selectedDate.Date <= DateTime.Today)
+                if (DateTime.TryParse(value, out DateTime selectedDate))
                 {
-                    MessageBox.Show("Срок годности должен быть больше сегодняшней даты.", "Ошибка валидации", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    if (columnName == "ExpiryDate" && selectedDate.Date <= DateTime.Today)
+                    {
+                        MessageBox.Show("Срок годности должен быть больше сегодняшней даты.", "Ошибка валидации", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        e.Cancel = true;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Неверный формат даты.", "Ошибка валидации", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     e.Cancel = true;
                 }
             }
