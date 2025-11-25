@@ -45,6 +45,7 @@
             this.addAllProductsButton = new System.Windows.Forms.Button();
             this.searchProductsTextBox = new System.Windows.Forms.TextBox();
             this.searchProductsLabel = new System.Windows.Forms.Label();
+            this.helpLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.itemsGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -149,7 +150,7 @@
             // 
             this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cancelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.cancelButton.Location = new System.Drawing.Point(353, 511);
+            this.cancelButton.Location = new System.Drawing.Point(353, 545);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(100, 30);
             this.cancelButton.TabIndex = 23;
@@ -160,7 +161,7 @@
             // addSupplyButton
             // 
             this.addSupplyButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.addSupplyButton.Location = new System.Drawing.Point(247, 511);
+            this.addSupplyButton.Location = new System.Drawing.Point(247, 545);
             this.addSupplyButton.Name = "addSupplyButton";
             this.addSupplyButton.Size = new System.Drawing.Size(100, 30);
             this.addSupplyButton.TabIndex = 24;
@@ -215,11 +216,21 @@
             this.searchProductsLabel.TabIndex = 29;
             this.searchProductsLabel.Text = "Поиск товаров:";
             // 
+            // helpLabel
+            // 
+            this.helpLabel.Location = new System.Drawing.Point(30, 502);
+            this.helpLabel.Name = "helpLabel";
+            this.helpLabel.Size = new System.Drawing.Size(423, 29);
+            this.helpLabel.TabIndex = 30;
+            this.helpLabel.Text = "Для добавления позиции в поставку дважды кликните по нужному товару или воспользу" +
+    "йтесь кнопками справа от них.";
+            // 
             // AddSupplyForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(483, 569);
+            this.ClientSize = new System.Drawing.Size(483, 600);
+            this.Controls.Add(this.helpLabel);
             this.Controls.Add(this.searchProductsLabel);
             this.Controls.Add(this.searchProductsTextBox);
             this.Controls.Add(this.addAllProductsButton);
@@ -266,5 +277,6 @@
         private System.Windows.Forms.Button addAllProductsButton;
         private System.Windows.Forms.TextBox searchProductsTextBox;
         private System.Windows.Forms.Label searchProductsLabel;
+        private System.Windows.Forms.Label helpLabel;
     }
 }
