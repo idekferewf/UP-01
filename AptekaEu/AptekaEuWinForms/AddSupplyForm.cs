@@ -164,5 +164,41 @@ namespace AptekaEuWinForms
             productsListBox.DataSource = null;
             productsListBox.DataSource = result;
         }
+
+        private void itemsGridView_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            if (e.RowIndex < 0)
+            {
+                return;
+            }
+
+            string columnName = itemsGridView.Columns[e.ColumnIndex].DataPropertyName;
+            string value = e.FormattedValue?.ToString() ?? "";
+
+            if (columnName == "UnitPrice")
+            {
+                if (!double.TryParse(value, out double unitPrice) || unitPrice <= 0)
+                {
+                    MessageBox.Show("Стоимость товара должна быть больше 0.", "Ошибка валидации", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    e.Cancel = true;
+                }
+            }
+            else if (columnName == "Quantity")
+            {
+                if (!int.TryParse(value, out int quantity) || quantity <= 0)
+                {
+                    MessageBox.Show("Количество товара должно быть больше 0.", "Ошибка валидации", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    e.Cancel = true;
+                }
+            }
+            else if (columnName == "ExpiryDate")
+            {
+                if (DateTime.TryParse(value, out DateTime selectedDate) && selectedDate.Date <= DateTime.Today)
+                {
+                    MessageBox.Show("Срок годности должен быть больше сегодняшней даты.", "Ошибка валидации", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    e.Cancel = true;
+                }
+            }
+        }
     }   
 }
