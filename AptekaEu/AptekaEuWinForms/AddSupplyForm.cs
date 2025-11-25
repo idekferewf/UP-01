@@ -39,6 +39,7 @@ namespace AptekaEuWinForms
         public void FillSupplyItems()
         {
             itemsGridView.DataSource = supplyItems_;
+            itemsGridView.Columns["Product"].ReadOnly = true;
             itemsGridView.Columns["Category"].Visible = false;
             itemsGridView.Columns["UnitPriceDisplay"].Visible = false;
             itemsGridView.Columns["ProductionDate"].DefaultCellStyle.Format = "dd.MM.yyyy";
