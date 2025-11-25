@@ -15,7 +15,7 @@ namespace AptekaEuLib.supplies
         [Browsable(false)]
         public Supplier Supplier { get; set; }
 
-        [DisplayName("ИНН поставщика")]
+        [DisplayName("Поставщик")]
         public string SupplierName
         {
             get
