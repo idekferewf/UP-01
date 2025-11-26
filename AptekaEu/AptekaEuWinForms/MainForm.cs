@@ -34,12 +34,13 @@ namespace AptekaEuWinForms
         private void FillSupplies()
         {
             BindingList<Supply> supplies = supplyService_.GetAllSupplies();
+            suppliesGridView.DataSource = null;
             suppliesGridView.DataSource = supplies;
             suppliesGridView.Columns["DeliveryDate"].DefaultCellStyle.Format = "yyyy-MM-dd";
 
             supplierFilterComboBox.Items.Clear();
             supplierFilterComboBox.Items.Add("Все");
-            supplierFilterComboBox.Items.AddRange(supplies.Select(s => s.SupplierName).Distinct().ToArray());
+            supplierFilterComboBox.Items.AddRange(supplyService_.Supplies.Select(s => s.SupplierName).Distinct().ToArray());
         }
 
         private void FillFilteredSupplies()

@@ -22,6 +22,8 @@ namespace AptekaEuLib.supplies
 
         public BindingList<Supply> FilteredAndSortedSupplies => filteredAndSortedSupplies_;
 
+        public BindingList<Supply> Supplies => supplies_;
+
         public BindingList<Supply> GetAllSupplies()
         {
             supplies_ = new BindingList<Supply>(suppliesRepository_.ReadSupplies());
