@@ -16,11 +16,29 @@ namespace AptekaEuLib
         [DisplayName("Категория")]
         public Category Category { get; set; }
 
-        [DisplayName("Цена закупки")]
+        [Browsable(false)]
         public double PurchasePrice { get; set; }
 
-        [DisplayName("Цена продажи")]
+        [DisplayName("Цена закупки")]
+        public string PurchasePriceDisplay
+        {
+            get
+            {
+                return $"{PurchasePrice:N2} руб.";
+            }
+        }
+
+        [Browsable(false)]
         public double SalePrice { get; set; }
+
+        [DisplayName("Цена закупки")]
+        public string SalePriceDisplay
+        {
+            get
+            {
+                return $"{SalePrice:N2} руб.";
+            }
+        }
 
         [DisplayName("Актуальное количество")]
         public int ActualQuantity { get; set; }
