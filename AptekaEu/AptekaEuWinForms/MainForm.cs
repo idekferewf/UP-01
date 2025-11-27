@@ -121,6 +121,7 @@ namespace AptekaEuWinForms
             } else
             {
                 Text = "Главная – AptekaEu";
+                FillProducts();
             }
         }
 
